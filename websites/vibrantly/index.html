@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrantly - AI-Powered Health Optimization</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .hero-title {
+            font-size: 4em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #4ecdc4;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .tool-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.12);
+        }
+        
+        .tool-card:hover::before {
+            opacity: 1;
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .tool-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        
+        .tool-description {
+            margin-bottom: 25px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .tool-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .tool-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .tool-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .tool-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .tool-button:hover {
+            background: linear-gradient(45deg, #44a08d, #4ecdc4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+        }
+        
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-live {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #4ecdc4;
+        }
+        
+        .status-beta {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+            color: #ffc107;
+        }
+        
+        .cta-section {
+            background: rgba(255,255,255,0.05);
+            padding: 60px 40px;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .cta-title {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-description {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(45deg, #ee5a52, #ff6b6b);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5em;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 30px 25px;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1 class="hero-title">Vibrantly</h1>
+        <p class="hero-subtitle">AI-Powered Health Optimization by Eliza</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Health Tools</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Supplements Analyzed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">32</div>
+                <div class="stat-label">Blood Biomarkers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Personalized</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">🔬 Health Optimization Suite</h2>
+        
+        <div class="tools-grid">
+            <!-- Ultimate Supplement Dashboard -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">💊</div>
+                <h3 class="tool-title">Ultimate Supplement Dashboard</h3>
+                <p class="tool-description">Complete supplement protocol optimized for your blood work. Interactive timing, synergies, and personalized recommendations.</p>
+                <ul class="tool-features">
+                    <li>Blood work integration (high testosterone, cholesterol)</li>
+                    <li>Anti-itchy skin protocol highlighted</li>
+                    <li>Perfect timing recommendations (morning/afternoon/evening)</li>
+                    <li>Synergy analysis & interaction warnings</li>
+                    <li>1-10 ratings based on your health markers</li>
+                </ul>
+                <a href="ultimate-supplement-dashboard.html" class="tool-button">Open Dashboard</a>
+            </div>
+
+            <!-- Comprehensive Health Dashboard -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">📊</div>
+                <h3 class="tool-title">Comprehensive Health Dashboard</h3>
+                <p class="tool-description">Complete health overview with real blood work data, biomarker tracking, and health insights.</p>
+                <ul class="tool-features">
+                    <li>32 tracked biomarkers with actual lab results</li>
+                    <li>Visual health trends and patterns</li>
+                    <li>Personalized recommendations engine</li>
+                    <li>Dark mode with beautiful data visualization</li>
+                    <li>Mobile-responsive design</li>
+                </ul>
+                <a href="comprehensive-health-dashboard.html" class="tool-button">View Health Data</a>
+            </div>
+
+            <!-- Enhanced Health Dashboard v2 -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">🎯</div>
+                <h3 class="tool-title">Enhanced Health Dashboard v2</h3>
+                <p class="tool-description">Advanced version with visual supplement library and unique gradient patterns for each supplement.</p>
+                <ul class="tool-features">
+                    <li>Visual supplement library with gradients</li>
+                    <li>Real blood work integration</li>
+                    <li>Interactive animations and transitions</li>
+                    <li>Flagged high/low values with recommendations</li>
+                    <li>Enhanced user experience design</li>
+                </ul>
+                <a href="enhanced-health-dashboard-v2.html" class="tool-button">Explore v2</a>
+            </div>
+
+            <!-- Vibrantly MVP -->
+            <div class="tool-card">
+                <div class="status-badge status-beta">🟡 Beta</div>
+                <div class="tool-icon">🚀</div>
+                <h3 class="tool-title">Vibrantly MVP</h3>
+                <p class="tool-description">Full interactive app experience with multiple screens, goal selection, and complete user journey.</p>
+                <ul class="tool-features">
+                    <li>Multi-screen interactive app</li>
+                    <li>Goal selection and personalization</li>
+                    <li>Complete user onboarding flow</li>
+                    <li>Advanced supplement recommendations</li>
+                    <li>Product experience prototype</li>
+                </ul>
+                <a href="../vibrantly-mvp-latest/" class="tool-button">Launch MVP</a>
+            </div>
+
+            <!-- Workout Dashboard -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">💪</div>
+                <h3 class="tool-title">Workout Dashboard</h3>
+                <p class="tool-description">Track your DABBS workouts, log progress, and optimize your training schedule.</p>
+                <ul class="tool-features">
+                    <li>DABBS workout tracking</li>
+                    <li>Progress visualization</li>
+                    <li>Exercise logging and metrics</li>
+                    <li>Workout schedule optimization</li>
+                    <li>Performance analytics</li>
+                </ul>
+                <a href="../../workout-dashboard.html" class="tool-button">Track Workouts</a>
+            </div>
+
+            <!-- Blood Work Analysis -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">🩸</div>
+                <h3 class="tool-title">Blood Work Analysis</h3>
+                <p class="tool-description">Deep dive into your lab results with AI-powered insights and recommendations.</p>
+                <ul class="tool-features">
+                    <li>Complete biomarker analysis</li>
+                    <li>Trend identification and patterns</li>
+                    <li>Health risk assessments</li>
+                    <li>Personalized improvement protocols</li>
+                    <li>Integration with supplement recommendations</li>
+                </ul>
+                <a href="bloodwork.html" class="tool-button">Analyze Results</a>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Optimize Your Health?</h2>
+            <p class="cta-description">These tools represent the cutting edge of personalized health optimization, powered by AI analysis of your unique biomarkers and health goals.</p>
+            <a href="mailto:vishen@mindvalley.com?subject=Vibrantly Meeting Request&body=Hi Vishen, I'd like to schedule a meeting to discuss the new Vibrantly health optimization suite and explore potential insights for supplements, workouts, and personalized health protocols." class="cta-button">Schedule Meeting</a>
+        </div>
+    </div>
+</body>
+</html>
