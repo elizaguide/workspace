@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishen's Health Optimization Dashboard</title>
+    
+    <!-- Modern CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: 'oklch(0.95 0.05 142)',
+                            100: 'oklch(0.9 0.1 142)',
+                            500: 'oklch(0.6 0.18 142)',
+                            600: 'oklch(0.55 0.2 142)',
+                            700: 'oklch(0.45 0.22 142)',
+                            900: 'oklch(0.25 0.25 142)'
+                        },
+                        dark: {
+                            bg: 'oklch(0.08 0 0)',
+                            card: 'oklch(0.12 0 0)',
+                            border: 'oklch(0.2 0 0)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Theme system with auto-detection */
+        :root {
+            color-scheme: light dark;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .health-card {
+            transition: all 0.3s ease;
+        }
+        
+        .health-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-number {
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #10b981, #059669);
+            border-radius: 10px;
+            height: 8px;
+        }
+
+        .goal-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .goal-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav-button {
+            transition: all 0.2s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-button.active {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .metric-ring {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* Auto dark mode detection */
+        @media (prefers-color-scheme: dark) {
+            .auto-theme {
+                background: oklch(0.08 0 0);
+                color: oklch(0.95 0 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans transition-colors duration-300 auto-theme" id="body">
+    <div class="min-h-screen bg-gray-50 dark:bg-dark-bg">
+        
+        <!-- Header -->
+        <header class="glass border-b border-gray-200 dark:border-dark-border sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-primary-500 rounded-2xl flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-7 h-7 text-white"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Health Optimization Dashboard</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Vishen's Complete Health Command Center</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation & Theme Toggle -->
+                    <div class="flex items-center space-x-4">
+                        <div class="flex bg-gray-100 dark:bg-dark-card rounded-lg p-1">
+                            <button onclick="showPage('overview')" id="nav-overview" class="nav-button active px-4 py-2 rounded-md text-sm font-medium">Overview</button>
+                            <button onclick="showPage('goals')" id="nav-goals" class="nav-button px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300">Goals</button>
+                            <button onclick="showPage('bloodwork')" id="nav-bloodwork" class="nav-button px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300">Blood Work</button>
+                            <button onclick="showPage('supplements')" id="nav-supplements" class="nav-button px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300">Supplements</button>
+                            <button onclick="showPage('workouts')" id="nav-workouts" class="nav-button px-4 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300">Workouts</button>
+                        </div>
+                        <button onclick="toggleTheme()" class="p-2 rounded-lg bg-gray-100 dark:bg-dark-card hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                            <i data-lucide="sun" class="w-5 h-5 dark:hidden"></i>
+                            <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Overview Page -->
+        <main id="overview-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            
+            <!-- Quick Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Current Belly</p>
+                            <p class="text-3xl font-bold stat-number">82cm</p>
+                        </div>
+                        <div class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-xl flex items-center justify-center">
+                            <i data-lucide="target" class="w-6 h-6 text-orange-600"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-orange-500 w-0 h-2 rounded-full"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Target: 79cm (-3cm to go)</p>
+                    </div>
+                </div>
+
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">OneRebel Speed</p>
+                            <p class="text-3xl font-bold stat-number">16</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center">
+                            <i data-lucide="zap" class="w-6 h-6 text-primary-600"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="progress-bar w-4/5"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Target: 20+</p>
+                    </div>
+                </div>
+
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">LDL Cholesterol</p>
+                            <p class="text-3xl font-bold text-red-600">171</p>
+                        </div>
+                        <div class="w-12 h-12 bg-red-100 dark:bg-red-900 rounded-xl flex items-center justify-center">
+                            <i data-lucide="heart" class="w-6 h-6 text-red-600"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-red-500 w-full h-2 rounded-full"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Target: <130 mg/dL</p>
+                    </div>
+                </div>
+
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Weekly Workouts</p>
+                            <p class="text-3xl font-bold stat-number">2</p>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-xl flex items-center justify-center">
+                            <i data-lucide="calendar" class="w-6 h-6 text-primary-600"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="progress-bar w-full"></div>
+                        </div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Goal: 2-3/week</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Health Priority Matrix -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                
+                <!-- Critical Priorities -->
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="alert-circle" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Critical Priorities</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="heart" class="w-5 h-5 text-red-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">High LDL Cholesterol</span>
+                                </div>
+                                <span class="text-sm text-red-600 bg-red-100 dark:bg-red-900/30 px-3 py-1 rounded-full">171 mg/dL</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="target" class="w-5 h-5 text-orange-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">Belly Fat Loss</span>
+                                </div>
+                                <span class="text-sm text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full">82→79cm</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="brain" class="w-5 h-5 text-blue-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">Supplement Itchiness</span>
+                                </div>
+                                <span class="text-sm text-blue-600 bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full">NAC/Ashwa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Strengths -->
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Current Strengths</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="sun" class="w-5 h-5 text-green-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">Vitamin D Optimal</span>
+                                </div>
+                                <span class="text-sm text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">41.8 ng/mL</span>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="shield" class="w-5 h-5 text-green-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">Free Testosterone</span>
+                                </div>
+                                <span class="text-sm text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">23.9 pg/mL</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex items-center space-x-3">
+                                    <i data-lucide="activity" class="w-5 h-5 text-green-600"></i>
+                                    <span class="font-medium text-gray-900 dark:text-white">Workout Consistency</span>
+                                </div>
+                                <span class="text-sm text-green-600 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Insights -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-xl flex items-center justify-center">
+                            <i data-lucide="brain" class="w-6 h-6 text-purple-600"></i>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">AI Health Intelligence</h2>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 rounded-xl bg-primary-50 dark:bg-primary-900/20 border border-primary-200 dark:border-primary-800">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="lightbulb" class="w-5 h-5 text-primary-600 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">Supplement Stack Insight</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Your Berberine + ALA + CoQ10 combo is perfectly designed for your elevated LDL. This stack targets insulin sensitivity, fat oxidation, and cardiovascular protection.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="clock" class="w-5 h-5 text-blue-600 mt-1"></i>
+                                <div>
+                                    <h4 class="font-medium text-gray-900 dark:text-white mb-2">Timing Optimization</h4>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Your morning focus supplements (Alpha-GPC, L-Tyrosine) paired with evening relaxation stack (Glycine, Magnesium) creates perfect daily rhythm support.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Goals Page -->
+        <main id="goals-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Health Optimization Goals</h1>
+                <p class="text-gray-600 dark:text-gray-400">Your complete health transformation roadmap</p>
+            </div>
+
+            <!-- Primary Goals Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                
+                <!-- Muscle & Strength -->
+                <div class="goal-card bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6 border border-blue-200 dark:border-blue-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="dumbbell" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full">Priority 1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Muscle & Power</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Maximum muscle gain + explosive strength for martial arts</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Current Progress</span>
+                            <span class="font-medium text-blue-600">Early Stage</span>
+                        </div>
+                        <div class="w-full bg-blue-200 dark:bg-blue-800 rounded-full h-2">
+                            <div class="bg-blue-500 w-1/4 h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Composition -->
+                <div class="goal-card bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/30 dark:to-orange-800/20 p-6 border border-orange-200 dark:border-orange-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="target" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 px-3 py-1 rounded-full">Priority 1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Belly Fat Loss</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">82cm → 79cm (-3cm reduction target)</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Current</span>
+                            <span class="font-medium text-orange-600">82cm</span>
+                        </div>
+                        <div class="w-full bg-orange-200 dark:bg-orange-800 rounded-full h-2">
+                            <div class="bg-orange-500 w-0 h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cardiovascular -->
+                <div class="goal-card bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/30 dark:to-red-800/20 p-6 border border-red-200 dark:border-red-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="heart" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-3 py-1 rounded-full">Critical</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Heart Health</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Lower LDL + reduce resting heart rate</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">LDL Current</span>
+                            <span class="font-medium text-red-600">171 mg/dL</span>
+                        </div>
+                        <div class="w-full bg-red-200 dark:bg-red-800 rounded-full h-2">
+                            <div class="bg-red-500 w-full h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Endurance & Stamina -->
+                <div class="goal-card bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 p-6 border border-green-200 dark:border-green-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full">Priority 2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Endurance</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Peak cardiovascular performance & stamina</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">OneRebel Speed</span>
+                            <span class="font-medium text-green-600">16/20</span>
+                        </div>
+                        <div class="w-full bg-green-200 dark:bg-green-800 rounded-full h-2">
+                            <div class="bg-green-500 w-4/5 h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mental Performance -->
+                <div class="goal-card bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/20 p-6 border border-purple-200 dark:border-purple-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 px-3 py-1 rounded-full">Priority 2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Brain Health</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Morning focus + post-meeting relaxation</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Supplement Stack</span>
+                            <span class="font-medium text-purple-600">Optimized</span>
+                        </div>
+                        <div class="w-full bg-purple-200 dark:bg-purple-800 rounded-full h-2">
+                            <div class="bg-purple-500 w-3/4 h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Martial Arts Prep -->
+                <div class="goal-card bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/30 dark:to-yellow-800/20 p-6 border border-yellow-200 dark:border-yellow-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="swords" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <span class="text-sm bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 px-3 py-1 rounded-full">Future</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Martial Arts</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">Balance, agility, flexibility preparation</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Preparation Phase</span>
+                            <span class="font-medium text-yellow-600">Starting</span>
+                        </div>
+                        <div class="w-full bg-yellow-200 dark:bg-yellow-800 rounded-full h-2">
+                            <div class="bg-yellow-500 w-1/5 h-2 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal Timeline -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Goal Timeline & Milestones</h2>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="calendar" class="w-8 h-8 text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 dark:text-white">30 Days</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Establish routine, address supplement itchiness, initial body measurements</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="trending-up" class="w-8 h-8 text-green-600"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 dark:text-white">90 Days</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Target belly fat loss achieved, strength gains visible, blood work improvement</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="star" class="w-8 h-8 text-purple-600"></i>
+                            </div>
+                            <h3 class="font-bold text-gray-900 dark:text-white">6 Months</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Martial arts ready, optimal health metrics, sustainable lifestyle</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Blood Work Page -->
+        <main id="bloodwork-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Blood Work Analysis</h1>
+                <p class="text-gray-600 dark:text-gray-400">Complete analysis of your October 2025 results with optimization targets</p>
+            </div>
+
+            <!-- Critical Markers -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-red-100 dark:bg-red-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="alert-triangle" class="w-6 h-6 text-red-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Markers Needing Attention</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">Total Cholesterol</span>
+                                    <span class="text-red-600 font-bold">241 mg/dL</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Target: <200 mg/dL</p>
+                                <p class="text-xs text-red-600">⚠️ Borderline high - cardiovascular risk</p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">LDL Cholesterol</span>
+                                    <span class="text-red-600 font-bold">171 mg/dL</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Target: <100 mg/dL</p>
+                                <p class="text-xs text-red-600">⚠️ High - primary target for intervention</p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">Total Testosterone</span>
+                                    <span class="text-yellow-600 font-bold">30.5 nmol/L</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Range: 4.56-28.2 nmol/L</p>
+                                <p class="text-xs text-yellow-600">⚠️ Above range (recheck flagged)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Optimal Markers</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">Vitamin D</span>
+                                    <span class="text-green-600 font-bold">41.8 ng/mL</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Target: 30-100 ng/mL</p>
+                                <p class="text-xs text-green-600">✅ Perfect range</p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">Free Testosterone</span>
+                                    <span class="text-green-600 font-bold">23.9 pg/mL</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Range: 15-50 pg/mL</p>
+                                <p class="text-xs text-green-600">✅ Good for age 49</p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                                <div class="flex justify-between items-start mb-2">
+                                    <span class="font-medium text-gray-900 dark:text-white">CRP Inflammatory</span>
+                                    <span class="text-green-600 font-bold"><5.0 mg/L</span>
+                                </div>
+                                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Target: <10 mg/L</p>
+                                <p class="text-xs text-green-600">✅ Low inflammation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supplement-Blood Work Connection -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Targeted Supplement Strategy</h2>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-6 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                <i data-lucide="heart" class="w-5 h-5 text-red-600 mr-2"></i>
+                                For High LDL (171 mg/dL)
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Berberine 500mg</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Citrus Bergamot 500mg</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Omega-3 1g</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">CoQ10 200mg</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                <i data-lucide="brain" class="w-5 h-5 text-blue-600 mr-2"></i>
+                                For Testosterone Support
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Vitamin D3 (optimal level)</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Perfect</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Boron 3mg</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Magnesium</span>
+                                    <span class="text-sm font-medium text-green-600">✅ Taking</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-sm text-gray-600 dark:text-gray-300">Sleep optimization</span>
+                                    <span class="text-sm font-medium text-blue-600">↗ Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Supplements Page -->
+        <main id="supplements-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Supplement Protocol</h1>
+                <p class="text-gray-600 dark:text-gray-400">Optimized nutrition stack aligned with your health goals</p>
+            </div>
+
+            <!-- Timing Schedule -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                
+                <!-- Morning Fasted -->
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-yellow-100 dark:bg-yellow-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="sunrise" class="w-6 h-6 text-yellow-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Morning Fasted</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Alpha-GPC</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">300-600mg</p>
+                                </div>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 px-2 py-1 rounded">Focus</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">L-Carnitine</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">1500mg</p>
+                                </div>
+                                <span class="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 px-2 py-1 rounded">Energy</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">L-Tyrosine</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">500mg (gym days)</p>
+                                </div>
+                                <span class="text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-600 px-2 py-1 rounded">Performance</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Rhodiola</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">200-400mg</p>
+                                </div>
+                                <span class="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 px-2 py-1 rounded">Adaptogen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Morning Fed -->
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="coffee" class="w-6 h-6 text-orange-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Morning Fed</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-red-50 dark:bg-red-900/20">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Berberine</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">500mg</p>
+                                </div>
+                                <span class="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 px-2 py-1 rounded">Critical</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">CoQ10</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">200mg</p>
+                                </div>
+                                <span class="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 px-2 py-1 rounded">Heart</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Omega-3</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">1g</p>
+                                </div>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 px-2 py-1 rounded">Essential</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Vitamin D3+K2</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Every 2-3 days</p>
+                                </div>
+                                <span class="text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 px-2 py-1 rounded">Optimal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Evening -->
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center">
+                                <i data-lucide="moon" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Evening</h2>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Glycine</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">3g</p>
+                                </div>
+                                <span class="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 px-2 py-1 rounded">Sleep</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">L-Theanine</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">100mg</p>
+                                </div>
+                                <span class="text-xs bg-green-100 dark:bg-green-900/30 text-green-600 px-2 py-1 rounded">Calm</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-gray-800/50">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Collagen I&III</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">1200mg x3</p>
+                                </div>
+                                <span class="text-xs bg-orange-100 dark:bg-orange-900/30 text-orange-600 px-2 py-1 rounded">Recovery</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded-lg bg-red-50 dark:bg-red-900/20">
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">NAC</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">⚠️ PAUSED</p>
+                                </div>
+                                <span class="text-xs bg-red-100 dark:bg-red-900/30 text-red-600 px-2 py-1 rounded">Itchiness</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supplement Issues Alert -->
+            <div class="health-card bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-6 mb-8">
+                <div class="flex items-start space-x-3">
+                    <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-600 mt-1"></i>
+                    <div>
+                        <h3 class="font-semibold text-amber-900 dark:text-amber-100 mb-2">⚠️ Supplement Adjustment Alert</h3>
+                        <p class="text-amber-800 dark:text-amber-200 text-sm mb-4">
+                            <strong>Issue:</strong> Facial itchiness started in September correlates with NAC + Ashwagandha introduction. 
+                            Symptoms improved significantly after stopping both supplements for 1 week.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="font-medium text-amber-900 dark:text-amber-100 mb-2">🚨 Likely Culprits:</p>
+                                <ul class="text-sm text-amber-800 dark:text-amber-200 space-y-1">
+                                    <li>• NAC - histamine release/sulfur sensitivity</li>
+                                    <li>• Ashwagandha - nightshade family reaction</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <p class="font-medium text-amber-900 dark:text-amber-100 mb-2">✅ Recommended Action:</p>
+                                <ul class="text-sm text-amber-800 dark:text-amber-200 space-y-1">
+                                    <li>• Stay off both for another week</li>
+                                    <li>• Reintroduce Ashwagandha first (safer)</li>
+                                    <li>• Replace NAC with Glycine + Selenium</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Goal-Aligned Stacks -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">Goal-Specific Supplement Stacks</h2>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Fat Loss Stack -->
+                        <div class="p-6 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                <i data-lucide="target" class="w-5 h-5 text-orange-600 mr-2"></i>
+                                Fat Loss Stack
+                            </h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Berberine</span>
+                                    <span class="text-orange-600">✅ 500mg 2x</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>L-Carnitine</span>
+                                    <span class="text-orange-600">✅ 1500mg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Alpha-Lipoic Acid</span>
+                                    <span class="text-orange-600">✅ 300-600mg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>CLA</span>
+                                    <span class="text-orange-600">✅ 3x daily</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Heart Health Stack -->
+                        <div class="p-6 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                <i data-lucide="heart" class="w-5 h-5 text-red-600 mr-2"></i>
+                                Heart Health Stack
+                            </h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span>CoQ10</span>
+                                    <span class="text-red-600">✅ 200mg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Omega-3</span>
+                                    <span class="text-red-600">✅ 1g EPA/DHA</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Citrus Bergamot</span>
+                                    <span class="text-red-600">✅ 500mg</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Magnesium</span>
+                                    <span class="text-red-600">✅ Evening</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recovery Stack -->
+                        <div class="p-6 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                            <h3 class="font-bold text-gray-900 dark:text-white mb-4 flex items-center">
+                                <i data-lucide="moon" class="w-5 h-5 text-blue-600 mr-2"></i>
+                                Recovery Stack
+                            </h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Glycine</span>
+                                    <span class="text-blue-600">✅ 3g nightly</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Collagen I&III</span>
+                                    <span class="text-blue-600">✅ 3.6g daily</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>MSM</span>
+                                    <span class="text-blue-600">✅ 1-2g</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Vitamin C</span>
+                                    <span class="text-blue-600">✅ 1000mg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Workouts Page -->
+        <main id="workouts-page" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Workout Performance</h1>
+                <p class="text-gray-600 dark:text-gray-400">Track your training progress toward your health goals</p>
+            </div>
+
+            <!-- Recent Workout -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border mb-8">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Latest Workout</h2>
+                        <span class="text-sm bg-green-100 dark:bg-green-900/30 text-green-600 px-3 py-1 rounded-full">Completed</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex items-start space-x-6">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&h=120&fit=crop&crop=center" alt="DABBS Fitness" class="w-24 h-24 rounded-xl object-cover">
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">DABBS Fitness</h3>
+                                    <p class="text-gray-600 dark:text-gray-300">Monday, February 2nd • Strength Training</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="text-center p-4 bg-primary-50 dark:bg-primary-900/20 rounded-xl">
+                                    <p class="text-2xl font-bold stat-number">40kg</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Barbell Squats</p>
+                                </div>
+                                <div class="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                    <p class="text-2xl font-bold text-blue-600">36kg</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Bench Press</p>
+                                </div>
+                                <div class="text-center p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl">
+                                    <p class="text-2xl font-bold text-yellow-600">24kg</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Kettlebell Pulls</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
+                                <p class="text-sm text-gray-600 dark:text-gray-300">✅ <strong>Great strength session!</strong> Solid progression on all major movements. Narrow grip dumbbell bench press (18kg each hand) targeting triceps and inner chest perfectly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Workouts -->
+            <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border mb-8">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">This Week's Schedule</h2>
+                </div>
+                
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop&crop=center" alt="ClassPass" class="w-16 h-16 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-gray-900 dark:text-white">ClassPass Workout</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Thursday • TBD</p>
+                                    </div>
+                                    <span class="text-sm bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 px-3 py-1 rounded-full">Book Tomorrow</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">📍 Location TBD • Reminder set for 11 AM</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=80&h=80&fit=crop&crop=center" alt="DABBS Fitness" class="w-16 h-16 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-gray-900 dark:text-white">DABBS Fitness - Vishen</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Saturday 11:00 AM • Personal Training</p>
+                                    </div>
+                                    <span class="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-600 px-3 py-1 rounded-full">Sat 11 AM</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">📍 Mayfair • Next strength session</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=80&h=80&fit=crop&crop=center" alt="DABBS Fitness" class="w-16 h-16 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-gray-900 dark:text-white">DABBS Fitness - Hayden</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300">Saturday 12:00 PM • Personal Training</p>
+                                    </div>
+                                    <span class="text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full">Sat 12 PM</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">📍 Mayfair • Back-to-back sessions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Goals -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">Performance Targets</h2>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-600 dark:text-gray-300">OneRebel Speed</span>
+                                    <span class="text-sm font-bold text-primary-600">16 → 20+</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="progress-bar w-4/5 h-3"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">80% to target</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-600 dark:text-gray-300">DABBS Strength Progress</span>
+                                    <span class="text-sm font-bold text-primary-600">40kg Squats</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="progress-bar w-3/5 h-3"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Solid baseline established</p>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-gray-600 dark:text-gray-300">Martial Arts Prep</span>
+                                    <span class="text-sm font-bold text-yellow-600">Starting</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
+                                    <div class="bg-yellow-500 w-1/5 h-3 rounded-full"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Balance, agility, flexibility focus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="health-card bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">3-Month Fitness Plan</h2>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 p-4 rounded-xl bg-primary-50 dark:bg-primary-900/20">
+                                <i data-lucide="target" class="w-5 h-5 text-primary-600"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">OneRebel Reshape</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">1x per week • HIIT + Running</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20">
+                                <i data-lucide="dumbbell" class="w-5 h-5 text-blue-600"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Boxing/Pilates</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">1x per week • Power + Flexibility</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-3 p-4 rounded-xl bg-yellow-50 dark:bg-yellow-900/20">
+                                <i data-lucide="swords" class="w-5 h-5 text-yellow-600"></i>
+                                <div>
+                                    <p class="font-medium text-gray-900 dark:text-white">Martial Arts Prep</p>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Balance, agility, coordination</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 rounded-xl bg-green-50 dark:bg-green-900/20">
+                                <div class="flex items-start space-x-3">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-green-600 mt-1"></i>
+                                    <div>
+                                        <h4 class="font-medium text-gray-900 dark:text-white">Expected Results</h4>
+                                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">2-4 years biological age reversal, improved blood markers, enhanced power and endurance</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Initialize Icons & Navigation -->
+    <script>
+        lucide.createIcons();
+
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.getElementById('overview-page').classList.add('hidden');
+            document.getElementById('goals-page').classList.add('hidden');
+            document.getElementById('bloodwork-page').classList.add('hidden');
+            document.getElementById('supplements-page').classList.add('hidden');
+            document.getElementById('workouts-page').classList.add('hidden');
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.remove('hidden');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.add('text-gray-600', 'dark:text-gray-300');
+            });
+            
+            document.getElementById('nav-' + pageId).classList.add('active');
+            document.getElementById('nav-' + pageId).classList.remove('text-gray-600', 'dark:text-gray-300');
+        }
+
+        // Theme Management
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Auto theme detection listener
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initTheme);
+
+        // Simulate some dynamic data (in a real app, this would come from APIs)
+        function updateDashboard() {
+            // This would update with real data from your tracking systems
+            console.log('Dashboard updated with latest health data');
+        }
+
+        // Auto-update every 5 minutes (example)
+        setInterval(updateDashboard, 300000);
+    </script>
+</body>
+</html>

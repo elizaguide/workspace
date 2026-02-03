@@ -13,8 +13,8 @@
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #ffffff;
+            background: #ffffff;
+            color: #1a1a1a;
             line-height: 1.6;
             min-height: 100vh;
         }
@@ -22,9 +22,25 @@
         .hero {
             text-align: center;
             padding: 80px 20px 60px;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
         .hero-title {
@@ -40,7 +56,7 @@
         .hero-subtitle {
             font-size: 1.4em;
             margin-bottom: 30px;
-            opacity: 0.9;
+            opacity: 0.95;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
@@ -61,12 +77,12 @@
         .stat-number {
             font-size: 2.5em;
             font-weight: 800;
-            color: #4ecdc4;
+            color: #ffffff;
         }
         
         .stat-label {
             font-size: 0.9em;
-            opacity: 0.8;
+            opacity: 0.9;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -81,7 +97,7 @@
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 50px;
-            color: #ffffff;
+            color: #1a1a1a;
             font-weight: 700;
         }
         
@@ -93,14 +109,14 @@
         }
         
         .tool-card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
+            background: #ffffff;
+            border: 2px solid #f0f0f0;
             border-radius: 20px;
             padding: 40px;
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
         .tool-card::before {
@@ -110,15 +126,15 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
         
         .tool-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.12);
+            border-color: #667eea;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
         }
         
         .tool-card:hover::before {
@@ -134,12 +150,12 @@
             font-size: 1.8em;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #ffffff;
+            color: #1a1a1a;
         }
         
         .tool-description {
             margin-bottom: 25px;
-            opacity: 0.9;
+            color: #666666;
             line-height: 1.6;
         }
         
@@ -152,19 +168,20 @@
             padding: 8px 0;
             position: relative;
             padding-left: 25px;
+            color: #666666;
         }
         
         .tool-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: #4ecdc4;
+            color: #667eea;
             font-weight: bold;
         }
         
         .tool-button {
             display: inline-block;
-            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 12px 30px;
             border-radius: 25px;
@@ -177,9 +194,9 @@
         }
         
         .tool-button:hover {
-            background: linear-gradient(45deg, #44a08d, #4ecdc4);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
         
         .status-badge {
@@ -195,35 +212,36 @@
         }
         
         .status-live {
-            background: rgba(40, 167, 69, 0.2);
+            background: #d4edda;
             border: 1px solid #28a745;
-            color: #4ecdc4;
+            color: #155724;
         }
         
         .status-beta {
-            background: rgba(255, 193, 7, 0.2);
+            background: #fff3cd;
             border: 1px solid #ffc107;
-            color: #ffc107;
+            color: #856404;
         }
         
         .cta-section {
-            background: rgba(255,255,255,0.05);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             padding: 60px 40px;
             border-radius: 25px;
             text-align: center;
             margin-top: 60px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid #dee2e6;
         }
         
         .cta-title {
             font-size: 2.2em;
             margin-bottom: 20px;
             font-weight: 700;
+            color: #1a1a1a;
         }
         
         .cta-description {
             font-size: 1.2em;
-            opacity: 0.9;
+            color: #666666;
             margin-bottom: 30px;
             max-width: 600px;
             margin-left: auto;
@@ -232,7 +250,7 @@
         
         .cta-button {
             display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 18px 40px;
             border-radius: 30px;
@@ -245,9 +263,9 @@
         }
         
         .cta-button:hover {
-            background: linear-gradient(45deg, #ee5a52, #ff6b6b);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
         }
         
         @media (max-width: 768px) {
@@ -276,24 +294,26 @@
 </head>
 <body>
     <section class="hero">
-        <h1 class="hero-title">Vibrantly</h1>
-        <p class="hero-subtitle">AI-Powered Health Optimization by Eliza</p>
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Health Tools</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">40+</div>
-                <div class="stat-label">Supplements Analyzed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">32</div>
-                <div class="stat-label">Blood Biomarkers</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Personalized</div>
+        <div class="hero-content">
+            <h1 class="hero-title">Vibrantly</h1>
+            <p class="hero-subtitle">AI-Powered Health Optimization by Eliza</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Health Tools</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Supplements Analyzed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Blood Biomarkers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Personalized</div>
+                </div>
             </div>
         </div>
     </section>
@@ -363,23 +383,7 @@
                     <li>Advanced supplement recommendations</li>
                     <li>Product experience prototype</li>
                 </ul>
-                <a href="../vibrantly-mvp-latest/" class="tool-button">Launch MVP</a>
-            </div>
-
-            <!-- Workout Dashboard -->
-            <div class="tool-card">
-                <div class="status-badge status-live">🔴 Live</div>
-                <div class="tool-icon">💪</div>
-                <h3 class="tool-title">Workout Dashboard</h3>
-                <p class="tool-description">Track your DABBS workouts, log progress, and optimize your training schedule.</p>
-                <ul class="tool-features">
-                    <li>DABBS workout tracking</li>
-                    <li>Progress visualization</li>
-                    <li>Exercise logging and metrics</li>
-                    <li>Workout schedule optimization</li>
-                    <li>Performance analytics</li>
-                </ul>
-                <a href="../../workout-dashboard.html" class="tool-button">Track Workouts</a>
+                <a href="vibrantly-mvp/" class="tool-button">Launch MVP</a>
             </div>
 
             <!-- Blood Work Analysis -->
@@ -396,6 +400,22 @@
                     <li>Integration with supplement recommendations</li>
                 </ul>
                 <a href="bloodwork.html" class="tool-button">Analyze Results</a>
+            </div>
+
+            <!-- Workout Dashboard -->
+            <div class="tool-card">
+                <div class="status-badge status-live">🔴 Live</div>
+                <div class="tool-icon">💪</div>
+                <h3 class="tool-title">Workout Dashboard</h3>
+                <p class="tool-description">Track your DABBS workouts, log progress, and optimize your training schedule.</p>
+                <ul class="tool-features">
+                    <li>DABBS workout tracking</li>
+                    <li>Progress visualization</li>
+                    <li>Exercise logging and metrics</li>
+                    <li>Workout schedule optimization</li>
+                    <li>Performance analytics</li>
+                </ul>
+                <a href="workout-dashboard.html" class="tool-button">Track Workouts</a>
             </div>
         </div>
 

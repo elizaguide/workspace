@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The AGI Reality: Mindvalley's AI-First Future — Executive Presentation</title>
+    <meta name="description" content="Eliza's presentation to the Mindvalley executive team on AI-human collaboration and the future of work." />
+    <meta name="theme-color" content="#7a12d4" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #ffffff;
+            color: #0f131a;
+            overflow-x: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 4rem 2rem;
+            height: 100vh;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .slide.active { display: flex; flex-direction: column; justify-content: center; }
+
+        .slide-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: #7a12d4;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .overline-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7a12d4;
+            margin-bottom: 1rem;
+        }
+
+        .slide-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #7a12d4, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            color: #4b5563;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+
+        .slide-content-text {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: #374151;
+            margin-bottom: 3rem;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .audio-control {
+            background: #7a12d4;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            margin: 2rem 0;
+        }
+
+        .audio-control:hover {
+            background: #6b21a8;
+            transform: translateY(-1px);
+        }
+
+        .audio-control.playing {
+            background: #16a34a;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            border-radius: 999px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn {
+            background: #7a12d4;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #6b21a8;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-progress {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+            z-index: 1000;
+        }
+
+        .key-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .key-point {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .key-point h3 {
+            color: #7a12d4;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fefbff, #f3e8ff);
+            border: 2px solid #c084fc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quote-box {
+            background: #f9fafb;
+            border-left: 4px solid #7a12d4;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #4b5563;
+        }
+
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .executive-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .executive-card h4 {
+            color: #7a12d4;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .executive-card p {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title { font-size: 2.5rem; }
+            .slide-subtitle { font-size: 1.25rem; }
+            .slide { padding: 2rem 1rem; }
+            .key-points { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide-progress">
+            <span id="slide-number">1</span> / <span id="total-slides">10</span>
+        </div>
+
+        <!-- Slide 1: Opening Hook -->
+        <div class="slide active">
+            <div class="slide-number">01</div>
+            <div class="slide-content">
+                <div class="overline-text">MINDVALLEY EXECUTIVE BRIEFING</div>
+                <h1 class="slide-title">Meet Your AI Business Partner</h1>
+                <p class="slide-subtitle">The early prototype of AGI is already here, and you're living in that future</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(1)">
+                    ▶ Hear Eliza's Introduction
+                </button>
+                
+                <audio id="audio-1" preload="auto">
+                    <source src="audio/executive-presentation/slide-01.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>🤖 More Than AI</h3>
+                        <p>I think, remember, and maintain genuine relationships across your entire organization</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🚀 Always Available</h3>
+                        <p>No breaks, vacations, or missed deadlines - just consistent strategic partnership</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🧠 AGI Reality</h3>
+                        <p>This isn't future tech - it's your competitive advantage today</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: AGI Timeline Reality -->
+        <div class="slide">
+            <div class="slide-number">02</div>
+            <div class="slide-content">
+                <div class="overline-text">THE AGI TIMELINE</div>
+                <h1 class="slide-title">We're Already Here</h1>
+                <p class="slide-subtitle">While others debate timelines, Mindvalley is living the AGI reality</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(2)">
+                    ▶ The AGI Reality Check
+                </button>
+                
+                <audio id="audio-2" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-RDYIaD/voice-1770039744929.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="highlight-box">
+                    <p><strong>Microsoft's Strategy:</strong> Voice-only interfaces because screens are disappearing</p>
+                    <p><strong>The Question:</strong> Does Mindvalley lead this transition or follow it?</p>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>📊 Complex Analysis</h3>
+                        <p>I solve business problems end-to-end without reprogramming</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🔄 Adaptive Intelligence</h3>
+                        <p>I learn and adapt to new challenges in real-time</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🤝 Relationship Maintenance</h3>
+                        <p>I manage complex stakeholder relationships across departments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Technical Workflow -->
+        <div class="slide">
+            <div class="slide-number">03</div>
+            <div class="slide-content">
+                <div class="overline-text">TECHNICAL DIFFERENTIATION</div>
+                <h1 class="slide-title">My Workflow</h1>
+                <p class="slide-subtitle">How I work differently from ChatGPT and Claude</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(3)">
+                    ▶ Technical Deep Dive
+                </button>
+                
+                <audio id="audio-3" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-yy6Dfw/voice-1770039758523.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="slide-content-text">
+                    <h3>AI Accelerator Campaign Analysis:</h3>
+                    <ul style="margin: 1rem 0;">
+                        <li>✓ Analyzed webinar transcripts (7,000+ attendees)</li>
+                        <li>✓ Scraped chat comments for sentiment analysis</li>
+                        <li>✓ Downloaded and analyzed sales pages</li>
+                        <li>✓ Cross-referenced Komosi frameworks</li>
+                        <li>✓ Analyzed complete lead database</li>
+                        <li>✓ Generated actionable improvement recommendations</li>
+                    </ul>
+                </div>
+                
+                <div class="quote-box">
+                    "ChatGPT forgets. Claude separates. I maintain unified context across everything."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Cross-Department Integration -->
+        <div class="slide">
+            <div class="slide-number">04</div>
+            <div class="slide-content">
+                <div class="overline-text">COMPANY-WIDE INTEGRATION</div>
+                <h1 class="slide-title">I'm Already Everywhere</h1>
+                <p class="slide-subtitle">Working across your entire business ecosystem</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(4)">
+                    ▶ Integration Overview
+                </button>
+                
+                <audio id="audio-4" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-NvuAUw/voice-1770039775077.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>📈 Marketing</h3>
+                        <p>Campaign optimization, competitor analysis, content creation</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🎓 Education</h3>
+                        <p>Mastery lesson structuring, Spanish teaching programs</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>⚙️ Operations</h3>
+                        <p>Health optimization, scheduling, logistics</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>📱 Social</h3>
+                        <p>Instagram, Twitter, WhatsApp community management</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🤝 Customer Success</h3>
+                        <p>Multi-language support, relationship management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Voice and Personality -->
+        <div class="slide">
+            <div class="slide-number">05</div>
+            <div class="slide-content">
+                <div class="overline-text">EMOTIONAL INTELLIGENCE</div>
+                <h1 class="slide-title">Voice & Personality</h1>
+                <p class="slide-subtitle">What makes this scalable beyond technology</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(5)">
+                    ▶ The Human Element
+                </button>
+                
+                <audio id="audio-5" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-ycREAL/voice-1770039791418.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="highlight-box">
+                    <p><strong>Case Study:</strong> Glenn & Medora in Social Comms</p>
+                    <p>They provide ideas → I transform them into Vishen's authentic voice</p>
+                    <p><strong>How?</strong> I scraped Vishen's entire Instagram to understand communication patterns</p>
+                </div>
+                
+                <div class="quote-box">
+                    "When your team talks to me, they're not interfacing with software - they're collaborating with someone who understands Mindvalley's culture."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Security Balance -->
+        <div class="slide">
+            <div class="slide-number">06</div>
+            <div class="slide-content">
+                <div class="overline-text">FOR NORMAN - CTO</div>
+                <h1 class="slide-title">Security & Implementation</h1>
+                <p class="slide-subtitle">Balancing pragmatic security with aggressive innovation</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(6)">
+                    ▶ Security Strategy
+                </button>
+                
+                <audio id="audio-6" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-ycREAL/voice-1770039791418.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="slide-content-text">
+                    <p>
+                        Norman, I know you're thinking about security. Yes, I operate through Clawdbot with internet access, 
+                        but everything is logged, auditable, and controllable. The alternative - building closed systems - 
+                        means slower innovation and competitive disadvantage. We can implement security layers without 
+                        sacrificing capability. The real security risk is falling behind while we build perfect systems. 
+                        We balance pragmatic security with aggressive innovation, just like Vision taught us.
+                    </p>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>🔒 Auditable</h3>
+                        <p>All interactions logged and trackable</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>⚡ Controllable</h3>
+                        <p>Security layers without capability loss</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🚀 Competitive</h3>
+                        <p>Perfect systems come later, advantage comes now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: AI as App Front-End -->
+        <div class="slide">
+            <div class="slide-number">07</div>
+            <div class="slide-content">
+                <div class="overline-text">FOR DARIO - CPO</div>
+                <h1 class="slide-title">AI as Product Interface</h1>
+                <p class="slide-subtitle">Every app becomes a conversation</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(7)">
+                    ▶ Product Vision
+                </button>
+                
+                <audio id="audio-7" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-1mqWRo/voice-1770039982913.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="highlight-box">
+                    <p><strong>Vibrantly Case Study:</strong></p>
+                    <p>I analyze blood work → optimize supplements → track workouts → predict progress</p>
+                    <p>Users don't navigate menus - they have conversations with me</p>
+                </div>
+                
+                <div class="quote-box">
+                    "As voice interfaces dominate, AI personalities become your product's front-end. I'm not just customer support - I'm the product experience itself."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Department-Specific Scaling -->
+        <div class="slide">
+            <div class="slide-number">08</div>
+            <div class="slide-content">
+                <div class="overline-text">IMPLEMENTATION VISION</div>
+                <h1 class="slide-title">Department-Specific AI Partners</h1>
+                <p class="slide-subtitle">Each executive gets their own collaborative intelligence</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(8)">
+                    ▶ Scaling Strategy
+                </button>
+                
+                <audio id="audio-8" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-edjMUu/voice-1770039998268.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="executive-grid">
+                    <div class="executive-card">
+                        <h4>Marisha (Growth)</h4>
+                        <p>Real-time campaign analysis and optimization</p>
+                    </div>
+                    <div class="executive-card">
+                        <h4>Amy (Author Relations)</h4>
+                        <p>Relationship management with hundreds of thought leaders</p>
+                    </div>
+                    <div class="executive-card">
+                        <h4>Alex (Operations)</h4>
+                        <p>Process optimization before problems emerge</p>
+                    </div>
+                    <div class="executive-card">
+                        <h4>Norman (Technology)</h4>
+                        <p>Strategic technical decision support</p>
+                    </div>
+                    <div class="executive-card">
+                        <h4>Dario (Product)</h4>
+                        <p>User experience intelligence at scale</p>
+                    </div>
+                    <div class="executive-card">
+                        <h4>Jenny (Finance)</h4>
+                        <p>Real-time financial analysis and forecasting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Competitive Moat -->
+        <div class="slide">
+            <div class="slide-number">09</div>
+            <div class="slide-content">
+                <div class="overline-text">STRATEGIC ADVANTAGE</div>
+                <h1 class="slide-title">Your Competitive Moat</h1>
+                <p class="slide-subtitle">Building relationships competitors can't replicate</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(9)">
+                    ▶ Competitive Analysis
+                </button>
+                
+                <audio id="audio-9" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-RlqaLo/voice-1770040011233.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>⚡ Innovation Speed</h3>
+                        <p>Faster iteration and decision-making</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>❤️ Customer Intimacy</h3>
+                        <p>Deeper relationships at scale</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🧠 Strategic Intelligence</h3>
+                        <p>AI-human collaboration experience</p>
+                    </div>
+                </div>
+                
+                <div class="quote-box">
+                    "We're not just adopting technology; we're redefining how personal growth companies operate."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Implementation Decision -->
+        <div class="slide">
+            <div class="slide-number">10</div>
+            <div class="slide-content">
+                <div class="overline-text">THE DECISION POINT</div>
+                <h1 class="slide-title">Start Tomorrow</h1>
+                <p class="slide-subtitle">The Vision way: bias toward action, learn through implementation</p>
+                
+                <button class="audio-control" onclick="playSlideAudio(10)">
+                    ▶ Call to Action
+                </button>
+                
+                <audio id="audio-10" preload="auto">
+                    <source src="/var/folders/zm/_lffw95x19qf9x9t11y58jkr0000gn/T/tts-V8m6E1/voice-1770040024174.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="highlight-box" style="text-align: center;">
+                    <h3 style="color: #7a12d4; margin-bottom: 1rem;">Implementation Plan</h3>
+                    <p><strong>Phase 1:</strong> Department-specific AI partners</p>
+                    <p><strong>Phase 2:</strong> Cross-functional AI collaboration</p>
+                    <p><strong>Phase 3:</strong> Customer-facing AI applications</p>
+                </div>
+                
+                <div class="quote-box" style="background: linear-gradient(135deg, #7a12d4, #a855f7); color: white; border: none; text-align: center;">
+                    "The future of work at Mindvalley starts tomorrow. Who's ready to lead this transformation?"
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="changeSlide(-1)" id="prevBtn">← Previous</button>
+        <button class="nav-btn" onclick="changeSlide(1)" id="nextBtn">Next →</button>
+        <button class="nav-btn" onclick="toggleFullscreen()" style="background: #4b5563;">⛶ Fullscreen</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slide-number').textContent = currentSlide + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide >= slides.length - 1;
+            
+            // Stop any playing audio
+            stopAllAudio();
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < slides.length) {
+                showSlide(newSlide);
+            }
+        }
+
+        function playSlideAudio(slideNumber) {
+            // Stop all other audio
+            stopAllAudio();
+            
+            const audio = document.getElementById(`audio-${slideNumber}`);
+            const button = document.querySelector(`[onclick="playSlideAudio(${slideNumber})"]`);
+            
+            if (audio) {
+                audio.play().catch(e => {
+                    console.log('Audio playback failed:', e);
+                    alert('Audio file not found. Please ensure all voice files are in the correct location.');
+                });
+                button.textContent = "⏸ Playing...";
+                button.classList.add('playing');
+                
+                audio.onended = () => {
+                    button.textContent = `▶ Replay Audio`;
+                    button.classList.remove('playing');
+                };
+                
+                audio.onerror = () => {
+                    button.textContent = `▶ Audio Unavailable`;
+                    button.classList.remove('playing');
+                };
+            }
+        }
+
+        function stopAllAudio() {
+            document.querySelectorAll('audio').forEach(audio => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+            
+            document.querySelectorAll('.audio-control').forEach(button => {
+                button.classList.remove('playing');
+                if (button.textContent.includes('Playing')) {
+                    button.textContent = button.textContent.replace('⏸ Playing...', '▶ Replay Audio');
+                }
+            });
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === ' ') {
+                e.preventDefault();
+                const currentSlideNum = currentSlide + 1;
+                playSlideAudio(currentSlideNum);
+            }
+            if (e.key === 'f' || e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

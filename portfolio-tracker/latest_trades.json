@@ -1,0 +1,33 @@
+{
+  "date": "2026-01-30",
+  "trades": [
+    {
+      "symbol": "GOOGL",
+      "action": "buy",
+      "shares": 140,
+      "cost": 47224.80,
+      "price_per_share": 337.32,
+      "new_total_shares": 4780,
+      "new_total_value": 1616835.00,
+      "rationale": "Double down on AI winner with search moat"
+    },
+    {
+      "symbol": "EUFN", 
+      "action": "buy",
+      "shares": 2666,
+      "cost": 47438.86,
+      "price_per_share": 17.79,
+      "new_total_shares": 36366,
+      "new_total_value": 639276.07,
+      "rationale": "European exposure - weak euro benefits financials"
+    }
+  ],
+  "summary": {
+    "total_deployed": 94663.66,
+    "remaining_allocation": 105336.34,
+    "portfolio_value_before": 9381154.80,
+    "portfolio_value_after": 9475375.28,
+    "market_gain_estimate": 46556.82,
+    "strategic_thesis": "AI infrastructure + European recovery play"
+  }
+}
