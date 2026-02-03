@@ -1,0 +1,7 @@
+To deploy quickly:
+
+1. Go to netlify.com
+2. Drag the ai-accelerator-sales-page.html file directly onto the deploy area
+3. Get instant public URL
+
+Or I can help set this up if you need it done immediately.

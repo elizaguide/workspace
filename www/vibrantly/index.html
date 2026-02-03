@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrantly - Vishen's Health Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00D2FF',
+                        secondary: '#3A7BD5',
+                        accent: '#FF6B6B',
+                        success: '#4ECDC4',
+                        warning: '#FFE66D',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .progress-ring { transition: stroke-dasharray 0.5s ease-in-out; }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 5px rgba(0, 210, 255, 0.5); } 50% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.8); } }
+        .pulse-glow { animation: pulse-glow 2s infinite; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">Vibrantly</h1>
+                    <p class="text-blue-100">Vishen's Complete Health Dashboard</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold">92%</div>
+                    <div class="text-sm text-blue-100">Health Score</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Stats -->
+    <section class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-success">16/20</div>
+                <div class="text-sm text-gray-600">Running Speed</div>
+                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div class="bg-success h-2 rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-accent">24kg</div>
+                <div class="text-sm text-gray-600">Kettlebell PR</div>
+                <div class="text-xs text-green-600 mt-1">↗ +2kg this week</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-warning">1</div>
+                <div class="text-sm text-gray-600">Pending Reminder</div>
+                <div class="text-xs text-orange-600 mt-1">OneRebel Pilates</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-primary">-4yr</div>
+                <div class="text-sm text-gray-600">Bio Age Goal</div>
+                <div class="text-xs text-blue-600 mt-1">3 months target</div>
+            </div>
+        </div>
+
+        <!-- Navigation Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Workouts -->
+            <a href="workouts.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-success">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">💪 Workouts</h3>
+                        <div class="bg-success bg-opacity-10 text-success px-3 py-1 rounded-full text-sm">2 this week</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Latest: DABBS</span>
+                            <span class="font-medium">Today</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Next: OneRebel</span>
+                            <span class="font-medium text-primary">Book Pilates</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Progress</span>
+                            <span class="font-medium text-green-600">↗ Strong gains</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Supplements -->
+            <a href="supplements.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-primary">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">💊 Supplements</h3>
+                        <div class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">8 daily</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Morning Stack</span>
+                            <span class="font-medium">6 pills</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Evening</span>
+                            <span class="font-medium">2 pills</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Interactions</span>
+                            <span class="font-medium text-yellow-600">1 warning</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Blood Work -->
+            <a href="bloodwork.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-accent">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">🩸 Blood Work</h3>
+                        <div class="bg-accent bg-opacity-10 text-accent px-3 py-1 rounded-full text-sm">Oct 2025</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">LDL Cholesterol</span>
+                            <span class="font-medium text-red-600">171 ↑</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Testosterone</span>
+                            <span class="font-medium text-green-600">30.5 ✓</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Vitamin D</span>
+                            <span class="font-medium text-green-600">41.8 ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Goals -->
+            <a href="goals.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-warning">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">🎯 Goals</h3>
+                        <div class="bg-warning bg-opacity-10 text-warning px-3 py-1 rounded-full text-sm">Q1 2026</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Muscle Gain</span>
+                            <span class="font-medium text-green-600">On Track</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Waist: 82→79cm</span>
+                            <span class="font-medium">-1cm so far</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bio Age -4yr</span>
+                            <span class="font-medium text-blue-600">3mo target</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Reminders -->
+            <a href="reminders.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-purple-500 pulse-glow">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">⏰ Reminders</h3>
+                        <div class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">1 urgent</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">OneRebel Pilates</span>
+                            <span class="font-medium text-red-600">Book now</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Blood work follow-up</span>
+                            <span class="font-medium">Next month</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Supplement review</span>
+                            <span class="font-medium">2 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Health Insights -->
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold">🧠 AI Insights</h3>
+                    <div class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Updated</div>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-700 text-sm">Your 24kg kettlebell pulls show excellent functional strength gains. Perfect for martial arts prep.</p>
+                    <p class="text-gray-700 text-sm">LDL levels suggest adding more cardio. OneRebel classes are ideal.</p>
+                    <p class="text-gray-700 text-sm">Consistent HIIT could reverse biological age by 2-4 years based on current progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Section -->
+    <section class="container mx-auto px-6 py-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-4">👨‍👦 Family Fitness</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Vishen</span>
+                        <span class="text-blue-600 font-bold">Speed 16</span>
+                    </div>
+                    <div class="text-sm text-gray-600">Latest: DABBS Fitness (24kg kettlebell)</div>
+                    <div class="text-sm text-gray-600">Next: OneRebel Pilates</div>
+                </div>
+                <div class="bg-green-50 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Hayden</span>
+                        <span class="text-green-600 font-bold">Speed 21</span>
+                    </div>
+                    <div class="text-sm text-gray-600">Latest: OneRebel Reshape</div>
+                    <div class="text-sm text-gray-600">Schedule: DABBS 12 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars
+            const progressBars = document.querySelectorAll('[style*="width"]');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                    bar.style.transition = 'width 1s ease-out';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

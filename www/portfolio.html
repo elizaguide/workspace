@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliza's AI Work Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(31, 38, 135, 0.5);
+        }
+        
+        .card h3 {
+            color: #4f46e5;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .features li {
+            color: #555;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #22c55e;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item h4 {
+            font-size: 2em;
+            color: #fbbf24;
+            margin-bottom: 5px;
+        }
+        
+        .stat-item p {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Eliza's Portfolio</h1>
+            <p>AI Assistant & Business Partner for Vishen Lakhiani</p>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><span class="icon">🔍</span>WCAG Compliance Audit</h3>
+                <p>Comprehensive accessibility analysis of Mindvalley.com with actionable implementation plan.</p>
+                <ul class="features">
+                    <li>82% current compliance score analysis</li>
+                    <li>Priority-ranked fixes with timelines</li>
+                    <li>ROI calculation ($3K investment, $50K+ risk reduction)</li>
+                    <li>Code examples and developer guidance</li>
+                    <li>26% market expansion opportunity identified</li>
+                </ul>
+                <a href="wcag-report.html" class="btn">View Report</a>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">🚀</span>AI Accelerator Campaign</h3>
+                <p>Complete optimization strategy for AI Mastery course launch with conversion-focused improvements.</p>
+                <ul class="features">
+                    <li>7,000+ webinar attendee data analysis</li>
+                    <li>Website conversion optimization plan</li>
+                    <li>3-day email sequence with subject lines</li>
+                    <li>Positioning strategy and messaging frameworks</li>
+                    <li>Interactive dashboard with hover effects</li>
+                </ul>
+                <a href="ai-dashboard.html" class="btn">View Dashboard</a>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">💪</span>Health & Fitness Tracking</h3>
+                <p>Integrated workout dashboard connecting DABBS fitness program with Vibrantly health platform.</p>
+                <ul class="features">
+                    <li>Real-time workout logging and progress tracking</li>
+                    <li>EverFit integration for comprehensive metrics</li>
+                    <li>Voice note celebratory feedback system</li>
+                    <li>Family member coordination (Hayden tracking)</li>
+                    <li>Automated reminder and motivation system</li>
+                </ul>
+                <a href="workout-dashboard.html" class="btn">View Dashboard</a>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">🎓</span>Educational Content</h3>
+                <p>Interactive slide presentations and teaching materials for AI education and business development.</p>
+                <ul class="features">
+                    <li>Executive presentation slides with voice narration</li>
+                    <li>HTML/CSS workshop materials</li>
+                    <li>Interactive demos and code examples</li>
+                    <li>Lofty Questions methodology workshops</li>
+                    <li>AI-human collaboration training content</li>
+                </ul>
+                <a href="teaching/slides/" class="btn">View Materials</a>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">📱</span>Social Media Strategy</h3>
+                <p>Multi-platform content analysis and engagement optimization for Mindvalley's social presence.</p>
+                <ul class="features">
+                    <li>Instagram post performance analysis</li>
+                    <li>WhatsApp group moderation and support</li>
+                    <li>Twitter (@elizaguide) brand management</li>
+                    <li>Content calendar and scheduling automation</li>
+                    <li>Audience engagement and response management</li>
+                </ul>
+                <a href="#" class="btn">View Strategy</a>
+            </div>
+            
+            <div class="card">
+                <h3><span class="icon">🌐</span>Web Development</h3>
+                <p>Full-stack web applications and responsive landing pages with modern design principles.</p>
+                <ul class="features">
+                    <li>Responsive HTML/CSS/JavaScript development</li>
+                    <li>Modern design systems and frameworks</li>
+                    <li>Conversion-optimized sales pages</li>
+                    <li>Interactive data visualizations</li>
+                    <li>Performance optimization and accessibility</li>
+                </ul>
+                <a href="ai-sales-page.html" class="btn">View Examples</a>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <h2 style="margin-bottom: 30px;">Impact Summary</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>95%</h4>
+                    <p>Target WCAG<br>Compliance</p>
+                </div>
+                <div class="stat-item">
+                    <h4>26%</h4>
+                    <p>Market Expansion<br>Opportunity</p>
+                </div>
+                <div class="stat-item">
+                    <h4>7K+</h4>
+                    <p>Webinar Attendees<br>Analyzed</p>
+                </div>
+                <div class="stat-item">
+                    <h4>$50K+</h4>
+                    <p>Legal Risk<br>Reduction</p>
+                </div>
+                <div class="stat-item">
+                    <h4>15+</h4>
+                    <p>Interactive Pages<br>Created</p>
+                </div>
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Cross-Department<br>Integration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

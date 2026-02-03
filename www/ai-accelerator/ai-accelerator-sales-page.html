@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get 20 Hours Back Every Week Without Hiring Anyone | AI Clone Accelerator</title>
+    <meta name="description" content="Build 5 AI clones in 7 days that handle your emails, create content, and run your business while you sleep. Even if you've never used ChatGPT.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .stats-bar {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin: 10px;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255,107,107,0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-alt {
+            background: white;
+        }
+        
+        .section h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        
+        .freedom-section {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .freedom-section h2 {
+            color: white;
+        }
+        
+        .freedom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .freedom-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+        
+        .freedom-item .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .objection-killer {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .objection-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .objection-killer h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .checkmark {
+            color: #27ae60;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .wow-moments {
+            background: #34495e;
+            color: white;
+        }
+        
+        .wow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .wow-item {
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            border-top: 4px solid #3498db;
+        }
+        
+        .wow-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        .roi-section {
+            background: #27ae60;
+            color: white;
+            text-align: center;
+        }
+        
+        .roi-calculation {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 30px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .roi-math {
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+        
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .comparison-item {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .comparison-bad {
+            background: #e74c3c;
+        }
+        
+        .comparison-good {
+            background: #27ae60;
+        }
+        
+        .testimonials-section {
+            background: #f8f9fa;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #3498db;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .payment-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .payment-option {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-option:hover {
+            border-color: #ff6b6b;
+            transform: translateY(-5px);
+        }
+        
+        .payment-popular {
+            border-color: #ff6b6b;
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        
+        .price-description {
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        
+        .urgency-section {
+            background: #e74c3c;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .urgency-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .urgency-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .urgency-stat {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .urgency-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .guarantee-section {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+        
+        .guarantee-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .guarantee-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .guarantee-item {
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+        }
+        
+        .guarantee-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .choice-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .choice-option {
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .choice-bad {
+            background: rgba(0,0,0,0.3);
+            border: 2px solid #e74c3c;
+        }
+        
+        .choice-good {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #27ae60;
+        }
+        
+        .floating-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-cta:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .choice-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-cta {
+                bottom: 10px;
+                right: 10px;
+                padding: 12px 20px;
+            }
+        }
+        
+        .video-placeholder {
+            background: #34495e;
+            color: white;
+            padding: 60px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            border: 3px dashed #bdc3c7;
+        }
+        
+        .highlight {
+            background: #f39c12;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .strike {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating CTA -->
+    <a href="#join-now" class="floating-cta">Secure Your Spot 🚀</a>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get 20 Hours Back Every Week<br>Without Hiring Anyone</h1>
+            <p class="subtitle">The 7-Day AI Clone System That Runs Your Business While You Sleep</p>
+            <p class="tagline">Even if you've never used ChatGPT → Build 5 Personal AI Clones That Sound Exactly Like YOU</p>
+            
+            <!-- Webinar Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-number">7,000+</span>
+                    <span class="stat-label">Live Attendees</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">75+</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Days Only</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">AI Clones Built</span>
+                </div>
+            </div>
+            
+            <!-- Video Placeholder for Eliza Demo -->
+            <div class="video-placeholder">
+                🎬 <strong>WATCH: Eliza AI Clone Demo</strong><br>
+                <em>The 30-second demo that got 200+ "mind-blowing" comments</em><br>
+                <small>(Highest engagement moment from the webinar)</small>
+            </div>
+            
+            <a href="#join-now" class="cta-button">Secure Your February Spot</a>
+            <a href="#testimonials" class="cta-button cta-secondary">Watch Success Stories</a>
+        </div>
+    </section>
+    
+    <!-- Freedom Section -->
+    <section class="section freedom-section">
+        <div class="container">
+            <h2>This Isn't About Productivity.<br>This Is About FREEDOM.</h2>
+            <p style="font-size: 1.3rem; text-align: center; margin-bottom: 40px;">What would you do with 20 extra hours every week?</p>
+            
+            <div class="freedom-grid">
+                <div class="freedom-item">
+                    <div class="icon">🌴</div>
+                    <h3>Weekend Getaways</h3>
+                    <p>Without checking email every 30 minutes</p>
+                </div>
+                <div class="freedom-item">
+                    <div class="icon">👨‍👩‍👧‍👦</div>
+                    <h3>Family Dinners</h3>
+                    <p>Phone stays in the other room</p>
+                </div>
+                <div class="freedom-item">
+                    <div class="icon">🎨</div>
+                    <h3>Learn Guitar</h3>
+                    <p>Paint. Write that novel you keep talking about.</p>
+                </div>
+                <div class="freedom-item">
+                    <div class="icon">🚀</div>
+                    <h3>Enjoy Your Business</h3>
+                    <p>Instead of being enslaved by it</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Stop Trading Time for Money.<br>Start Cloning Yourself.</h3>
+                <a href="#join-now" class="cta-button">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Objection Killer Section -->
+    <section class="objection-killer">
+        <div class="container">
+            <div class="objection-content">
+                <h2>🚫 "But I Don't Have YouTube Videos or Content!"</h2>
+                <h3 style="color: #27ae60;">Perfect. You don't need any.</h3>
+                
+                <p style="font-size: 1.2rem; margin: 30px 0;">Our 62-year-old student had ZERO online content and built all 5 clones successfully. Here's exactly how:</p>
+                
+                <div style="text-align: left; max-width: 500px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Record 3 simple voice notes on your phone (we give you the scripts)</p>
+                    <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Upload 5 emails you've written (everyone has these)</p>
+                    <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Answer 10 questions about your personality (takes 15 minutes)</p>
+                </div>
+                
+                <p style="font-size: 1.3rem; margin: 30px 0; font-weight: bold;">That's it. Your AI clone learns YOUR voice, not someone else's.</p>
+                
+                <div class="testimonial">
+                    "Considering that I am 62 years and I understood every single step and was able to replicate it speaks for itself!"<br>
+                    <strong>— Margaret K., Webinar Participant</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- WOW Moments Section -->
+    <section class="section wow-moments">
+        <div class="container">
+            <h2>What Made 7,000+ People Say "WOW"</h2>
+            
+            <div class="wow-grid">
+                <div class="wow-item">
+                    <h4>🎤 The Voice Clone That Stunned Everyone</h4>
+                    <p>Watch Eliza speak through WhatsApp in Vishen's exact voice. This 30-second demo alone generated 200+ "mind-blowing" comments from live attendees.</p>
+                    <div class="video-placeholder" style="margin: 15px 0; padding: 20px;">
+                        <em>Video: Eliza WhatsApp Demo</em>
+                    </div>
+                </div>
+                
+                <div class="wow-item">
+                    <h4>📧 The Email AI That Never Sleeps</h4>
+                    <p>Watch it triage, respond, and handle customer service while you're sleeping. One participant said: <em>"I don't read my emails anymore. My AI does."</em></p>
+                </div>
+                
+                <div class="wow-item">
+                    <h4>🌍 The Cultural Intelligence Demo</h4>
+                    <p>See your AI adapt content for Fiji culture, add Rumi poetry for Saudi audiences. It doesn't just copy — it THINKS like you.</p>
+                </div>
+                
+                <div class="wow-item">
+                    <h4>📝 The 7-Dimension Voice Analysis</h4>
+                    <p>People tried this DURING the webinar and were amazed. We'll give you the exact prompt that analyzes your writing style in 7 dimensions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ROI Section -->
+    <section class="section roi-section">
+        <div class="container">
+            <h2>The 1-Week Payback Math</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px;">Your time is worth at least $50/hour (probably way more).</p>
+            
+            <div class="roi-calculation">
+                <div class="roi-math">20 hours saved × $50/hour = <strong>$1,000/week</strong> in recovered time</div>
+                <div class="roi-math">$999 investment ÷ $1,000/week = <span class="highlight">Pays for itself in 6 DAYS</span></div>
+            </div>
+            
+            <h3 style="margin: 40px 0 20px;">Compare Your Options:</h3>
+            <div class="comparison-table">
+                <div class="comparison-item comparison-bad">
+                    <h4>Virtual Assistant</h4>
+                    <p>$3-5K/month</p>
+                    <p>+ Training time</p>
+                    <p>+ Management overhead</p>
+                    <p>+ May quit anytime</p>
+                </div>
+                <div class="comparison-item comparison-good">
+                    <h4>AI Clone System</h4>
+                    <p>$999 one-time</p>
+                    <p>+ Works 24/7</p>
+                    <p>+ Never needs training</p>
+                    <p>+ Never quits</p>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                "I'd rather pay you $1,000 to teach me so it's faster than trying to figure it out with AI."<br>
+                <strong>— Webinar Participant</strong>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="container">
+            <h2>What 7,000+ Attendees Are Saying</h2>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"The idea that I can get back 20 to 30 hours per week and it all can be learned in 7 days. Mind blowing."</div>
+                    <div class="testimonial-author">— Live Attendee</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"I could actually build my business while working my other job until my coaching business grows."</div>
+                    <div class="testimonial-author">— Sarah M., Coach</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Seeing how the AI automatically addressed the customer problem via email was incredible."</div>
+                    <div class="testimonial-author">— Marcus R., Consultant</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"WOW, Amazing what can be done with AI. I thought I knew about AI and its capabilities, but you covered so much I didn't realize."</div>
+                    <div class="testimonial-author">— Tech Professional (Already uses ChatGPT)</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Worth it. Great price. Take my money!"</div>
+                    <div class="testimonial-author">— Chat Participant</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"I'm all in. This is exactly what I've been looking for."</div>
+                    <div class="testimonial-author">— Webinar Attendee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Payment Options -->
+    <section class="section payment-section" id="join-now">
+        <div class="container">
+            <h2>Flexible Payment Options</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">Choose what works for your cash flow. No hidden fees. No interest.</p>
+            
+            <div class="payment-options">
+                <div class="payment-option">
+                    <h3>Pay in Full</h3>
+                    <div class="price">$999</div>
+                    <div class="price-description">Save $200<br>Best Value</div>
+                    <a href="#" class="cta-button">Choose This Option</a>
+                </div>
+                
+                <div class="payment-option payment-popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>3 Monthly Payments</h3>
+                    <div class="price">$333<span style="font-size: 1rem;">/month</span></div>
+                    <div class="price-description">Total: $999<br>Maximum Flexibility</div>
+                    <a href="#" class="cta-button">Choose This Option</a>
+                </div>
+                
+                <div class="payment-option">
+                    <h3>6 Monthly Payments</h3>
+                    <div class="price">$199<span style="font-size: 1rem;">/month</span></div>
+                    <div class="price-description">Total: $1,194<br>Easiest on Budget</div>
+                    <a href="#" class="cta-button">Choose This Option</a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; opacity: 0.8;"><em>Secure checkout • 256-bit SSL encryption • Money-back guarantee</em></p>
+        </div>
+    </section>
+    
+    <!-- Urgency Section -->
+    <section class="urgency-section">
+        <div class="container">
+            <div class="urgency-content">
+                <h2>⚠️ February Cohort Update</h2>
+                
+                <div class="urgency-stats">
+                    <div class="urgency-stat">
+                        <div class="urgency-number">47</div>
+                        <div>Spots Remaining</div>
+                    </div>
+                    <div class="urgency-stat">
+                        <div class="urgency-number">100</div>
+                        <div>Max Capacity</div>
+                    </div>
+                    <div class="urgency-stat">
+                        <div class="urgency-number">53</div>
+                        <div>Already Enrolled</div>
+                    </div>
+                </div>
+                
+                <p style="font-size: 1.2rem; margin: 20px 0;">We cap each intensive at 100 people for personal attention.</p>
+                <p style="font-size: 1.1rem;">Once February fills → Next cohort is June 2026</p>
+                <p style="font-size: 1.1rem;">Price increases to $1,497 for future cohorts</p>
+                
+                <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <strong>While you're deciding, early adopters are already building their clones.</strong>
+                </div>
+                
+                <a href="#join-now" class="cta-button" style="margin-top: 20px;">Reserve My Spot Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Objection: Schedule -->
+    <section class="section section-alt">
+        <div class="container" style="text-align: center;">
+            <h2>"I Can't Make February 9th!"</h2>
+            <h3 style="color: #27ae60; margin-bottom: 30px;">No problem. You get:</h3>
+            
+            <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+                <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Lifetime access to all recordings</p>
+                <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Private community for Q&A</p>
+                <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Multiple future cohorts at no extra cost</p>
+                <p style="font-size: 1.1rem; margin: 15px 0;"><span class="checkmark">✅</span> Self-paced implementation track</p>
+            </div>
+            
+            <p style="font-size: 1.3rem; margin: 30px 0; font-weight: bold;">Start when YOU'RE ready, but lock in this price now.</p>
+            
+            <a href="#join-now" class="cta-button">Secure Your Spot</a>
+        </div>
+    </section>
+    
+    <!-- Guarantee Section -->
+    <section class="section guarantee-section">
+        <div class="container">
+            <div class="guarantee-content">
+                <h2>The "Clone Success" Guarantee</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 40px;">Build at least 3 working AI clones in 7 days, or:</p>
+                
+                <div class="guarantee-items">
+                    <div class="guarantee-item">
+                        <div class="guarantee-number">1</div>
+                        <h4>Continue in Small Groups</h4>
+                        <p>We work with you until you succeed (free)</p>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <div class="guarantee-number">2</div>
+                        <h4>Get AI Mastery Course</h4>
+                        <p>Our full $5,999 program (free)</p>
+                    </div>
+                    
+                    <div class="guarantee-item">
+                        <div class="guarantee-number">3</div>
+                        <h4>100% Refund</h4>
+                        <p>Every penny back, no questions</p>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin: 40px 0;">
+                    <h3 style="margin-bottom: 15px;">PLUS: The "Time-Saving" Guarantee</h3>
+                    <p style="font-size: 1.1rem;">If your clones don't save you 10+ hours in the first month, we'll refund you AND let you keep everything.</p>
+                </div>
+                
+                <h3 style="color: #27ae60; font-size: 1.5rem; font-style: italic;">"Your transformation is our commitment."</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Mastery Comparison -->
+    <section class="section section-alt">
+        <div class="container" style="text-align: center;">
+            <h2>"I Already Have AI Mastery — What's Different?"</h2>
+            
+            <div class="comparison-table" style="margin-top: 40px;">
+                <div style="padding: 40px; background: #ecf0f1; border-radius: 15px;">
+                    <h3 style="color: #2c3e50;">AI Mastery</h3>
+                    <p style="margin: 15px 0;">5 months, theory-focused</p>
+                    <p style="margin: 15px 0;">Foundation & concepts</p>
+                    <p style="margin: 15px 0;">Self-paced learning</p>
+                    <p style="margin: 15px 0;"><em>Teaches you to drive</em></p>
+                </div>
+                
+                <div style="padding: 40px; background: #27ae60; color: white; border-radius: 15px;">
+                    <h3>AI Accelerator</h3>
+                    <p style="margin: 15px 0;">7 days, implementation intensive</p>
+                    <p style="margin: 15px 0;">Advanced clone building</p>
+                    <p style="margin: 15px 0;">Live, guided construction</p>
+                    <p style="margin: 15px 0;"><em>Builds you 5 personal chauffeurs</em></p>
+                </div>
+            </div>
+            
+            <div style="background: #3498db; color: white; padding: 30px; border-radius: 15px; margin: 40px 0;">
+                <h3>Special Alumni Upgrade: $499</h3>
+                <p>For existing AI Mastery students</p>
+            </div>
+            
+            <a href="#join-now" class="cta-button">Upgrade Now</a>
+        </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>The Choice Is Simple</h2>
+            
+            <div class="choice-section">
+                <div class="choice-option choice-bad">
+                    <h3>Path 1</h3>
+                    <p>❌ Keep drowning in emails</p>
+                    <p>❌ Working 60-hour weeks</p>
+                    <p>❌ Being your business's biggest bottleneck</p>
+                    <p>❌ Watching others succeed with AI while you fall behind</p>
+                </div>
+                
+                <div class="choice-option choice-good">
+                    <h3>Path 2</h3>
+                    <p>✅ Build 5 AI clones in 7 days</p>
+                    <p>✅ Get 20 hours back every week</p>
+                    <p>✅ Run your business while you sleep</p>
+                    <p>✅ Finally have the freedom you started your business for</p>
+                </div>
+            </div>
+            
+            <div style="margin: 50px 0;">
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">In 7 days, you'll either:</h3>
+                <p style="font-size: 1.3rem; margin: 10px 0;">✅ Have 5 AI clones handling your work</p>
+                <p style="font-size: 1.3rem; margin: 10px 0;">❌ Still be overwhelmed, wishing you'd started</p>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; margin: 40px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">The difference between working 60 hours and 30 hours is knowing how to clone yourself.</h3>
+            </div>
+            
+            <div style="margin-top: 50px;">
+                <a href="#join-now" class="cta-button" style="font-size: 1.5rem; padding: 25px 50px; margin: 10px;">SECURE YOUR SPOT - FEBRUARY COHORT</a><br>
+                <a href="#testimonials" class="cta-button cta-secondary" style="margin: 10px;">WATCH SUCCESS STORIES FIRST</a><br>
+                <a href="#" class="cta-button cta-secondary" style="margin: 10px;">TALK TO OUR TEAM</a>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
+                Questions? Call us at (555) 123-4567 or email support@mindvalley.com<br>
+                We're here to help you succeed.
+            </p>
+        </div>
+    </section>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Hide floating CTA when in join section
+        window.addEventListener('scroll', function() {
+            const joinSection = document.getElementById('join-now');
+            const floatingCTA = document.querySelector('.floating-cta');
+            const rect = joinSection.getBoundingClientRect();
+            
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                floatingCTA.style.opacity = '0';
+            } else {
+                floatingCTA.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
