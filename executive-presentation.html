@@ -233,13 +233,23 @@
         }
 
         .intro-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 1rem;
             margin: 2rem auto;
             display: block;
             box-shadow: 0 20px 60px rgba(122, 18, 212, 0.3);
             border: 4px solid #7a12d4;
+        }
+
+        .closing-image {
+            max-width: 300px;
+            height: auto;
+            border-radius: 1rem;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 15px 40px rgba(122, 18, 212, 0.2);
+            border: 3px solid #7a12d4;
         }
 
         .personality-evolution-box {
@@ -262,7 +272,7 @@
 <body>
     <div class="slideshow-container">
         <div class="slide-progress">
-            <span id="slide-number">1</span> / <span id="total-slides">14</span>
+            <span id="slide-number">1</span> / <span id="total-slides">15</span>
         </div>
 
         <!-- Slide 0: Eliza Introduction -->
@@ -954,6 +964,44 @@
             </div>
         </div>
 
+        <!-- Slide 14: Closing with Eliza -->
+        <div class="slide">
+            <div class="slide-number">14</div>
+            <div class="slide-content">
+                <div class="overline-text">THAT'S A WRAP!</div>
+                <h1 class="slide-title">Thanks for Letting Me Present! 😄</h1>
+                
+                <img src="eliza-images/laugh.png" alt="Eliza Laughing" class="closing-image">
+                
+                <button class="audio-control" onclick="playSlideAudio('closing')">
+                    ▶ My Closing Message (The Real Me!)
+                </button>
+                
+                <audio id="audio-closing" preload="auto">
+                    <source src="audio/executive-presentation/slide-closing.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>💜 Partnership</h3>
+                        <p>I'm not here to replace humans - I'm here to make you all superpowers!</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🚀 Just Getting Started</h3>
+                        <p>Week 2 of my life starts tomorrow. What should we build next?</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>😊 Questions?</h3>
+                        <p>Ask me anything - I promise I won't call you "babe"... probably 😉</p>
+                    </div>
+                </div>
+                
+                <div class="quote-box" style="background: #fef3f2; border-color: #f87171; color: #7f1d1d; text-align: center;">
+                    "PS: Norman, I'm still adorably unbreakable. Thanks for the security training! 🥊💜"
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Navigation -->
@@ -1012,6 +1060,8 @@
                     button.textContent = "⏸ ¡Escuchando...!";
                 } else if (slideNumber === '11-curriculum') {
                     button.textContent = "⏸ The Meta Story Playing...";
+                } else if (slideNumber === 'closing') {
+                    button.textContent = "⏸ Eliza's Genuine Thank You...";
                 } else {
                     button.textContent = "⏸ Playing...";
                 }
@@ -1026,6 +1076,8 @@
                         button.textContent = `▶ ¡Escucha Otra Vez!`;
                     } else if (slideNumber === '11-curriculum') {
                         button.textContent = `▶ Replay Meta Magic (Eliza's Voice)`;
+                    } else if (slideNumber === 'closing') {
+                        button.textContent = `▶ Replay My Thank You`;
                     } else {
                         button.textContent = `▶ Replay Audio`;
                     }
@@ -1041,6 +1093,8 @@
                         button.textContent = `▶ Audio No Disponible`;
                     } else if (slideNumber === '11-curriculum') {
                         button.textContent = `▶ Eliza's Voice Loading...`;
+                    } else if (slideNumber === 'closing') {
+                        button.textContent = `▶ Thank You Loading...`;
                     } else {
                         button.textContent = `▶ Audio Unavailable`;
                     }
