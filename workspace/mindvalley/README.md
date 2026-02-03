@@ -1,12 +1,13 @@
-# 🏢 Mindvalley Compliance & Projects
+# 🏢 Mindvalley Projects Hub
 
-WCAG accessibility compliance and other Mindvalley.com projects.
+Compliance, optimization, and transformation tools for Mindvalley.com.
 
-## 🎯 Live Reports
+## 📁 Project Structure
 
-- **Main WCAG Report:** [index.html](index.html) - Complete accessibility audit
-- **Detailed Report:** [wcag-report.html](wcag-report.html) - Implementation guide
-- **Legacy Report:** [mindvalley-wcag-compliance-report.html](mindvalley-wcag-compliance-report.html) - Original version
+- **WCAG Compliance:** [wcag/](wcag/) - Complete accessibility audit and implementation
+  - Main Report: `wcag/index.html`
+  - Implementation Guide: `wcag/wcag-report.html`  
+  - Legacy Version: `wcag/mindvalley-wcag-compliance-report.html`
 
 ## 📊 WCAG Compliance Overview
 
