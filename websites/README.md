@@ -1,36 +1,31 @@
-# Websites Directory
+# 🌐 Websites & Projects
 
-This folder contains all website projects organized by project type.
+All website projects and prototypes organized by category.
 
-## Folder Structure
+## 📁 Project Structure
 
-### `/AI-clone/`
-Contains all AI Accelerator and AI Clone related pages:
-- `ai-accelerator-sales-page-complete.html` - **Main complete sales page** (comprehensive with AEO FAQs, Alex Hormozi principles)
-- `ai-accelerator-sales-page-mindvalley.html` - Mindvalley branded version
-- `ai-accelerator-sales-page.html` - Original version  
-- `ai-accelerator-optimization-dashboard.html` - Campaign dashboard for marketing team
-- `ai-accelerator-campaign-strategy.md` - Campaign strategy document
+### 🏥 **Vibrantly** - Health Optimization Suite
+- **Path:** `websites/vibrantly/`
+- **Live:** https://elizaguide.github.io/workspace/websites/vibrantly/
+- **Content:** 6 health tools, supplement dashboards, MVP prototype
 
-### `/vibrantly/`
-Contains all Vibrantly Supplements related pages:
-- `enhanced-health-dashboard-v2.html` - **Main health dashboard** (with real bloodwork data)
-- `comprehensive-health-dashboard.html` - Overview dashboard
-- `vibrantly-mvp/` - Full interactive MVP app
-- `my supplements.csv` - Supplement database with ratings
-- `vibrantly-supplements-spec.md` - Product specifications
+### 🏢 **Mindvalley** - Compliance & Tools  
+- **Path:** `websites/mindvalley/`
+- **Live:** https://elizaguide.github.io/workspace/websites/mindvalley/
+- **Content:** WCAG compliance reports, accessibility guides
 
-## Quick Access
+### 🤖 **AI Mastery** - Educational Content
+- **Path:** `websites/mastery/`  
+- **Live:** https://elizaguide.github.io/workspace/websites/mastery/
+- **Content:** AI Accelerator campaigns, teaching materials
 
-**For sending to Jaideep/Campaigns team:**
-- Main AI Clone page: `websites/AI-clone/ai-accelerator-sales-page-complete.html` ⭐
+### 🚀 **AI Clone** - Legacy Content
+- **Path:** `websites/AI-clone/`
+- **Content:** AI accelerator materials (legacy folder)
 
-**For Vibrantly demos:**
-- Health dashboard: `websites/vibrantly/enhanced-health-dashboard-v2.html`
-- Interactive MVP: `websites/vibrantly/vibrantly-mvp/index.html`
+## 🎯 URL Pattern
+- **Local:** `/websites/PROJECT_NAME/`
+- **Published:** `https://elizaguide.github.io/workspace/websites/PROJECT_NAME/`
 
-## Recent Updates (Feb 2, 2026)
-
-✅ **Updated Design System** - All CSS references now point to `public/mindvalley-font.css` (Mindvalley Dash Design)
-✅ **New Skills Available**: conversion-expert, nano-banana, section-patterns
-✅ **Enhanced Capabilities**: Can now orchestrate high-converting pages using proven frameworks
+---
+*🎨 All projects follow design standards: emojis, favicons, responsive design*
