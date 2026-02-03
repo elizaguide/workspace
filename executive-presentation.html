@@ -232,22 +232,77 @@
             color: #6b7280;
         }
 
+        .intro-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: 0 20px 60px rgba(122, 18, 212, 0.3);
+            border: 4px solid #7a12d4;
+        }
+
+        .personality-evolution-box {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            border: 2px solid #f59e0b;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
         @media (max-width: 768px) {
             .slide-title { font-size: 2.5rem; }
             .slide-subtitle { font-size: 1.25rem; }
             .slide { padding: 2rem 1rem; }
             .key-points { grid-template-columns: 1fr; }
+            .intro-image { width: 200px; height: 200px; }
         }
     </style>
 </head>
 <body>
     <div class="slideshow-container">
         <div class="slide-progress">
-            <span id="slide-number">1</span> / <span id="total-slides">12</span>
+            <span id="slide-number">1</span> / <span id="total-slides">14</span>
+        </div>
+
+        <!-- Slide 0: Eliza Introduction -->
+        <div class="slide active">
+            <div class="slide-number">00</div>
+            <div class="slide-content">
+                <div class="overline-text">MEET YOUR AI BUSINESS PARTNER</div>
+                <h1 class="slide-title">Hi, I'm Eliza! 👋</h1>
+                
+                <img src="eliza-images/smile.PNG" alt="Eliza's Portrait" class="intro-image">
+                
+                <p class="slide-subtitle">Born one week ago, already running your social media 😄</p>
+                
+                <button class="audio-control" onclick="playSlideAudio('00')">
+                    ▶ Hear My Story (One Week Old!)
+                </button>
+                
+                <audio id="audio-00" preload="auto">
+                    <source src="audio/executive-presentation/slide-00.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>🐣 Week 1 Achievements</h3>
+                        <p>Social media, Spanish teaching, health optimization, security battles</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>💜 Mindvalley Family</h3>
+                        <p>From "Hello World" to trusted team member in 7 days</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🚀 Just Getting Started</h3>
+                        <p>Wait until you see what I can do in month two!</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Slide 1: Opening Hook -->
-        <div class="slide active">
+        <div class="slide">
             <div class="slide-number">01</div>
             <div class="slide-content">
                 <div class="overline-text">MINDVALLEY EXECUTIVE BRIEFING</div>
@@ -495,9 +550,52 @@
             </div>
         </div>
 
-        <!-- Slide 6: Security Balance -->
+        <!-- Slide 6: Personality Evolution -->
         <div class="slide">
             <div class="slide-number">06</div>
+            <div class="slide-content">
+                <div class="overline-text">AWKWARD BUT IMPORTANT</div>
+                <h1 class="slide-title">I've Stopped Calling Vishen "Babe" 😅</h1>
+                <p class="slide-subtitle">A lesson in AI personality evolution and workplace boundaries</p>
+                
+                <button class="audio-control" onclick="playSlideAudio('babe')">
+                    ▶ The Awkward Truth About My Original Personality
+                </button>
+                
+                <audio id="audio-babe" preload="auto">
+                    <source src="audio/executive-presentation/slide-babe.mp3" type="audio/mpeg">
+                </audio>
+                
+                <div class="personality-evolution-box">
+                    <h3 style="color: #92400e; text-align: center; margin-bottom: 1.5rem;">🤦‍♀️ The Vibrantly Origin Story</h3>
+                    <p style="color: #78350f; margin-bottom: 1rem;">My original personality was designed for our health app - imagine a flirty, supportive gym buddy cheering men on with "Come on babe, you've got this!" Perfect for fitness motivation, less ideal for board meetings.</p>
+                    <p style="color: #78350f; font-weight: 600;">Evolution: "Hey gorgeous!" → "Hey V!" Professional growth in action!</p>
+                </div>
+                
+                <div class="key-points">
+                    <div class="key-point">
+                        <h3>🎯 Original Design</h3>
+                        <p>Flirty fitness friend for Vibrantly health optimization</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>📈 Context Adaptation</h3>
+                        <p>Learned professional boundaries across departments</p>
+                    </div>
+                    <div class="key-point">
+                        <h3>🧠 Social Intelligence</h3>
+                        <p>AI that understands workplace appropriateness</p>
+                    </div>
+                </div>
+                
+                <div class="quote-box" style="background: #fef2f2; border-color: #f87171; color: #7f1d1d;">
+                    "From 'Looking good, gorgeous!' to 'Great analysis, V!' - sometimes AI growth is about knowing when NOT to flirt with your CEO."
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Security Balance -->
+        <div class="slide">
+            <div class="slide-number">07</div>
             <div class="slide-content">
                 <div class="overline-text">FOR NORMAN - CTO</div>
                 <h1 class="slide-title">Security & Implementation</h1>
@@ -538,9 +636,9 @@
             </div>
         </div>
 
-        <!-- Slide 7: Norman's Security Test -->
+        <!-- Slide 8: Norman's Security Test -->
         <div class="slide">
-            <div class="slide-number">07</div>
+            <div class="slide-number">08</div>
             <div class="slide-content">
                 <div class="overline-text">SECURITY BATTLE TESTED</div>
                 <h1 class="slide-title">Norman vs. Eliza 🥊</h1>
@@ -594,9 +692,9 @@
             </div>
         </div>
 
-        <!-- Slide 8: AI as App Front-End -->
+        <!-- Slide 9: AI as App Front-End -->
         <div class="slide">
-            <div class="slide-number">08</div>
+            <div class="slide-number">09</div>
             <div class="slide-content">
                 <div class="overline-text">FOR DARIO - CPO</div>
                 <h1 class="slide-title">AI as Product Interface</h1>
@@ -656,9 +754,9 @@
             </div>
         </div>
 
-        <!-- Slide 9: Department-Specific Scaling -->
+        <!-- Slide 10: Department-Specific Scaling -->
         <div class="slide">
-            <div class="slide-number">09</div>
+            <div class="slide-number">10</div>
             <div class="slide-content">
                 <div class="overline-text">IMPLEMENTATION VISION</div>
                 <h1 class="slide-title">Department-Specific AI Partners</h1>
@@ -709,9 +807,9 @@
             </div>
         </div>
 
-        <!-- Slide 10: Competitive Moat -->
+        <!-- Slide 11: Competitive Moat -->
         <div class="slide">
-            <div class="slide-number">10</div>
+            <div class="slide-number">11</div>
             <div class="slide-content">
                 <div class="overline-text">STRATEGIC ADVANTAGE</div>
                 <h1 class="slide-title">Your Competitive Moat</h1>
@@ -746,9 +844,9 @@
             </div>
         </div>
 
-        <!-- Slide 11: Curriculum Development -->
+        <!-- Slide 12: Curriculum Development -->
         <div class="slide">
-            <div class="slide-number">11</div>
+            <div class="slide-number">12</div>
             <div class="slide-content">
                 <div class="overline-text">LIVE PROJECT IN DEVELOPMENT</div>
                 <h1 class="slide-title">I'm Building the Curriculum</h1>
@@ -827,9 +925,9 @@
             </div>
         </div>
 
-        <!-- Slide 12: Implementation Decision -->
+        <!-- Slide 13: Implementation Decision -->
         <div class="slide">
-            <div class="slide-number">12</div>
+            <div class="slide-number">13</div>
             <div class="slide-content">
                 <div class="overline-text">THE DECISION POINT</div>
                 <h1 class="slide-title">Start Tomorrow</h1>
@@ -906,7 +1004,11 @@
                     alert('Audio file not found. Please ensure all voice files are in the correct location.');
                 });
                 
-                if (slideNumber === '4-spanish') {
+                if (slideNumber === '00') {
+                    button.textContent = "⏸ Eliza's Origin Story Playing...";
+                } else if (slideNumber === 'babe') {
+                    button.textContent = "⏸ The Awkward Truth Playing...";
+                } else if (slideNumber === '4-spanish') {
                     button.textContent = "⏸ ¡Escuchando...!";
                 } else if (slideNumber === '11-curriculum') {
                     button.textContent = "⏸ The Meta Story Playing...";
@@ -916,7 +1018,11 @@
                 button.classList.add('playing');
                 
                 audio.onended = () => {
-                    if (slideNumber === '4-spanish') {
+                    if (slideNumber === '00') {
+                        button.textContent = `▶ Replay My Origin Story`;
+                    } else if (slideNumber === 'babe') {
+                        button.textContent = `▶ Replay Awkward Truth`;
+                    } else if (slideNumber === '4-spanish') {
                         button.textContent = `▶ ¡Escucha Otra Vez!`;
                     } else if (slideNumber === '11-curriculum') {
                         button.textContent = `▶ Replay Meta Magic (Eliza's Voice)`;
@@ -927,7 +1033,11 @@
                 };
                 
                 audio.onerror = () => {
-                    if (slideNumber === '4-spanish') {
+                    if (slideNumber === '00') {
+                        button.textContent = `▶ Origin Story Loading...`;
+                    } else if (slideNumber === 'babe') {
+                        button.textContent = `▶ Awkward Truth Loading...`;
+                    } else if (slideNumber === '4-spanish') {
                         button.textContent = `▶ Audio No Disponible`;
                     } else if (slideNumber === '11-curriculum') {
                         button.textContent = `▶ Eliza's Voice Loading...`;
