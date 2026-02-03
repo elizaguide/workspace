@@ -1,0 +1,429 @@
+/* =========================================
+   Mindvalley Font System
+   Typography based on Supernova design tokens
+   Font: Google Sans Flex
+   ========================================= */
+
+/* Google Sans Flex Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+
+/* ==========================================================================
+   CSS Variables - Design Tokens
+   ========================================================================== */
+
+:root {
+  /* --------------------------------------------------------------------------
+     Font Families
+     Google Sans Flex with Verdana fallback (per brand guidelines)
+     -------------------------------------------------------------------------- */
+  --font-brand: "Google Sans Flex", Verdana, sans-serif;
+
+  /* --------------------------------------------------------------------------
+     Font Sizes
+     -------------------------------------------------------------------------- */
+  --font-size-200: 0.5rem;      /* 8px */
+  --font-size-250: 0.625rem;    /* 10px */
+  --font-size-300: 0.75rem;     /* 12px */
+  --font-size-350: 0.875rem;    /* 14px */
+  --font-size-400: 1rem;        /* 16px */
+  --font-size-450: 1.125rem;    /* 18px */
+  --font-size-500: 1.25rem;     /* 20px */
+  --font-size-550: 1.375rem;    /* 22px */
+  --font-size-600: 1.5rem;      /* 24px */
+  --font-size-700: 1.75rem;     /* 28px */
+  --font-size-750: 1.875rem;    /* 30px */
+  --font-size-800: 2rem;        /* 32px */
+  --font-size-900: 2.25rem;     /* 36px */
+  --font-size-1100: 2.75rem;    /* 44px */
+  --font-size-1200: 3rem;       /* 48px */
+  --font-size-1500: 3.75rem;    /* 60px */
+  --font-size-1600: 4rem;       /* 64px */
+  --font-size-1800: 4.5rem;     /* 72px */
+  --font-size-2000: 5rem;       /* 80px */
+  --font-size-2400: 6rem;       /* 96px */
+  --font-size-2500: 6.25rem;    /* 100px */
+
+  /* --------------------------------------------------------------------------
+     Font Weights
+     -------------------------------------------------------------------------- */
+  --font-weight-bold: 700;
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  /* --------------------------------------------------------------------------
+     Letter Spacing
+     -------------------------------------------------------------------------- */
+  --letter-spacing-20: 0.0125rem;     /* 0.2px */
+  --letter-spacing-25: 0.015625rem;   /* 0.25px */
+  --letter-spacing-35: 0.021875rem;   /* 0.35px */
+  --letter-spacing-40: 0.025rem;      /* 0.4px */
+  --letter-spacing-50: 0.03125rem;    /* 0.5px */
+  --letter-spacing-75: 0.046875rem;   /* 0.75px */
+  --letter-spacing-100: 0.0625rem;    /* 1px */
+
+  /* Semantic letter spacing */
+  --letter-spacing-medium: var(--letter-spacing-35);
+  --letter-spacing-normal: var(--letter-spacing-25);
+  --letter-spacing-wide: var(--letter-spacing-50);
+
+  /* --------------------------------------------------------------------------
+     Line Heights
+     -------------------------------------------------------------------------- */
+  --line-height-12: 0.75rem;    /* 12px */
+  --line-height-14: 0.875rem;   /* 14px */
+  --line-height-15: 0.9375rem;  /* 15px */
+  --line-height-16: 1rem;       /* 16px */
+  --line-height-18: 1.125rem;   /* 18px */
+  --line-height-20: 1.25rem;    /* 20px */
+  --line-height-22: 1.375rem;   /* 22px */
+  --line-height-24: 1.5rem;     /* 24px */
+  --line-height-28: 1.75rem;    /* 28px */
+  --line-height-30: 1.875rem;   /* 30px */
+  --line-height-34: 2.125rem;   /* 34px */
+  --line-height-36: 2.25rem;    /* 36px */
+  --line-height-40: 2.5rem;     /* 40px */
+  --line-height-44: 2.75rem;    /* 44px */
+  --line-height-48: 3rem;       /* 48px */
+  --line-height-52: 3.25rem;    /* 52px */
+  --line-height-56: 3.5rem;     /* 56px */
+  --line-height-60: 3.75rem;    /* 60px */
+  --line-height-64: 4rem;       /* 64px */
+  --line-height-68: 4.25rem;    /* 68px */
+  --line-height-72: 4.5rem;     /* 72px */
+  --line-height-80: 5rem;       /* 80px */
+  --line-height-96: 6rem;       /* 96px */
+  --line-height-115: 7.1875rem; /* 115px */
+  }
+  
+  /* -------- Global base -------- */
+  
+  html {
+    -webkit-font-smoothing: antialiased;
+    color: #0f131a;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  }
+  
+  /* Links (purple, same as MV) */
+  
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a,
+  h6 a,
+  p a {
+    color: #7a12d4;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  h1 a:hover,
+  h2 a:hover,
+  h3 a:hover,
+  h4 a:hover,
+  h5 a:hover,
+  h6 a:hover,
+  p a:hover {
+    text-decoration-color: #7a12d4;
+    text-decoration-line: underline;
+  }
+  
+  p {
+  font-family: var(--font-brand);
+    margin: 0 0 1.25rem;
+  }
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    font-family: inherit;
+    font-weight: inherit;
+  }
+  
+  /* -------- Core layout container (mv-container) -------- */
+  
+  .mv-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+  }
+  
+  @media (min-width: 1200px) {
+    .mv-container {
+      max-width: 1200px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    .mv-container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+/* ==========================================================================
+   Body - NON-RESPONSIVE (fixed values per Supernova)
+   ========================================================================== */
+
+.body {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-24);
+  letter-spacing: var(--letter-spacing-medium);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.body-bold {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-24);
+  letter-spacing: var(--letter-spacing-medium);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.body-italic {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  font-style: italic;
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-24);
+  letter-spacing: var(--letter-spacing-medium);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.body-lg {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-30);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.body-sm {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-350);
+  line-height: var(--line-height-20);
+  letter-spacing: var(--letter-spacing-medium);
+  text-decoration: none;
+  text-transform: none;
+}
+
+.body-xs {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-300);
+  line-height: var(--line-height-16);
+  letter-spacing: var(--letter-spacing-medium);
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* ==========================================================================
+   Button - NON-RESPONSIVE (fixed values per Supernova)
+   ========================================================================== */
+
+.button {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-400);
+  line-height: var(--line-height-20);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+/* ==========================================================================
+   UI Elements - NON-RESPONSIVE (fixed values per Supernova)
+   ========================================================================== */
+
+.overline-text {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-350);
+  line-height: var(--line-height-20);
+  letter-spacing: var(--letter-spacing-wide);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Title Bold (1-11) - RESPONSIVE (mobile-first with 768px breakpoint)
+   ========================================================================== */
+
+.title-bold-1 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-1200);
+  line-height: var(--line-height-56);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-1 {
+    font-size: var(--font-size-1800);
+    line-height: var(--line-height-80);
+  }
+}
+
+.title-bold-2 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-900);
+  line-height: var(--line-height-44);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-2 {
+    font-size: var(--font-size-1500);
+    line-height: var(--line-height-68);
+  }
+}
+
+.title-bold-3 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-750);
+  line-height: var(--line-height-36);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-3 {
+    font-size: var(--font-size-1200);
+    line-height: var(--line-height-56);
+  }
+}
+
+.title-bold-4 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-700);
+  line-height: var(--line-height-34);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-4 {
+    font-size: var(--font-size-900);
+    line-height: var(--line-height-44);
+  }
+}
+
+.title-bold-5 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-600);
+  line-height: var(--line-height-30);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-5 {
+    font-size: var(--font-size-700);
+    line-height: var(--line-height-34);
+  }
+}
+
+.title-bold-6 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-550);
+  line-height: var(--line-height-22);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-6 {
+    font-size: var(--font-size-600);
+  }
+}
+
+.title-bold-7 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-500);
+  line-height: var(--line-height-20);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-7 {
+    font-size: var(--font-size-550);
+  }
+}
+
+.title-bold-8 {
+  font-family: var(--font-brand);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-450);
+  line-height: var(--line-height-18);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  text-transform: none;
+}
+
+@media (min-width: 768px) {
+  .title-bold-8 {
+    font-size: var(--font-size-500);
+  }
+}
+
+/* ==========================================================================
+   Text Styles - Italic & Emphasis Utilities
+   ========================================================================== */
+  
+  .mv-italic,
+  em,
+  i {
+    font-style: italic;
+  }
+  
+  .mv-emphasis {
+  font-weight: var(--font-weight-medium);
+    font-style: italic;
+  }
