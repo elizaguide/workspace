@@ -6,8 +6,8 @@
 ## ⚠️ STOP! Before you commit, verify ALL items below:
 
 ### 📁 Structure & Organization
-- [ ] **Correct folder:** Content is in `/websites/PROJECT_NAME/` 
-- [ ] **GitHub match:** Local structure exactly matches intended GitHub Pages structure
+- [ ] **Local folder:** Content is in `/websites/PROJECT_NAME/` locally
+- [ ] **GitHub structure:** Projects go directly in repo root as `/PROJECT_NAME/`
 - [ ] **Clean paths:** No scattered files, everything properly organized
 - [ ] **README updated:** Project README reflects new content
 
@@ -18,7 +18,7 @@
 - [ ] **Responsive design:** Pages work on mobile and desktop
 
 ### 🌐 Publishing Rules
-- [ ] **GitHub Pages only:** Will publish to elizaguide.github.io/workspace/websites/PROJECT_NAME/
+- [ ] **GitHub Pages only:** Will publish to elizaguide.github.io/workspace/PROJECT_NAME/
 - [ ] **No external services:** No rawgithack, netlify, or other domains
 - [ ] **Proper links:** All internal links use relative paths that will work on GitHub Pages
 - [ ] **No local paths:** No references to localhost or local file paths
