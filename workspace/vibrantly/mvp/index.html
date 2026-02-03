@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrantly Supplements - Personalized Health Optimization</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="hero-section">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Welcome to Vibrantly Supplements</h1>
+                        <p class="hero-subtitle">Your AI-powered supplement optimization platform</p>
+                        <p class="hero-description">Get personalized supplement recommendations based on your unique biology, lifestyle, and health goals.</p>
+                        
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <i class="fas fa-flask"></i>
+                                <span class="number">10,000+</span>
+                                <span class="label">Biomarkers Analyzed</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-pills"></i>
+                                <span class="number">500+</span>
+                                <span class="label">Supplements Tracked</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span class="number">25,000+</span>
+                                <span class="label">Health Optimizers</span>
+                            </div>
+                        </div>
+                        
+                        <button class="cta-button" onclick="goToScreen('goals-screen')">
+                            Get My Personalized Stack
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        
+                        <p class="trust-indicators">
+                            <i class="fas fa-shield-alt"></i>
+                            HIPAA Compliant • Science-Based • Personalized
+                        </p>
+                    </div>
+                    
+                    <div class="hero-visual">
+                        <div class="supplement-showcase">
+                            <div class="floating-pill pill-1"></div>
+                            <div class="floating-pill pill-2"></div>
+                            <div class="floating-pill pill-3"></div>
+                            <div class="floating-pill pill-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Goals Selection Screen -->
+        <div id="goals-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step active">Goals</div>
+                    <div class="progress-step">Profile</div>
+                    <div class="progress-step">Analysis</div>
+                    <div class="progress-step">Stack</div>
+                </div>
+                
+                <h2>What are your primary health goals?</h2>
+                <p class="subtitle">Select up to 3 goals that matter most to you right now.</p>
+                
+                <div class="goals-grid">
+                    <div class="goal-card" data-goal="fat-loss">
+                        <i class="fas fa-weight"></i>
+                        <h3>Lose Body Fat</h3>
+                        <p>Optimize metabolism and fat burning</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="muscle-gain">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Build Muscle</h3>
+                        <p>Enhance protein synthesis and recovery</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="energy">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Boost Energy</h3>
+                        <p>Combat fatigue and enhance vitality</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="cognitive">
+                        <i class="fas fa-brain"></i>
+                        <h3>Mental Clarity</h3>
+                        <p>Improve focus, memory, and cognition</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="stress">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Stress Resilience</h3>
+                        <p>Better manage stress and anxiety</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="sleep">
+                        <i class="fas fa-moon"></i>
+                        <h3>Sleep Quality</h3>
+                        <p>Deeper, more restorative sleep</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="longevity">
+                        <i class="fas fa-hourglass-half"></i>
+                        <h3>Anti-Aging</h3>
+                        <p>Cellular health and longevity</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="immune">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Immune Support</h3>
+                        <p>Strengthen immune defenses</p>
+                    </div>
+                    
+                    <div class="goal-card" data-goal="recovery">
+                        <i class="fas fa-heart"></i>
+                        <h3>Exercise Recovery</h3>
+                        <p>Faster recovery from workouts</p>
+                    </div>
+                </div>
+                
+                <div class="selected-goals">
+                    <h4>Selected Goals:</h4>
+                    <div id="selected-goals-list"></div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="goToScreen('welcome-screen')">Back</button>
+                    <button class="btn-primary" id="goals-next-btn" onclick="goToScreen('profile-screen')" disabled>
+                        Continue <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Screen -->
+        <div id="profile-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step completed">Goals</div>
+                    <div class="progress-step active">Profile</div>
+                    <div class="progress-step">Analysis</div>
+                    <div class="progress-step">Stack</div>
+                </div>
+                
+                <h2>Tell us about yourself</h2>
+                <p class="subtitle">This helps us personalize your supplement recommendations</p>
+                
+                <div class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" id="age" placeholder="49" value="49">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender">
+                                <option value="male" selected>Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="weight" placeholder="80" value="80">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="height" placeholder="175" value="175">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="location" placeholder="London, UK" value="London, UK">
+                        <small>Used for vitamin D and environmental factor recommendations</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Skin Tone</label>
+                        <div class="skin-tone-selector">
+                            <div class="skin-option" data-tone="1" style="background: #F5DEB3;"></div>
+                            <div class="skin-option" data-tone="2" style="background: #DEB887;"></div>
+                            <div class="skin-option selected" data-tone="3" style="background: #D2B48C;"></div>
+                            <div class="skin-option" data-tone="4" style="background: #BC9A6A;"></div>
+                            <div class="skin-option" data-tone="5" style="background: #8B7355;"></div>
+                            <div class="skin-option" data-tone="6" style="background: #654321;"></div>
+                        </div>
+                        <small>Affects vitamin D synthesis recommendations</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Activity Level</label>
+                        <select id="activity-level">
+                            <option value="sedentary">Sedentary (desk job, minimal exercise)</option>
+                            <option value="light">Light (1-2 workouts/week)</option>
+                            <option value="moderate">Moderate (3-4 workouts/week)</option>
+                            <option value="active" selected>Active (5-6 workouts/week)</option>
+                            <option value="very-active">Very Active (daily intense training)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="goToScreen('goals-screen')">Back</button>
+                    <button class="btn-primary" onclick="goToScreen('bloodwork-screen')">
+                        Continue <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloodwork Screen -->
+        <div id="bloodwork-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step completed">Goals</div>
+                    <div class="progress-step completed">Profile</div>
+                    <div class="progress-step active">Analysis</div>
+                    <div class="progress-step">Stack</div>
+                </div>
+                
+                <h2>Upload your bloodwork (Optional)</h2>
+                <p class="subtitle">Adding bloodwork gives us precise insights into your current health status</p>
+                
+                <div class="bloodwork-section">
+                    <div class="bloodwork-card">
+                        <div class="card-header">
+                            <i class="fas fa-flask"></i>
+                            <h3>Why bloodwork matters</h3>
+                        </div>
+                        <ul class="benefits-list">
+                            <li>Identifies specific nutrient deficiencies</li>
+                            <li>Reveals hidden health imbalances</li>
+                            <li>Enables precise dosing recommendations</li>
+                            <li>Tracks progress over time</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="upload-section">
+                        <div class="upload-area" id="bloodwork-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drop your lab results here</h3>
+                            <p>We support all major lab formats: LabCorp, Quest, international labs, and custom formats</p>
+                            <button class="btn-primary" onclick="triggerFileUpload()">
+                                <i class="fas fa-upload"></i>
+                                Choose Files
+                            </button>
+                            <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="display: none;">
+                        </div>
+                        
+                        <div class="example-data" id="example-data">
+                            <h4>Or use example data</h4>
+                            <p>See how the system works with sample bloodwork</p>
+                            <button class="btn-secondary" onclick="loadExampleBloodwork()">
+                                <i class="fas fa-user"></i>
+                                Load Vishen's Bloodwork
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="goToScreen('profile-screen')">Back</button>
+                    <button class="btn-secondary" onclick="goToScreen('supplements-screen')">
+                        Skip Bloodwork <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-primary" id="bloodwork-continue-btn" onclick="goToScreen('supplements-screen')" disabled>
+                        Continue <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Existing Supplements Screen -->
+        <div id="supplements-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step completed">Goals</div>
+                    <div class="progress-step completed">Profile</div>
+                    <div class="progress-step active">Analysis</div>
+                    <div class="progress-step">Stack</div>
+                </div>
+                
+                <h2>Current supplement regimen</h2>
+                <p class="subtitle">Tell us what you're already taking so we can optimize your stack</p>
+                
+                <div class="supplements-options">
+                    <div class="option-card" onclick="selectSupplementOption('photo')">
+                        <i class="fas fa-camera"></i>
+                        <h3>Photo Recognition</h3>
+                        <p>Take a photo of your supplement collection and we'll identify everything automatically</p>
+                    </div>
+                    
+                    <div class="option-card" onclick="selectSupplementOption('manual')">
+                        <i class="fas fa-list"></i>
+                        <h3>Manual Entry</h3>
+                        <p>Type or select from our database of supplements</p>
+                    </div>
+                    
+                    <div class="option-card" onclick="selectSupplementOption('none')">
+                        <i class="fas fa-plus-circle"></i>
+                        <h3>Starting Fresh</h3>
+                        <p>I'm new to supplements and want recommendations from scratch</p>
+                    </div>
+                </div>
+                
+                <div id="photo-upload-section" class="input-section" style="display: none;">
+                    <div class="camera-section">
+                        <div class="camera-preview">
+                            <i class="fas fa-camera"></i>
+                            <p>Position your supplements clearly in the frame</p>
+                            <button class="btn-primary">
+                                <i class="fas fa-camera"></i>
+                                Take Photo
+                            </button>
+                        </div>
+                        
+                        <div class="recognition-results" id="photo-results">
+                            <h4>Identified Supplements:</h4>
+                            <div class="identified-supplements">
+                                <div class="supplement-item">
+                                    <img src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='20' fill='%234F46E5'/%3E%3C/svg%3E">
+                                    <div>
+                                        <strong>Alpha GPC 300mg</strong>
+                                        <small>By Genius Pure</small>
+                                    </div>
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="supplement-item">
+                                    <img src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='20' fill='%2310B981'/%3E%3C/svg%3E">
+                                    <div>
+                                        <strong>CoQ10 200mg</strong>
+                                        <small>By Thorne</small>
+                                    </div>
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="supplement-item">
+                                    <img src="data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' rx='20' fill='%23F59E0B'/%3E%3C/svg%3E">
+                                    <div>
+                                        <strong>Unidentified Supplement</strong>
+                                        <small>Please specify manually</small>
+                                    </div>
+                                    <input type="text" placeholder="Enter supplement name">
+                                </div>
+                            </div>
+                            
+                            <button class="btn-secondary" onclick="loadExampleSupplements()">
+                                <i class="fas fa-magic"></i>
+                                Use Vishen's Stack as Example
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="manual-entry-section" class="input-section" style="display: none;">
+                    <div class="manual-entry">
+                        <div class="search-supplements">
+                            <input type="text" placeholder="Start typing supplement name..." id="supplement-search">
+                            <div class="supplement-suggestions" id="suggestions"></div>
+                        </div>
+                        
+                        <div class="current-supplements" id="manual-supplements-list">
+                            <h4>Your Current Stack:</h4>
+                            <p class="empty-state">No supplements added yet</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="goToScreen('bloodwork-screen')">Back</button>
+                    <button class="btn-primary" onclick="goToScreen('analysis-screen')">
+                        Continue <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Screen -->
+        <div id="analysis-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step completed">Goals</div>
+                    <div class="progress-step completed">Profile</div>
+                    <div class="progress-step completed">Analysis</div>
+                    <div class="progress-step active">Stack</div>
+                </div>
+                
+                <h2>Your personalized analysis</h2>
+                <p class="subtitle">Based on your goals, profile, and health data</p>
+                
+                <div class="analysis-container">
+                    <div class="analysis-section">
+                        <div class="section-header">
+                            <i class="fas fa-bullseye"></i>
+                            <h3>Goal Analysis</h3>
+                        </div>
+                        <div class="analysis-content">
+                            <div class="goal-insight">
+                                <strong>Primary Focus: Fat Loss + Muscle Gain</strong>
+                                <p>Your body recomposition goals require targeted metabolic support and recovery optimization. Based on your active lifestyle (5-6 workouts/week), we're prioritizing supplements that enhance fat oxidation while supporting muscle protein synthesis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section">
+                        <div class="section-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Bloodwork Insights</h3>
+                        </div>
+                        <div class="analysis-content">
+                            <div class="biomarker-grid">
+                                <div class="biomarker excellent">
+                                    <span class="marker">HbA1c: 4.9%</span>
+                                    <span class="status">Excellent</span>
+                                </div>
+                                <div class="biomarker good">
+                                    <span class="marker">Testosterone: 30.5 nmol/L</span>
+                                    <span class="status">Optimal</span>
+                                </div>
+                                <div class="biomarker concern">
+                                    <span class="marker">LDL: 170.98 mg/dL</span>
+                                    <span class="status">Elevated</span>
+                                </div>
+                                <div class="biomarker good">
+                                    <span class="marker">Vitamin D: 41.8 ng/mL</span>
+                                    <span class="status">Adequate</span>
+                                </div>
+                            </div>
+                            
+                            <div class="key-findings">
+                                <h4>Key Findings:</h4>
+                                <ul>
+                                    <li><strong>Metabolic Health:</strong> Excellent glucose control - perfect for fat loss goals</li>
+                                    <li><strong>Cardiovascular Risk:</strong> LDL needs attention - we'll prioritize cholesterol management</li>
+                                    <li><strong>Hormone Profile:</strong> Strong testosterone for age - supports muscle building</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="analysis-section">
+                        <div class="section-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Environmental Factors</h3>
+                        </div>
+                        <div class="analysis-content">
+                            <div class="environmental-grid">
+                                <div class="env-factor">
+                                    <i class="fas fa-sun"></i>
+                                    <div>
+                                        <strong>London, UK</strong>
+                                        <p>Limited UV exposure - maintain Vitamin D supplementation</p>
+                                    </div>
+                                </div>
+                                <div class="env-factor">
+                                    <i class="fas fa-wind"></i>
+                                    <div>
+                                        <strong>Air Quality: Moderate</strong>
+                                        <p>Urban pollution - antioxidant support recommended</p>
+                                    </div>
+                                </div>
+                                <div class="env-factor">
+                                    <i class="fas fa-user"></i>
+                                    <div>
+                                        <strong>Skin Tone 3</strong>
+                                        <p>Moderate melanin - standard Vitamin D dosing appropriate</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn-secondary" onclick="goToScreen('supplements-screen')">Back</button>
+                    <button class="btn-primary" onclick="goToScreen('recommendations-screen')">
+                        Get My Stack <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations Screen -->
+        <div id="recommendations-screen" class="screen">
+            <div class="container">
+                <div class="progress-bar">
+                    <div class="progress-step completed">Goals</div>
+                    <div class="progress-step completed">Profile</div>
+                    <div class="progress-step completed">Analysis</div>
+                    <div class="progress-step active">Stack</div>
+                </div>
+                
+                <h2>Your personalized supplement stack</h2>
+                <p class="subtitle">AI-optimized recommendations based on your unique profile</p>
+                
+                <div class="recommendations-container">
+                    <!-- Doctor Conversation -->
+                    <div class="doctor-section">
+                        <div class="doctor-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="doctor-conversation">
+                            <div class="doctor-message">
+                                <p><strong>Dr. Vibrantly:</strong> Based on your analysis, I have some important observations to discuss with you.</p>
+                                
+                                <p>Your bloodwork shows excellent metabolic health - that HbA1c of 4.9% is fantastic and supports your fat loss goals perfectly. However, I'm concerned about your LDL cholesterol at 171 mg/dL.</p>
+                                
+                                <p>Here's what I recommend: We should prioritize cardiovascular protection while supporting your body recomposition goals. I notice you're already taking some great supplements, but there are gaps we need to address.</p>
+                                
+                                <div class="doctor-question">
+                                    <p><strong>Question:</strong> Your current berberine dosing is good for glucose control, but we could optimize it further for lipid management. Would you prefer to:</p>
+                                    <div class="doctor-options">
+                                        <button class="option-btn" onclick="selectDoctorOption('increase-berberine')">
+                                            Increase berberine to 500mg 3x daily
+                                        </button>
+                                        <button class="option-btn" onclick="selectDoctorOption('add-red-yeast')">
+                                            Add red yeast rice for additional LDL support
+                                        </button>
+                                        <button class="option-btn" onclick="selectDoctorOption('current-dosing')">
+                                            Keep current dosing and monitor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stack Tiers -->
+                    <div class="stack-tiers">
+                        <div class="tier-selector">
+                            <button class="tier-btn active" onclick="selectTier('basic')">Basic Stack</button>
+                            <button class="tier-btn" onclick="selectTier('advanced')">Advanced Stack</button>
+                            <button class="tier-btn" onclick="selectTier('biohacker')">Biohacker Stack</button>
+                        </div>
+                        
+                        <!-- Basic Stack -->
+                        <div id="basic-stack" class="stack-content active">
+                            <h3>Basic Stack - Foundation (5 supplements)</h3>
+                            <p>Essential supplements to support your primary goals</p>
+                            
+                            <div class="supplement-recommendations">
+                                <div class="supplement-rec priority-high">
+                                    <div class="supplement-info">
+                                        <div class="supplement-header">
+                                            <h4>Berberine</h4>
+                                            <span class="priority-badge high">High Priority</span>
+                                        </div>
+                                        <p class="dosage">500mg, 2x daily with meals</p>
+                                        <p class="rationale">Addresses elevated LDL + supports fat loss goals</p>
+                                    </div>
+                                    <div class="supplement-status current">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Currently Taking</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="supplement-rec priority-high">
+                                    <div class="supplement-info">
+                                        <div class="supplement-header">
+                                            <h4>Omega-3 (EPA/DHA)</h4>
+                                            <span class="priority-badge high">High Priority</span>
+                                        </div>
+                                        <p class="dosage">2g daily with food</p>
+                                        <p class="rationale">Critical for cardiovascular health with elevated LDL</p>
+                                    </div>
+                                    <div class="supplement-status current">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Currently Taking</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="supplement-rec priority-medium">
+                                    <div class="supplement-info">
+                                        <div class="supplement-header">
+                                            <h4>Creatine Monohydrate</h4>
+                                            <span class="priority-badge medium">Medium Priority</span>
+                                        </div>
+                                        <p class="dosage">5g daily, any time</p>
+                                        <p class="rationale">Essential for muscle gain and strength goals</p>
+                                    </div>
+                                    <div class="supplement-status current">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Currently Taking</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="supplement-rec priority-medium">
+                                    <div class="supplement-info">
+                                        <div class="supplement-header">
+                                            <h4>Vitamin D3 + K2</h4>
+                                            <span class="priority-badge medium">Medium Priority</span>
+                                        </div>
+                                        <p class="dosage">2000 IU D3 + 100mcg K2 daily</p>
+                                        <p class="rationale">London location requires D3, K2 protects cardiovascular system</p>
+                                    </div>
+                                    <div class="supplement-status current">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Currently Taking</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="supplement-rec priority-low">
+                                    <div class="supplement-info">
+                                        <div class="supplement-header">
+                                            <h4>Magnesium Glycinate</h4>
+                                            <span class="priority-badge low">Recommended</span>
+                                        </div>
+                                        <p class="dosage">400mg before bed</p>
+                                        <p class="rationale">Sleep optimization + muscle recovery</p>
+                                    </div>
+                                    <div class="supplement-status add">
+                                        <i class="fas fa-plus-circle"></i>
+                                        <span>Add to Stack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Stack Preview -->
+                        <div id="advanced-stack" class="stack-content">
+                            <h3>Advanced Stack - Optimization (12 supplements)</h3>
+                            <p>Comprehensive approach to health optimization</p>
+                            <div class="stack-preview">
+                                <p>Includes Basic Stack plus:</p>
+                                <ul>
+                                    <li>Alpha-Lipoic Acid (insulin sensitivity)</li>
+                                    <li>CoQ10 (cardiovascular + energy)</li>
+                                    <li>L-Carnitine (fat metabolism)</li>
+                                    <li>Curcumin (inflammation)</li>
+                                    <li>NAC (antioxidant defense)</li>
+                                    <li>Rhodiola (stress resilience)</li>
+                                    <li>...and more</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Biohacker Stack Preview -->
+                        <div id="biohacker-stack" class="stack-content">
+                            <h3>Biohacker Stack - Ultimate Optimization (20+ supplements)</h3>
+                            <p>Cutting-edge longevity and performance optimization</p>
+                            <div class="stack-preview">
+                                <p>Includes Advanced Stack plus:</p>
+                                <ul>
+                                    <li>NMN/NR (NAD+ support)</li>
+                                    <li>Spermidine (autophagy)</li>
+                                    <li>PQQ (mitochondrial biogenesis)</li>
+                                    <li>Resveratrol (longevity pathways)</li>
+                                    <li>Specialized nootropics</li>
+                                    <li>Advanced timing protocols</li>
+                                    <li>...your current level</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Onboarding Timeline -->
+                    <div class="onboarding-section">
+                        <h3>Recommended Onboarding</h3>
+                        <p>Gradually introduce new supplements for optimal tolerance</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker">1</div>
+                                <div class="timeline-content">
+                                    <h4>Week 1: Foundation</h4>
+                                    <p>Continue current stack, add Magnesium Glycinate (400mg nightly)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">2</div>
+                                <div class="timeline-content">
+                                    <h4>Week 2: Assessment</h4>
+                                    <p>Monitor tolerance, adjust timing if needed</p>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-marker">3</div>
+                                <div class="timeline-content">
+                                    <h4>Week 3: Optimization</h4>
+                                    <p>Consider upgrading to Advanced Stack based on goals progress</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="final-actions">
+                    <button class="btn-secondary" onclick="goToScreen('analysis-screen')">Back to Analysis</button>
+                    <button class="btn-primary" onclick="showSubscriptionModal()">
+                        Start My Optimization Journey <i class="fas fa-rocket"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
