@@ -1,37 +1,39 @@
-# WEBDEV RULES - Essential Guidelines for All Web Projects
+# 🚫 NON-NEGOTIABLE WEB DEVELOPMENT RULES
 
-## 🎨 Design Rules (Non-Negotiable)
+**THESE RULES APPLY TO EVERY WEBSITE PROJECT WITHOUT EXCEPTION**
 
-### 1. 📱 Always Add Emojis
-- **Rule:** Every web page MUST include appropriate emojis as part of the design fabric
-- **Why:** Emojis create emotional connection and visual hierarchy
-- **Application:** 
-  - Section headers get relevant emojis
-  - Navigation items include emojis
-  - Call-to-action buttons use engaging emojis
-  - Content sections have thematic emoji indicators
+## 📁 Project Structure
+- **Local:** `/workspace/PROJECT_NAME/`
+- **Published:** `elizaguide.github.io/workspace/PROJECT_NAME/`
+- **Local structure MUST exactly match GitHub structure**
 
-### 2. 🗂️ Page Organization Structure
-- **Rule:** Use clean, memorable folder structures
-- **Format:** `Project/mocs/ver1, ver2, ver3...`
-- **Example:** `Vibrantly/mocs/ver1.html, ver2.html, ver3/`
-- **Why:** Easy to remember, navigate, and maintain versions
+## 📂 Organization
+- Use clean folder organization: `Project/mocks/ver1, ver2, ver3`
+- Predictable, memorable paths for easy navigation
+- Version management through folder structure
 
-## 🚀 Implementation Guidelines
+## 🎨 Design Requirements
+- **ALWAYS add appropriate emojis** to web pages as design fabric
+- Emojis create emotional connection and visual hierarchy
+- Never skip emojis - they're part of the design system
 
-### Emoji Selection Strategy:
-- **Health/Fitness:** 💪 🏃‍♂️ ❤️ 🧠 💊 🩺
-- **Business/Strategy:** 🎯 📈 💼 🚀 ⚡ 💡
-- **Education:** 📚 🎓 ✨ 🔥 🎯 
-- **Wellness:** 🧘‍♂️ 🌱 ☀️ 💜 🌟
-- **Technology:** 🤖 💻 ⚡ 🔮 🛠️
+## 🌐 Publishing Rules
+- **ONLY use elizaguide.github.io** domain
+- **NO external services** (rawgithack, netlify, etc.)
+- **NO local file paths** sent to teams
+- Always add favicon to shared pages
+- Commit and push to GitHub BEFORE sharing links
 
-### Organization Best Practices:
-- Version numbers for easy comparison
-- Descriptive but concise folder names  
-- Consistent naming conventions
-- Clear hierarchy for navigation
+## 🔄 Deployment Process
+1. Build in `/workspace/PROJECT_NAME/` locally
+2. Add emojis and favicon
+3. Commit to GitHub
+4. Share `elizaguide.github.io/workspace/PROJECT_NAME/` link
+5. Never share external or local links
+
+## ⚠️ Violations = Immediate Fix Required
+These rules are non-negotiable. Any violation must be immediately corrected.
 
 ---
-
-*These rules apply to ALL web development work. No exceptions.*
+*Last Updated: 2026-02-03*
+*These rules apply to ALL web development projects*
