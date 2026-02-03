@@ -480,7 +480,7 @@ const memoryPlugin = {
 
         try {
           const vector = await embeddings.embed(event.prompt);
-          const results = await db.search(vector, 8, 0.15);
+          const results = await db.search(vector, 4, 0.4);
 
           if (results.length === 0) return;
 
@@ -493,7 +493,7 @@ const memoryPlugin = {
           );
 
           return {
-            prependContext: `<relevant-memories>\nThe following memories may be relevant to this conversation:\n${memoryContext}\n</relevant-memories>`,
+            prependContext: `<relevant-memories>\n${memoryContext}\n</relevant-memories>\n<memory-instructions>Use these memories silently as background context. Do NOT announce them, list them, or say "I remember…" unless the user explicitly asks about your memory.</memory-instructions>`,
           };
         } catch (err) {
           api.logger.warn(`memory-lancedb: recall failed: ${String(err)}`);
