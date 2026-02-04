@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliza — Status</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif; background: #0a0a0f; color: #e0e0e8; min-height: 100vh; padding: 24px; }
+    .container { max-width: 640px; margin: 0 auto; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    header h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .dot.idle { background: #3b3b4f; }
+    .dot.working { background: #22c55e; animation: pulse 1.5s ease-in-out infinite; }
+    .dot.error { background: #ef4444; }
+    .dot.offline { background: #ef4444; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .status-label { font-size: 13px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .card { background: #13131a; border: 1px solid #1e1e2e; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .card h2 { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+
+    .current-state { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 4px; }
+    .current-state.idle { color: #555; }
+    .current-state.working { color: #22c55e; }
+
+    .current-detail { font-size: 14px; color: #888; line-height: 1.5; }
+    .current-detail .tool { color: #a78bfa; font-weight: 500; }
+    .current-detail .time { color: #666; }
+
+    .activity-log { list-style: none; }
+    .activity-log li { padding: 8px 0; border-bottom: 1px solid #1a1a24; font-size: 13px; display: flex; gap: 10px; align-items: baseline; }
+    .activity-log li:last-child { border-bottom: none; }
+    .activity-log .ts { color: #555; font-variant-numeric: tabular-nums; flex-shrink: 0; width: 55px; }
+    .activity-log .event { color: #ccc; flex: 1; }
+    .activity-log .event .tool-name { color: #a78bfa; }
+    .activity-log .event .channel { color: #60a5fa; }
+
+    .channels { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .channel-item { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+    .channel-item .dot { width: 8px; height: 8px; }
+    .channel-item .name { color: #aaa; }
+
+    .empty { color: #444; font-size: 13px; font-style: italic; }
+
+    .conn-status { font-size: 11px; color: #444; text-align: center; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="dot idle" id="mainDot"></div>
+      <h1>Eliza</h1>
+      <span class="status-label" id="statusLabel">Connecting…</span>
+    </header>
+
+    <div class="card">
+      <h2>Current Activity</h2>
+      <div class="current-state idle" id="currentState">—</div>
+      <div class="current-detail" id="currentDetail"></div>
+    </div>
+
+    <div class="card">
+      <h2>Recent Activity</h2>
+      <ul class="activity-log" id="activityLog">
+        <li class="empty">No activity yet</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Channels</h2>
+      <div class="channels" id="channels">
+        <div class="empty">Loading…</div>
+      </div>
+    </div>
+
+    <div class="conn-status" id="connStatus"></div>
+  </div>
+
+<script>
+const GW_PORT = 18789;
+const GW_TOKEN = "11698f13fb8046729ff712e6819c47835fdc4d3e5b3898c2";
+const MAX_LOG = 30;
+
+let ws = null;
+let msgId = 0;
+let pendingCallbacks = {};
+let activeRun = null;
+let activityLog = [];
+let reconnectDelay = 1000;
+
+// --- DOM ---
+const $mainDot = document.getElementById("mainDot");
+const $statusLabel = document.getElementById("statusLabel");
+const $currentState = document.getElementById("currentState");
+const $currentDetail = document.getElementById("currentDetail");
+const $activityLog = document.getElementById("activityLog");
+const $channels = document.getElementById("channels");
+const $connStatus = document.getElementById("connStatus");
+
+function formatTime(ts) {
+  const d = ts ? new Date(ts) : new Date();
+  return d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+}
+
+function elapsed(startMs) {
+  const s = Math.floor((Date.now() - startMs) / 1000);
+  if (s < 60) return `${s}s`;
+  const m = Math.floor(s / 60);
+  return `${m}m ${s % 60}s`;
+}
+
+function setStatus(state, label) {
+  $mainDot.className = `dot ${state}`;
+  $statusLabel.textContent = label;
+  $currentState.className = `current-state ${state}`;
+}
+
+function addLog(text) {
+  activityLog.unshift({ ts: Date.now(), text });
+  if (activityLog.length > MAX_LOG) activityLog.pop();
+  renderLog();
+}
+
+function renderLog() {
+  if (activityLog.length === 0) {
+    $activityLog.innerHTML = '<li class="empty">No activity yet</li>';
+    return;
+  }
+  $activityLog.innerHTML = activityLog.map(e =>
+    `<li><span class="ts">${formatTime(e.ts)}</span><span class="event">${e.text}</span></li>`
+  ).join("");
+}
+
+function renderActivity() {
+  if (!activeRun) {
+    setStatus("idle", "Idle");
+    $currentState.textContent = "Idle";
+    $currentDetail.innerHTML = "";
+    return;
+  }
+  setStatus("working", "Working");
+  $currentState.textContent = activeRun.label || "Processing…";
+  const parts = [];
+  if (activeRun.tool) parts.push(`Using <span class="tool">${activeRun.tool}</span>`);
+  if (activeRun.channel) parts.push(`via <span class="tool">${activeRun.channel}</span>`);
+  if (activeRun.startedAt) parts.push(`<span class="time">${elapsed(activeRun.startedAt)}</span>`);
+  $currentDetail.innerHTML = parts.join(" · ");
+}
+
+// keep elapsed time ticking
+setInterval(() => { if (activeRun) renderActivity(); }, 1000);
+
+// --- WebSocket ---
+function send(method, params) {
+  return new Promise((resolve) => {
+    const id = `s-${++msgId}`;
+    pendingCallbacks[id] = resolve;
+    ws.send(JSON.stringify({ type: "req", id, method, params: params || {} }));
+    setTimeout(() => { if (pendingCallbacks[id]) { delete pendingCallbacks[id]; resolve(null); } }, 10000);
+  });
+}
+
+function connect() {
+  $connStatus.textContent = `Connecting to gateway…`;
+  ws = new WebSocket(`ws://127.0.0.1:${GW_PORT}`);
+
+  ws.onopen = () => {
+    $connStatus.textContent = "Connected, authenticating…";
+  };
+
+  ws.onmessage = (ev) => {
+    let msg;
+    try { msg = JSON.parse(ev.data); } catch { return; }
+
+    // Challenge → authenticate
+    if (msg.event === "connect.challenge") {
+      ws.send(JSON.stringify({
+        type: "req", id: `s-${++msgId}`, method: "connect",
+        params: {
+          minProtocol: 3, maxProtocol: 3,
+          client: { id: "webchat-ui", platform: "web", mode: "webchat", version: "1.0" },
+          role: "operator", scopes: ["operator.admin"],
+          auth: { token: GW_TOKEN }
+        }
+      }));
+      return;
+    }
+
+    // Connect success
+    if (msg.type === "res" && msg.result?.connected) {
+      reconnectDelay = 1000;
+      $connStatus.textContent = `Connected`;
+      setStatus("idle", "Idle");
+      $currentState.textContent = "Idle";
+      // fetch initial state
+      fetchChannelStatus();
+      fetchSessions();
+      return;
+    }
+
+    // Response to our requests
+    if (msg.type === "res" && pendingCallbacks[msg.id]) {
+      pendingCallbacks[msg.id](msg.result || msg.error);
+      delete pendingCallbacks[msg.id];
+      return;
+    }
+
+    // Real-time events
+    if (msg.type === "event") {
+      handleEvent(msg);
+    }
+  };
+
+  ws.onclose = () => {
+    setStatus("offline", "Disconnected");
+    $connStatus.textContent = `Disconnected. Reconnecting in ${reconnectDelay / 1000}s…`;
+    setTimeout(connect, reconnectDelay);
+    reconnectDelay = Math.min(reconnectDelay * 1.5, 15000);
+  };
+
+  ws.onerror = () => {};
+}
+
+function handleEvent(msg) {
+  const { event, payload } = msg;
+
+  if (event === "chat" && payload) {
+    const { state, tool, runId, sessionKey } = payload;
+    const channel = sessionKey ? sessionKey.split(":").find(p => ["whatsapp", "telegram", "webchat"].includes(p)) || "" : "";
+
+    if (state === "run_start" || state === "start") {
+      activeRun = { runId, label: "Processing…", channel, startedAt: Date.now(), tool: null };
+      addLog(`Run started` + (channel ? ` <span class="channel">${channel}</span>` : ""));
+      renderActivity();
+    } else if (state === "tool_start" && tool) {
+      if (activeRun) { activeRun.tool = tool; activeRun.label = `Running ${tool}`; }
+      addLog(`Tool: <span class="tool-name">${tool}</span>`);
+      renderActivity();
+    } else if (state === "tool_end" && tool) {
+      if (activeRun && activeRun.tool === tool) { activeRun.tool = null; activeRun.label = "Processing…"; }
+      renderActivity();
+    } else if (state === "text" && payload.text) {
+      const preview = payload.text.length > 80 ? payload.text.slice(0, 80) + "…" : payload.text;
+      if (activeRun) activeRun.label = "Responding";
+      addLog(`Reply: ${preview}`);
+      renderActivity();
+    } else if (state === "run_end" || state === "end" || state === "done") {
+      const dur = activeRun ? elapsed(activeRun.startedAt) : "";
+      addLog(`Run completed` + (dur ? ` (${dur})` : ""));
+      activeRun = null;
+      renderActivity();
+    } else if (state === "error") {
+      addLog(`Error: ${payload.error || "unknown"}`);
+      activeRun = null;
+      setStatus("error", "Error");
+      setTimeout(() => { if (!activeRun) setStatus("idle", "Idle"); }, 5000);
+    }
+  }
+}
+
+async function fetchChannelStatus() {
+  const result = await send("channels.status");
+  if (!result || result.code) {
+    $channels.innerHTML = '<div class="empty">Could not fetch</div>';
+    return;
+  }
+  const items = [];
+  for (const [name, info] of Object.entries(result)) {
+    const connected = info.connected || info.status === "connected" || info.status === "ok";
+    items.push(`
+      <div class="channel-item">
+        <div class="dot ${connected ? "working" : "error"}"></div>
+        <span class="name">${name}</span>
+      </div>
+    `);
+  }
+  $channels.innerHTML = items.length ? items.join("") : '<div class="empty">No channels</div>';
+}
+
+async function fetchSessions() {
+  const result = await send("sessions.list");
+  if (!result) return;
+  // If there are active sessions, note them
+  const sessions = Array.isArray(result) ? result : result.sessions || [];
+  if (sessions.length > 0) {
+    addLog(`${sessions.length} active session${sessions.length > 1 ? "s" : ""}`);
+  }
+}
+
+// Refresh channel status periodically
+setInterval(fetchChannelStatus, 60000);
+
+connect();
+</script>
+</body>
+</html>

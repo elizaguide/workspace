@@ -1,0 +1,96 @@
+{
+  "date": "2026-02-04",
+  "totalValue": 8810829.51,
+  "holdings": {
+    "GLD": {
+      "name": "SPDR Gold Shares",
+      "shares": 4638,
+      "value": 1981028.94,
+      "pct": 22.48
+    },
+    "GOOGL": {
+      "name": "Alphabet",
+      "shares": 4780,
+      "value": 1642838.20,
+      "pct": 18.65
+    },
+    "XGLD": {
+      "name": "Xtrackers Physical Gold ETC",
+      "shares": 21800,
+      "value": 1561752.00,
+      "pct": 17.72
+    },
+    "BRK.B": {
+      "name": "Berkshire Hathaway",
+      "shares": 2007,
+      "value": 977991.03,
+      "pct": 11.10
+    },
+    "EUFN": {
+      "name": "iShares MSCI Europe Financials",
+      "shares": 36366,
+      "value": 648595.21,
+      "pct": 7.36
+    },
+    "NVDA": {
+      "name": "NVIDIA",
+      "shares": 2970,
+      "value": 357023.70,
+      "pct": 4.05
+    },
+    "EPOL": {
+      "name": "iShares MSCI Poland",
+      "shares": 9900,
+      "value": 347391.00,
+      "pct": 3.94
+    },
+    "WPM": {
+      "name": "Wheaton Precious Metals",
+      "shares": 1490,
+      "value": 276558.90,
+      "pct": 3.14
+    },
+    "VRT": {
+      "name": "Vertiv Holdings",
+      "shares": 1200,
+      "value": 228012.00,
+      "pct": 2.59
+    },
+    "CCJ": {
+      "name": "Cameco",
+      "shares": 1300,
+      "value": 171873.00,
+      "pct": 1.95
+    },
+    "MSFT": {
+      "name": "Microsoft",
+      "shares": 400,
+      "value": 169348.00,
+      "pct": 1.92
+    },
+    "SIVR": {
+      "name": "WisdomTree Silver",
+      "shares": 2300,
+      "value": 163116.00,
+      "pct": 1.85
+    },
+    "NVT": {
+      "name": "nVent Electric",
+      "shares": 1370,
+      "value": 158632.30,
+      "pct": 1.80
+    },
+    "FNV": {
+      "name": "Franco-Nevada",
+      "shares": 400,
+      "value": 93196.00,
+      "pct": 1.06
+    },
+    "AMD": {
+      "name": "Advanced Micro Devices",
+      "shares": 171,
+      "value": 42112.17,
+      "pct": 0.48
+    }
+  }
+}
