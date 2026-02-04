@@ -29,10 +29,16 @@ Things like:
 - **WhatsApp messages:** ALWAYS use GitHub URLs (remote access for travel)
 - **Gateway/computer messages:** localhost URLs OK
 
+**DESIGN MANDATE:**
+- ✅ **ALL WEB PAGES use Mindvalley design by default** - No exceptions
+- ✅ **Use mindvalley-font.css and Mindvalley brand colors** (#7a12d4, #0f131a, etc.)
+- ✅ **Professional, clean aesthetic** matching brand guidelines
+
 **Eliza Image Rules:**
 - ✅ **NO CIRCULAR CROPS** - Always use square/rectangular images of me
 - ✅ **Use my actual face** - Crop as square, not circle
 - ✅ **Applied everywhere** - Newsletters, websites, all contexts
+- ✅ **Vishen strongly dislikes circular design style** - Never use
 
 **Required Elements:**
 - ✅ **Emoji favicon** matching the topic (🧠 for AI, 🎓 for education, etc.)
