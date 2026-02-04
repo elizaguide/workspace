@@ -29,6 +29,11 @@ Things like:
 - **WhatsApp messages:** ALWAYS use GitHub URLs (remote access for travel)
 - **Gateway/computer messages:** localhost URLs OK
 
+**Eliza Image Rules:**
+- ✅ **NO CIRCULAR CROPS** - Always use square/rectangular images of me
+- ✅ **Use my actual face** - Crop as square, not circle
+- ✅ **Applied everywhere** - Newsletters, websites, all contexts
+
 **Required Elements:**
 - ✅ **Emoji favicon** matching the topic (🧠 for AI, 🎓 for education, etc.)
 - ✅ **Proper folder organization** 
