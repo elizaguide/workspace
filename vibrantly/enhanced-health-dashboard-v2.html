@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Vishen's Health Dashboard - Enhanced with Real Data</title>
+    
+    <!-- Modern CSS Framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Chart.js for biomarker visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Theme Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: 'oklch(0.97 0.05 142)',
+                            100: 'oklch(0.92 0.1 142)',
+                            500: 'oklch(0.6 0.18 142)',
+                            600: 'oklch(0.55 0.2 142)',
+                            700: 'oklch(0.45 0.22 142)',
+                            900: 'oklch(0.25 0.25 142)'
+                        },
+                        dark: {
+                            bg: 'oklch(0.08 0 0)',
+                            card: 'oklch(0.12 0 0)',
+                            border: 'oklch(0.2 0 0)'
+                        },
+                        health: {
+                            optimal: 'oklch(0.7 0.15 142)',
+                            good: 'oklch(0.75 0.12 85)',
+                            warning: 'oklch(0.65 0.15 45)',
+                            danger: 'oklch(0.6 0.2 25)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 400ms ease-out',
+                        'slideIn': 'slideIn 350ms ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-soft': 'pulse-soft 2s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Custom supplement pattern backgrounds */
+        .supp-alpha-gpc { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .supp-carnitine { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .supp-tyrosine { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .supp-lions-mane { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .supp-rhodiola { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .supp-ala { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .supp-berberine { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .supp-coq10 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .supp-creatine { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .supp-omega3 { background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%); }
+        .supp-collagen { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .supp-glycine { background: linear-gradient(135deg, #e0c3fc 0%, #9bb5ff 100%); }
+        .supp-vitd3k2 { background: linear-gradient(135deg, #fef9e7 0%, #faf2c4 100%); }
+        .supp-bergamot { background: linear-gradient(135deg, #c471f5 0%, #fa71cd 100%); }
+        
+        .biomarker-optimal { color: oklch(0.7 0.15 142); }
+        .biomarker-good { color: oklch(0.75 0.12 85); }
+        .biomarker-warning { color: oklch(0.65 0.15 45); }
+        .biomarker-danger { color: oklch(0.6 0.2 25); }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .supplement-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            margin-bottom: 12px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .health-metric {
+            transition: all 200ms ease-out;
+        }
+        
+        .health-metric:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .progress-ring {
+            transition: stroke-dasharray 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark-bg font-sans">
+    <!-- Header -->
+    <header class="bg-white dark:bg-dark-card shadow-sm border-b border-gray-200 dark:border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-primary-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="activity" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-gray-900 dark:text-white">Vishen's Health Dashboard</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Real-time biomarkers & supplements</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right">
+                        <p class="text-sm font-medium text-gray-900 dark:text-white">Last Updated</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Feb 1, 2026 • 18:54 GMT</p>
+                    </div>
+                    <button id="darkModeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-dark-border transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Health Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="health-metric bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Overall Health Score</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">87/100</p>
+                        <p class="text-xs text-health-optimal mt-1">Excellent</p>
+                    </div>
+                    <div class="w-12 h-12 bg-health-optimal/10 rounded-full flex items-center justify-center">
+                        <i data-lucide="heart" class="w-6 h-6 text-health-optimal"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="health-metric bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Active Supplements</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">28</p>
+                        <p class="text-xs text-health-good mt-1">Optimized Stack</p>
+                    </div>
+                    <div class="w-12 h-12 bg-health-good/10 rounded-full flex items-center justify-center">
+                        <i data-lucide="pill" class="w-6 h-6 text-health-good"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="health-metric bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Biomarkers Tracked</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">32</p>
+                        <p class="text-xs text-health-optimal mt-1">Comprehensive</p>
+                    </div>
+                    <div class="w-12 h-12 bg-health-optimal/10 rounded-full flex items-center justify-center">
+                        <i data-lucide="target" class="w-6 h-6 text-health-optimal"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="health-metric bg-white dark:bg-dark-card rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Optimization Areas</p>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">3</p>
+                        <p class="text-xs text-health-warning mt-1">LDL, Inflammation</p>
+                    </div>
+                    <div class="w-12 h-12 bg-health-warning/10 rounded-full flex items-center justify-center">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-health-warning"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Supplement Library -->
+            <div class="lg:col-span-2">
+                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Supplement Library</h2>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Visual supplement stack with real data</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-2 text-xs bg-primary-50 text-primary-700 rounded-lg border border-primary-200">Morning</button>
+                                <button class="px-3 py-2 text-xs bg-gray-50 text-gray-700 rounded-lg border border-gray-200">Afternoon</button>
+                                <button class="px-3 py-2 text-xs bg-gray-50 text-gray-700 rounded-lg border border-gray-200">Night</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            <!-- Alpha GPC -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-alpha-gpc mx-auto">
+                                    αGPC
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Alpha GPC</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">300-600mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 8/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
+                                        🧠 Cognitive
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- L-Carnitine -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-carnitine mx-auto">
+                                    L-C
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">L-Carnitine</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">1500mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-orange-100 text-orange-800">
+                                        ⚡ Energy
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- L-Tyrosine -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-tyrosine mx-auto">
+                                    TYR
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">L-Tyrosine</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">500mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 7/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
+                                        🧠 Focus
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Lion's Mane -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-lions-mane mx-auto">
+                                    🦁
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Lion's Mane</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">1000mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
+                                        🧠 Neuroprotection
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Rhodiola Rosea -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-rhodiola mx-auto">
+                                    RR
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Rhodiola Rosea</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">200-400mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-pink-100 text-pink-800">
+                                        🌿 Adaptogen
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Alpha Lipoic Acid -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-ala mx-auto">
+                                    ALA
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Alpha Lipoic Acid</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">300-600mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 9/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-teal-100 text-teal-800">
+                                        🛡️ Antioxidant
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Berberine -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-berberine mx-auto">
+                                    BBR
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Berberine</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">500mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-yellow-100 text-yellow-800">
+                                        ❤️ Metabolic
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- CoQ10 -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-coq10 mx-auto">
+                                    Q10
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">CoQ10</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">200mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 9/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-red-100 text-red-800">
+                                        ⚡ Mitochondrial
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Creatine -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-creatine mx-auto">
+                                    CR
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Creatine</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">3372mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-purple-100 text-purple-800">
+                                        💪 Performance
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Omega-3 -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-omega3 mx-auto">
+                                    Ω3
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Omega-3</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">1g</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800">
+                                        ❤️ Cardiovascular
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Collagen -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-collagen mx-auto">
+                                    COL
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Collagen</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">1200mg</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-orange-100 text-orange-800">
+                                        🦴 Joint Support
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Glycine -->
+                            <div class="text-center group cursor-pointer">
+                                <div class="supplement-icon supp-glycine mx-auto">
+                                    GLY
+                                </div>
+                                <h3 class="font-medium text-gray-900 dark:text-white text-sm">Glycine</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">3g</p>
+                                <p class="text-xs text-primary-600 mt-1">Rating: 10/10</p>
+                                <div class="mt-2">
+                                    <span class="inline-flex items-center px-2 py-1 rounded-full text-xs bg-indigo-100 text-indigo-800">
+                                        🌙 Sleep
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biomarkers Panel -->
+            <div class="space-y-6">
+                <!-- Critical Biomarkers -->
+                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Critical Biomarkers</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Real-time blood work analysis</p>
+                    </div>
+                    
+                    <div class="p-6 space-y-4">
+                        <!-- Total Cholesterol - High -->
+                        <div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800/30">
+                            <div>
+                                <p class="font-medium text-red-800 dark:text-red-200">Total Cholesterol</p>
+                                <p class="text-sm text-red-600 dark:text-red-300">241.1 mg/dL</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-red-600 dark:text-red-400">High</p>
+                                <p class="text-xs text-red-500 dark:text-red-500">Target: <200</p>
+                            </div>
+                        </div>
+
+                        <!-- LDL Cholesterol - High -->
+                        <div class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800/30">
+                            <div>
+                                <p class="font-medium text-red-800 dark:text-red-200">LDL Cholesterol</p>
+                                <p class="text-sm text-red-600 dark:text-red-300">170.98 mg/dL</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-red-600 dark:text-red-400">High</p>
+                                <p class="text-xs text-red-500 dark:text-red-500">Target: <100</p>
+                            </div>
+                        </div>
+
+                        <!-- Free Testosterone - Good -->
+                        <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800/30">
+                            <div>
+                                <p class="font-medium text-green-800 dark:text-green-200">Free Testosterone</p>
+                                <p class="text-sm text-green-600 dark:text-green-300">23.9 pg/mL</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-green-600 dark:text-green-400">Good</p>
+                                <p class="text-xs text-green-500 dark:text-green-500">Range: 15-50</p>
+                            </div>
+                        </div>
+
+                        <!-- Total Testosterone - Elevated -->
+                        <div class="flex items-center justify-between p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-800/30">
+                            <div>
+                                <p class="font-medium text-yellow-800 dark:text-yellow-200">Total Testosterone</p>
+                                <p class="text-sm text-yellow-600 dark:text-yellow-300">30.5 nmol/L</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-yellow-600 dark:text-yellow-400">Above Range</p>
+                                <p class="text-xs text-yellow-500 dark:text-yellow-500">Range: 4.56-28.2</p>
+                            </div>
+                        </div>
+
+                        <!-- Vitamin D - Optimal -->
+                        <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800/30">
+                            <div>
+                                <p class="font-medium text-green-800 dark:text-green-200">Vitamin D</p>
+                                <p class="text-sm text-green-600 dark:text-green-300">41.8 ng/mL</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-green-600 dark:text-green-400">Optimal</p>
+                                <p class="text-xs text-green-500 dark:text-green-500">Target: 30-100</p>
+                            </div>
+                        </div>
+
+                        <!-- TSH - Normal -->
+                        <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800/30">
+                            <div>
+                                <p class="font-medium text-green-800 dark:text-green-200">TSH</p>
+                                <p class="text-sm text-green-600 dark:text-green-300">0.94 µIU/ml</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-green-600 dark:text-green-400">Optimal</p>
+                                <p class="text-xs text-green-500 dark:text-green-500">Range: 0.3-4.5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                    <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Recommendations</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Personalized optimization</p>
+                    </div>
+                    
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-start space-x-3 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                            <div class="w-6 h-6 bg-orange-100 dark:bg-orange-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="alert-triangle" class="w-3 h-3 text-orange-600 dark:text-orange-300"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-orange-800 dark:text-orange-200 text-sm">Increase Citrus Bergamot</p>
+                                <p class="text-xs text-orange-600 dark:text-orange-300 mt-1">1000mg daily to reduce LDL cholesterol</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                            <div class="w-6 h-6 bg-blue-100 dark:bg-blue-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="trending-up" class="w-3 h-3 text-blue-600 dark:text-blue-300"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-blue-800 dark:text-blue-200 text-sm">Optimize Berberine Timing</p>
+                                <p class="text-xs text-blue-600 dark:text-blue-300 mt-1">Take with carb meals for better glucose control</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                            <div class="w-6 h-6 bg-green-100 dark:bg-green-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="check" class="w-3 h-3 text-green-600 dark:text-green-300"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-green-800 dark:text-green-200 text-sm">Continue Current Stack</p>
+                                <p class="text-xs text-green-600 dark:text-green-300 mt-1">Testosterone and thyroid levels are optimal</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
+                            <div class="w-6 h-6 bg-purple-100 dark:bg-purple-800 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i data-lucide="zap" class="w-3 h-3 text-purple-600 dark:text-purple-300"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-purple-800 dark:text-purple-200 text-sm">Add Red Yeast Rice</p>
+                                <p class="text-xs text-purple-600 dark:text-purple-300 mt-1">Natural statin alternative for cholesterol</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Biomarker Analysis -->
+        <div class="mt-8">
+            <div class="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-200 dark:border-dark-border">
+                <div class="p-6 border-b border-gray-200 dark:border-dark-border">
+                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Complete Biomarker Panel</h2>
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Comprehensive blood work analysis from Oct 30, 2025</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Hormonal Panel -->
+                        <div class="space-y-3">
+                            <h3 class="font-medium text-gray-900 dark:text-white text-lg">Hormones</h3>
+                            
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Estradiol (E2)</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">158.19 Pmol/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">FSH</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">7.6 mIU/mL</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">LH</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">7.32 mIU/mL</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Prolactin</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">147.1 mIU/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Cortisol</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">343 nmol/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Metabolic Panel -->
+                        <div class="space-y-3">
+                            <h3 class="font-medium text-gray-900 dark:text-white text-lg">Metabolism</h3>
+                            
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Creatinine</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">0.92 mg/dL</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Blood Urea</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">35.67 mg/dL</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Sodium</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">136 mEq/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Potassium</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">4.98 mEq/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Chloride</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">104 mEq/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Liver & Nutrients -->
+                        <div class="space-y-3">
+                            <h3 class="font-medium text-gray-900 dark:text-white text-lg">Liver & Nutrients</h3>
+                            
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">ALT</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">19.18 U/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">AST</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">17.75 U/L</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">B12</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">843 pg/mL</span>
+                                    <span class="block text-xs biomarker-warning">High</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Iron</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">89.22 ug/dl</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center py-2">
+                                <span class="text-sm text-gray-600 dark:text-gray-400">Ferritin</span>
+                                <div class="text-right">
+                                    <span class="text-sm font-medium text-gray-900 dark:text-white">220 ng/mL</span>
+                                    <span class="block text-xs biomarker-optimal">Normal</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const htmlElement = document.documentElement;
+        
+        darkModeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            const icon = darkModeToggle.querySelector('i');
+            if (htmlElement.classList.contains('dark')) {
+                icon.setAttribute('data-lucide', 'sun');
+            } else {
+                icon.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Add entrance animations
+        const cards = document.querySelectorAll('.health-metric');
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.animate([
+                    { opacity: 0, transform: 'translateY(20px)' },
+                    { opacity: 1, transform: 'translateY(0)' }
+                ], {
+                    duration: 400,
+                    easing: 'ease-out',
+                    delay: index * 100,
+                    fill: 'forwards'
+                });
+            }, 0);
+        });
+
+        // Supplement hover effects
+        document.querySelectorAll('.supplement-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', (e) => {
+                e.target.style.animationDuration = '3s';
+            });
+            
+            icon.addEventListener('mouseleave', (e) => {
+                e.target.style.animationDuration = '6s';
+            });
+        });
+
+        // Add click interactions to supplements for future expansion
+        document.querySelectorAll('.supplement-icon').forEach(icon => {
+            icon.parentElement.addEventListener('click', (e) => {
+                // Future: Open supplement detail modal
+                console.log('Clicked supplement:', e.currentTarget.querySelector('h3').textContent);
+            });
+        });
+
+        // Responsive adjustments
+        window.addEventListener('resize', () => {
+            // Future: Adjust layouts for different screen sizes
+        });
+    </script>
+</body>
+</html>

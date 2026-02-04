@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lofty Questions Workshop — Mindvalley</title>
+    <meta name="description" content="Transform your reality through the power of conscious questioning. Master the L.O.F.T.Y. framework for manifesting your dreams." />
+    <meta name="theme-color" content="#7a12d4" />
+    <link rel="stylesheet" href="public/mindvalley-font.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #ffffff;
+            color: #0f131a;
+            overflow-x: hidden;
+        }
+
+        .mv-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            display: none;
+            padding: 6rem 0 5rem 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .slide.active { display: block; }
+
+        /* Typography Classes (Mindvalley System) */
+        .title-bold-1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .title-bold-2 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        .title-bold-3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .title-bold-4 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .title-bold-5 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
+        }
+
+        .body-lg {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .body {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #0f131a;
+        }
+
+        .overline-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7a12d4;
+            margin-bottom: 1rem;
+        }
+
+        /* Layout Components */
+        .slide-content {
+            text-align: center;
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+            align-items: start;
+        }
+
+        .anti-lofty-card {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 2px solid #fca5a5;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: left;
+        }
+
+        .lofty-card {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #86efac;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: left;
+        }
+
+        .framework-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            background: #f9fafb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #7a12d4;
+            color: white;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .exercise-box {
+            background: linear-gradient(135deg, #fefbff, #f3e8ff);
+            border: 2px solid #c084fc;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .quote-box {
+            background: #f9fafb;
+            border-left: 4px solid #7a12d4;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.125rem;
+            color: #4b5563;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: #7a12d4;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-size: 0.875rem;
+        }
+
+        .nav-btn:hover {
+            background: #6b21a8;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+            z-index: 1000;
+        }
+
+        /* Example Lists */
+        .example-list {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .example-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .example-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 1rem;
+            color: #0f131a;
+        }
+
+        .example-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Alternating Backgrounds */
+        .alt-bg {
+            background-color: #f9fafb;
+        }
+
+        @media (max-width: 768px) {
+            .title-bold-1 { font-size: 2.5rem; }
+            .title-bold-2 { font-size: 2rem; }
+            .title-bold-3 { font-size: 1.75rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .mv-container { padding: 0 1rem; }
+            .slide { padding: 4rem 0 3rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide-counter">
+            <span id="slide-number">1</span> / <span id="total-slides">15</span>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">SPIRITUAL MASTERY WORKSHOP</div>
+                    <h1 class="title-bold-1">Lofty Questions</h1>
+                    <p class="body-lg" style="max-width: 40rem; margin: 0 auto 2.5rem 0;">
+                        Transform your reality through the power of conscious questioning. 
+                        Master the framework that rewires your subconscious for success.
+                    </p>
+                    <div class="quote-box">
+                        <p style="font-size: 1.5rem; font-weight: 600; color: #7a12d4; margin: 0;">
+                            "What if I told you there's one question that could completely rewire your reality in the next 30 days?"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: The Problem -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <h2 class="title-bold-2">Your Subconscious Has Been Answering the WRONG Questions</h2>
+                    <div class="comparison-grid" style="margin-top: 3rem;">
+                        <div class="anti-lofty-card">
+                            <h3 class="title-bold-5" style="color: #dc2626; margin-bottom: 1rem;">❌ Anti-Lofty Questions</h3>
+                            <ul style="list-style: none; padding: 0; color: #7f1d1d;">
+                                <li style="margin: 1rem 0;">💭 "Why am I so broke?"</li>
+                                <li style="margin: 1rem 0;">💭 "Why can't I find love?"</li>
+                                <li style="margin: 1rem 0;">💭 "Why am I always stressed?"</li>
+                                <li style="margin: 1rem 0;">💭 "Why can't I get ahead?"</li>
+                            </ul>
+                            <p style="margin-top: 1.5rem; font-weight: 600; color: #dc2626;">
+                                Your mind finds evidence to PROVE these statements true!
+                            </p>
+                        </div>
+                        <div class="lofty-card">
+                            <h3 class="title-bold-5" style="color: #16a34a; margin-bottom: 1rem;">✅ Lofty Questions</h3>
+                            <ul style="list-style: none; padding: 0; color: #166534;">
+                                <li style="margin: 1rem 0;">✨ "Why am I so abundant?"</li>
+                                <li style="margin: 1rem 0;">✨ "Why am I so magnetic to love?"</li>
+                                <li style="margin: 1rem 0;">✨ "Why am I so naturally calm?"</li>
+                                <li style="margin: 1rem 0;">✨ "Why do opportunities flow to me?"</li>
+                            </ul>
+                            <p style="margin-top: 1.5rem; font-weight: 600; color: #16a34a;">
+                                Your mind finds evidence to PROVE these statements true!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: The Science -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">THE NEUROSCIENCE</div>
+                    <h2 class="title-bold-2">How Questions Rewire Your Brain</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">20 Million vs 40</h3>
+                            <p class="body">Your subconscious processes 20 million bits of information per second. Your conscious mind? Only 40.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">RAS Activation</h3>
+                            <p class="body">Questions activate your Reticular Activating System — your brain's search engine for opportunities.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">No Multitasking</h3>
+                            <p class="body">Your brain cannot multitask. When asking a question, it can ONLY focus on finding the answer.</p>
+                        </div>
+                    </div>
+                    <div class="quote-box">
+                        <p><strong>Key Insight:</strong> Unlike affirmations (which can trigger disbelief), 
+                        lofty questions trick the subconscious into seeking evidence for your desired reality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: The L.O.F.T.Y. Framework -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">THE FRAMEWORK</div>
+                    <h2 class="title-bold-2">The L.O.F.T.Y. Method</h2>
+                    <p class="body-lg" style="margin-bottom: 3rem; color: #4b5563;">
+                        Five criteria to craft questions that elevate your reality
+                    </p>
+                    <div class="framework-steps">
+                        <div class="step-card">
+                            <div class="step-number">L</div>
+                            <h3 class="title-bold-5" style="margin-top: 1rem; color: #7a12d4;">Lifting</h3>
+                            <p class="body">Does it elevate your energy and make you feel empowered?</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">O</div>
+                            <h3 class="title-bold-5" style="margin-top: 1rem; color: #7a12d4;">Ownership</h3>
+                            <p class="body">Are you taking full responsibility for your reality?</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">F</div>
+                            <h3 class="title-bold-5" style="margin-top: 1rem; color: #7a12d4;">Future-focused</h3>
+                            <p class="body">Is it about who you're becoming, not where you've been?</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">T</div>
+                            <h3 class="title-bold-5" style="margin-top: 1rem; color: #7a12d4;">Truthful</h3>
+                            <p class="body">Does it align with your deepest values and authentic self?</p>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">Y</div>
+                            <h3 class="title-bold-5" style="margin-top: 1rem; color: #7a12d4;">Yes-inducing</h3>
+                            <p class="body">Does it make you excited and want to say "YES!" to life?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Workshop Activity 1 -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">INTERACTIVE EXERCISE</div>
+                    <h2 class="title-bold-2">The Question Audit</h2>
+                    <div class="exercise-box">
+                        <h3 class="title-bold-5" style="margin-bottom: 1rem;">Your Task (5 minutes):</h3>
+                        <ol style="list-style: decimal; padding-left: 1.5rem; margin-bottom: 2rem;">
+                            <li style="margin: 1rem 0;">Write down 3 questions you commonly ask yourself</li>
+                            <li style="margin: 1rem 0;">Categorize each as "Empowering" or "Disempowering"</li>
+                            <li style="margin: 1rem 0;">Notice how each question makes you FEEL</li>
+                        </ol>
+                        <div style="background: white; border-radius: 0.5rem; padding: 1.5rem; border: 1px solid #e5e7eb;">
+                            <p><strong>Example:</strong></p>
+                            <p style="color: #dc2626;">❌ "Why do I always procrastinate?" → Disempowering</p>
+                            <p style="color: #16a34a;">✅ "Why am I becoming so naturally productive?" → Empowering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Workshop Activity 2 -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">TRANSFORMATION EXERCISE</div>
+                    <h2 class="title-bold-2">"The Flip"</h2>
+                    <div class="exercise-box">
+                        <h3 class="title-bold-5" style="margin-bottom: 1rem;">Partner Activity (10 minutes):</h3>
+                        <ol style="list-style: decimal; padding-left: 1.5rem; margin-bottom: 2rem;">
+                            <li style="margin: 1rem 0;">Share your biggest frustration/challenge with a partner</li>
+                            <li style="margin: 1rem 0;">Identify the anti-lofty question you're unconsciously asking</li>
+                            <li style="margin: 1rem 0;">Transform it into a lofty question using the L.O.F.T.Y. framework</li>
+                            <li style="margin: 1rem 0;">Test it: Does it give you goosebumps? Keep only the ones that do!</li>
+                        </ol>
+                    </div>
+                    <div class="comparison-grid" style="margin-top: 2rem;">
+                        <div class="anti-lofty-card">
+                            <p style="font-weight: 600; margin-bottom: 0.5rem;">Before:</p>
+                            <p>"Why can't I find my purpose?"</p>
+                        </div>
+                        <div class="lofty-card">
+                            <p style="font-weight: 600; margin-bottom: 0.5rem;">After:</p>
+                            <p>"Why am I so aligned with my soul's calling?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Life Areas Mapping -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">DESIGN YOUR REALITY</div>
+                    <h2 class="title-bold-2">5 Key Life Areas</h2>
+                    <p class="body-lg" style="margin-bottom: 3rem; color: #4b5563;">
+                        Create a lofty question for each area of your life
+                    </p>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🏃‍♂️ Health & Energy</h3>
+                            <p class="body">"Why do I have unlimited vitality?"</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">❤️ Relationships & Love</h3>
+                            <p class="body">"Why am I so magnetic to amazing people?"</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🎯 Career & Purpose</h3>
+                            <p class="body">"Why am I so aligned with my calling?"</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">💰 Abundance & Money</h3>
+                            <p class="body">"Why am I such a money magnet?"</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🌟 Personal Growth</h3>
+                            <p class="body">"Why am I always evolving with ease?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Question Examples - Health -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <h2 class="title-bold-2">Health & Energy Questions</h2>
+                    <div class="example-list">
+                        <ul>
+                            <li>"Why do I have unlimited energy and vitality?"</li>
+                            <li>"Why does my body naturally crave exactly what it needs to thrive?"</li>
+                            <li>"Why am I so strong, flexible, and pain-free?"</li>
+                            <li>"Why do I sleep so deeply and wake up refreshed?"</li>
+                            <li>"Why is my body such a powerful healing machine?"</li>
+                            <li>"Why do I love moving my body and staying active?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Question Examples - Relationships -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <h2 class="title-bold-2">Relationships & Love Questions</h2>
+                    <div class="example-list">
+                        <ul>
+                            <li>"Why am I so magnetic to loving, supportive people?"</li>
+                            <li>"Why do I effortlessly attract my soulmate?"</li>
+                            <li>"Why are all my relationships harmonious and growth-oriented?"</li>
+                            <li>"Why do I communicate with such clarity and compassion?"</li>
+                            <li>"Why am I surrounded by people who celebrate my success?"</li>
+                            <li>"Why do I create such deep, meaningful connections?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Question Examples - Career -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <h2 class="title-bold-2">Career & Purpose Questions</h2>
+                    <div class="example-list">
+                        <ul>
+                            <li>"Why am I so aligned with my soul's purpose?"</li>
+                            <li>"Why do opportunities flow to me effortlessly?"</li>
+                            <li>"Why am I making a meaningful impact while being abundantly rewarded?"</li>
+                            <li>"Why do I love what I do so much it doesn't feel like work?"</li>
+                            <li>"Why am I such a valuable contributor to my field?"</li>
+                            <li>"Why does success come so naturally to me?"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: When & How to Use -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">ACTIVATION PRACTICE</div>
+                    <h2 class="title-bold-2">When & How to Use Lofty Questions</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🌅 Morning Ritual</h3>
+                            <p class="body">Upon waking (eyes closed, rising inflection). Set the tone for your entire day.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🌙 Evening Practice</h3>
+                            <p class="body">Before sleep (relaxed state, curious tone). Program your subconscious overnight.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">🧘 During Meditation</h3>
+                            <p class="body">In 6 Phase Meditation - Phase 4. Amplify the effect in altered states.</p>
+                        </div>
+                    </div>
+                    <div class="quote-box">
+                        <p><strong>Key:</strong> Ask, don't affirm. Use a questioning inflection, stay curious about the answers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Live Practice Session -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">LIVE PRACTICE</div>
+                    <h2 class="title-bold-2">Guided Practice Session</h2>
+                    <div class="exercise-box">
+                        <h3 class="title-bold-5" style="margin-bottom: 1.5rem;">Let's Practice Together (10 minutes):</h3>
+                        <div style="text-align: left; max-width: 32rem; margin: 0 auto;">
+                            <p style="margin: 1rem 0;"><strong>1. Relaxation (3 mins):</strong> Close your eyes, take deep breaths</p>
+                            <p style="margin: 1rem 0;"><strong>2. Question Practice (5 mins):</strong> Ask your top 3 lofty questions with proper inflection</p>
+                            <p style="margin: 1rem 0;"><strong>3. Energy Check (2 mins):</strong> Notice the shift in the room's energy</p>
+                        </div>
+                    </div>
+                    <div class="quote-box">
+                        <p style="text-align: center; font-size: 1.25rem; color: #7a12d4; font-weight: 600;">
+                            "Feel the energy shift as we collectively ask empowering questions..."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: The 30-Day Challenge -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">INTEGRATION PLAN</div>
+                    <h2 class="title-bold-2">The 30-Day Lofty Questions Challenge</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">Daily Ritual</h3>
+                            <p class="body">Morning: Ask questions before opening eyes<br>Evening: Ask before sleep</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">Journal Tracking</h3>
+                            <p class="body">Note synchronicities, opportunities, and mindset shifts daily</p>
+                        </div>
+                        <div class="feature-card">
+                            <h3 class="title-bold-5" style="color: #7a12d4;">Community Support</h3>
+                            <p class="body">Share wins and insights in our Spiritual Mastery group</p>
+                        </div>
+                    </div>
+                    <div class="quote-box">
+                        <p style="font-size: 1.125rem;"><strong>What to Track:</strong> Synchronicities, new opportunities, 
+                        energy shifts, mindset changes, and unexpected manifestations that appear in your life.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: Success Stories & Science -->
+        <div class="slide alt-bg">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <h2 class="title-bold-2">Why This Works</h2>
+                    <div class="comparison-grid">
+                        <div style="background: white; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 2rem;">
+                            <h3 class="title-bold-5" style="color: #7a12d4; margin-bottom: 1rem;">Neuroscience Backing</h3>
+                            <ul style="text-align: left; color: #4b5563;">
+                                <li>Neuroplasticity research shows questions rewire neural pathways</li>
+                                <li>RAS studies prove attention follows questions</li>
+                                <li>Hypnagogic/hypnopompic states optimize subconscious programming</li>
+                            </ul>
+                        </div>
+                        <div style="background: white; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 2rem;">
+                            <h3 class="title-bold-5" style="color: #7a12d4; margin-bottom: 1rem;">Created by Christie Marie Sheldon</h3>
+                            <ul style="text-align: left; color: #4b5563;">
+                                <li>Thousands of transformation stories</li>
+                                <li>Used in Unlimited Abundance program</li>
+                                <li>Popularized by Vishen Lakhiani</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="quote-box" style="margin-top: 2rem;">
+                        <p style="text-align: center; font-size: 1.5rem; color: #7a12d4; font-weight: 600;">
+                            "Your lofty questions are your direct line to your highest potential"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Call to Action -->
+        <div class="slide">
+            <div class="mv-container">
+                <div class="slide-content">
+                    <div class="overline-text">YOUR TRANSFORMATION STARTS NOW</div>
+                    <h1 class="title-bold-1">The Universe is Waiting</h1>
+                    <p class="body-lg" style="max-width: 40rem; margin: 0 auto 2.5rem 0; color: #4b5563;">
+                        The Universe has been waiting your entire life for you to ask the RIGHT questions. 
+                        Your lofty questions are your direct line to your highest potential.
+                    </p>
+                    <div class="exercise-box">
+                        <h3 class="title-bold-5" style="text-align: center; margin-bottom: 1.5rem;">Your Next Steps:</h3>
+                        <ol style="list-style: decimal; padding-left: 2rem; max-width: 32rem; margin: 0 auto;">
+                            <li style="margin: 1rem 0;">Choose your top 5 lofty questions (one for each life area)</li>
+                            <li style="margin: 1rem 0;">Write them down and put them by your bed</li>
+                            <li style="margin: 1rem 0;">Start tomorrow morning - ask before opening your eyes</li>
+                            <li style="margin: 1rem 0;">Begin your 30-day transformation journey</li>
+                            <li style="margin: 1rem 0;">Share your first synchronicity in our community</li>
+                        </ol>
+                    </div>
+                    <div class="quote-box" style="margin-top: 2rem;">
+                        <p style="text-align: center; font-size: 1.25rem; font-style: italic; color: #0f131a;">
+                            Remember: Every question you ask is a prayer. Every prayer shapes your reality. 
+                            Choose questions that lift you higher.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="changeSlide(-1)" id="prevBtn">← Previous</button>
+        <button class="nav-btn" onclick="changeSlide(1)" id="nextBtn">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('slide-number').textContent = currentSlide + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                showSlide(newSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>

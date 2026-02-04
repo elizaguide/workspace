@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏢 Mindvalley Projects Hub</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏢</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h1 class="text-4xl font-bold mb-4">🏢 Mindvalley Projects</h1>
+            <p class="text-blue-100 text-xl">Compliance, optimization, and transformation tools</p>
+        </div>
+    </header>
+
+    <section class="container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- WCAG Compliance -->
+            <a href="wcag/" class="block card-hover">
+                <div class="bg-white rounded-lg p-6 shadow-lg border-l-4 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <span class="text-2xl mr-3">♿</span>
+                        <h2 class="text-xl font-bold">WCAG Compliance</h2>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Complete accessibility audit and implementation guide for Mindvalley.com
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center text-sm">
+                            <span class="text-green-500 mr-2">📊</span>
+                            <span>82% current compliance score</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <span class="text-orange-500 mr-2">⚠️</span>
+                            <span>32 critical accessibility issues</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <span class="text-blue-500 mr-2">🎯</span>
+                            <span>Week-by-week action plan</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Future Projects Placeholder -->
+            <div class="bg-gray-100 rounded-lg p-6 shadow-lg border-l-4 border-gray-300">
+                <div class="flex items-center mb-4">
+                    <span class="text-2xl mr-3">🚀</span>
+                    <h2 class="text-xl font-bold text-gray-600">Coming Soon</h2>
+                </div>
+                <p class="text-gray-500 mb-4">
+                    More Mindvalley projects and tools will be organized here
+                </p>
+                <div class="space-y-2">
+                    <div class="flex items-center text-sm text-gray-400">
+                        <span class="mr-2">💼</span>
+                        <span>Marketing optimization</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <span class="mr-2">📈</span>
+                        <span>Performance analytics</span>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-400">
+                        <span class="mr-2">🎨</span>
+                        <span>Design system tools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container mx-auto px-6 py-8 text-center text-gray-500">
+        <p>💜 Mindvalley Project Hub - Created by Eliza</p>
+    </footer>
+</body>
+</html>

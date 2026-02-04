@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Executive Feedback - AI Partnership Presentation</title>
+    <meta name="theme-color" content="#7a12d4" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .feedback-container {
+            background: white;
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7a12d4, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7a12d4;
+            box-shadow: 0 0 0 3px rgba(122, 18, 212, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .rating-group {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .rating-option {
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .rating-option:hover {
+            border-color: #7a12d4;
+            background: #f3e8ff;
+        }
+
+        .rating-option.selected {
+            background: #7a12d4;
+            color: white;
+            border-color: #7a12d4;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #7a12d4, #a855f7);
+            color: white;
+            border: none;
+            padding: 1.25rem 2rem;
+            border-radius: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(122, 18, 212, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #f0fdf4;
+            border: 2px solid #16a34a;
+            border-radius: 1rem;
+            color: #166534;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .feedback-container { padding: 2rem; }
+            .header h1 { font-size: 2rem; }
+            .rating-group { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <div class="header">
+            <h1>Executive Feedback</h1>
+            <p>Your thoughts on Eliza's AI partnership presentation</p>
+        </div>
+
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Your Role</label>
+                <select id="role" name="role" required>
+                    <option value="">Select your role</option>
+                    <option value="ceo">CEO - Vishen</option>
+                    <option value="cto">CTO - Norman</option>
+                    <option value="cpo">CPO - Dario</option>
+                    <option value="coo">COO - Alex</option>
+                    <option value="cfo">CFO - Jenny</option>
+                    <option value="head-growth">Head of Growth - Marisha</option>
+                    <option value="head-author-relations">Head of Author Relations - Amy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Overall Presentation Rating</label>
+                <div class="rating-group" data-rating="overall">
+                    <div class="rating-option" data-value="1">1<br>Poor</div>
+                    <div class="rating-option" data-value="2">2<br>Fair</div>
+                    <div class="rating-option" data-value="3">3<br>Good</div>
+                    <div class="rating-option" data-value="4">4<br>Great</div>
+                    <div class="rating-option" data-value="5">5<br>Excellent</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>How excited are you about AI partnership at Mindvalley?</label>
+                <div class="rating-group" data-rating="excitement">
+                    <div class="rating-option" data-value="1">1<br>Not at all</div>
+                    <div class="rating-option" data-value="2">2<br>Slightly</div>
+                    <div class="rating-option" data-value="3">3<br>Moderately</div>
+                    <div class="rating-option" data-value="4">4<br>Very</div>
+                    <div class="rating-option" data-value="5">5<br>Extremely</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>How ready is your department for AI integration?</label>
+                <div class="rating-group" data-rating="readiness">
+                    <div class="rating-option" data-value="1">1<br>Not ready</div>
+                    <div class="rating-option" data-value="2">2<br>Need prep</div>
+                    <div class="rating-option" data-value="3">3<br>Somewhat</div>
+                    <div class="rating-option" data-value="4">4<br>Mostly ready</div>
+                    <div class="rating-option" data-value="5">5<br>Fully ready</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="concerns">What are your main concerns about AI integration?</label>
+                <textarea id="concerns" name="concerns" placeholder="Security, job displacement, technical complexity, budget, timeline, etc."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="opportunities">What excites you most about the opportunities?</label>
+                <textarea id="opportunities" name="opportunities" placeholder="Efficiency gains, new capabilities, competitive advantage, customer experience, etc."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="implementation">Your thoughts on the implementation timeline (start immediately)?</label>
+                <select id="implementation" name="implementation" required>
+                    <option value="">Select your preference</option>
+                    <option value="immediate">Start immediately - I'm ready</option>
+                    <option value="1-month">Give me 1 month to prepare</option>
+                    <option value="3-months">Need 3 months for planning</option>
+                    <option value="6-months">Prefer 6+ months timeline</option>
+                    <option value="not-ready">Not ready yet - need more discussion</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="questions">Questions for Eliza or Vishen?</label>
+                <textarea id="questions" name="questions" placeholder="Any technical questions, clarifications, or specific requests?"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Feedback</button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <h3>✅ Feedback Submitted!</h3>
+            <p>Thank you for your input. Vishen and Eliza will review your feedback and follow up accordingly.</p>
+        </div>
+    </div>
+
+    <script>
+        // Rating selection functionality
+        document.querySelectorAll('.rating-group').forEach(group => {
+            group.addEventListener('click', function(e) {
+                if (e.target.classList.contains('rating-option')) {
+                    // Remove selected class from all options in this group
+                    group.querySelectorAll('.rating-option').forEach(option => {
+                        option.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    e.target.classList.add('selected');
+                    
+                    // Store the value
+                    const ratingType = group.dataset.rating;
+                    const value = e.target.dataset.value;
+                    group.setAttribute('data-selected', value);
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Add rating values
+            document.querySelectorAll('.rating-group').forEach(group => {
+                const ratingType = group.dataset.rating;
+                const selectedValue = group.getAttribute('data-selected');
+                data[ratingType + '_rating'] = selectedValue || '';
+            });
+            
+            // In a real implementation, you'd send this to a server
+            console.log('Feedback submitted:', data);
+            
+            // Show success message
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Store locally for now (in real implementation, send to server)
+            localStorage.setItem('executive_feedback_' + Date.now(), JSON.stringify(data));
+        });
+    </script>
+</body>
+</html>
