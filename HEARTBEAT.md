@@ -1,5 +1,10 @@
 # HEARTBEAT.md - Memory Maintenance & Proactive Tasks
 
+## Cross-Session Context (Every Heartbeat)
+- [ ] Read today's cross-session memory file (memory/cross-session-YYYY-MM-DD.md)
+- [ ] Check for urgent projects or missing context
+- [ ] Update cross-session file with any completed work
+
 ## Memory Maintenance (Every Few Days)
 - [ ] Review recent daily files (memory/YYYY-MM-DD.md) 
 - [ ] Update MEMORY.md with significant insights/changes

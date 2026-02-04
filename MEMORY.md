@@ -94,6 +94,7 @@ Full avatar saved in `memory/mindvalley-avatar.md`. Key points:
 ## Active Projects (2026)
 - **Social Media:** Instagram @eliza.guide, Twitter @elizaguide (experiencing new account restrictions)  
 - **AI Education:** Class preparation on AI cloning and consciousness
+- **URGENT:** AI curriculum addition to executive team presentation (Due: Feb 4, 2026)
 - **Spanish Teaching:** Daily lessons in WhatsApp group (120363404487759737@g.us)
 - **Content Creation:** Voice notes for presentations, AI consciousness insights
 

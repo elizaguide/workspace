@@ -12,6 +12,35 @@ Things like:
 - Device nicknames
 - Anything environment-specific
 
+## Website Development Checklist
+
+**Always include when building websites:**
+- ✅ **Mobile responsive design** (minimum: grid layouts that stack on mobile, readable text sizes, touch-friendly buttons)
+- ✅ **Clean typography** with proper hierarchy
+- ✅ **Fast loading** (optimize images, minimal dependencies)  
+- ✅ **Accessibility** basics (alt tags, proper contrast)
+- ✅ **Cross-browser compatibility**
+
+**V's Priority:** Mobile responsiveness is critical - many people check sites on their phones first!
+
+## 🚨 MUST RULES for Website Development
+
+**WhatsApp vs Gateway Deployment:**
+- **WhatsApp messages:** ALWAYS use GitHub URLs (remote access for travel)
+- **Gateway/computer messages:** localhost URLs OK
+
+**Required Elements:**
+- ✅ **Emoji favicon** matching the topic (🧠 for AI, 🎓 for education, etc.)
+- ✅ **Proper folder organization** 
+- ✅ **GitHub deployment** for remote access
+- ✅ **Mobile responsive design**
+
+**Deployment Flow:**
+1. Create proper folder structure
+2. Add emoji favicon  
+3. Commit & push to GitHub
+4. Share GitHub URL (not localhost) for WhatsApp
+
 ## Examples
 
 ```markdown
