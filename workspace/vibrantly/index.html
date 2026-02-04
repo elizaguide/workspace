@@ -1,372 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🌟 Vibrantly - AI-Powered Health Optimization — Mindvalley</title>
-  <meta name="description" content="Advanced AI-powered health optimization suite by Eliza. Personalized supplement protocols, blood work analysis, and comprehensive wellness tracking." />
-  <meta name="theme-color" content="#7a12d4" />
-  <link rel="stylesheet" href="mindvalley-font.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Google Sans', 'Google Sans Flex', sans-serif;
-      background: #ffffff;
-      color: #0f131a;
-      line-height: 1.6;
-    }
-    
-    .mv-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-    
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-weight: 700;
-      border-radius: 999px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: none;
-    }
-    
-    .button:hover {
-      transform: translateY(-2px);
-    }
-    
-    .tool-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 1rem;
-      border: 1px solid #e5e7eb;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    
-    .tool-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      border-color: #7a12d4;
-    }
-    
-    .status-badge {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      padding: 0.5rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .status-live {
-      background: rgba(34, 197, 94, 0.1);
-      color: #059669;
-      border: 1px solid rgba(34, 197, 94, 0.2);
-    }
-    
-    .status-beta {
-      background: rgba(245, 158, 11, 0.1);
-      color: #d97706;
-      border: 1px solid rgba(245, 158, 11, 0.2);
-    }
-    
-    @media (max-width: 768px) {
-      .mv-container {
-        padding: 0 1rem;
-      }
-      
-      .grid-responsive {
-        grid-template-columns: 1fr !important;
-      }
-      
-      .text-responsive {
-        text-align: center !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrantly - Vishen's Health Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00D2FF',
+                        secondary: '#3A7BD5',
+                        accent: '#FF6B6B',
+                        success: '#4ECDC4',
+                        warning: '#FFE66D',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .progress-ring { transition: stroke-dasharray 0.5s ease-in-out; }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 5px rgba(0, 210, 255, 0.5); } 50% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.8); } }
+        .pulse-glow { animation: pulse-glow 2s infinite; }
+    </style>
 </head>
-<body>
-  <!-- Hero Section -->
-  <section class="mv-container" style="padding: 6rem 0 5rem 0; text-align: center;">
-    <div class="overline-text" style="margin-bottom: 1rem; color: #7a12d4; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; font-weight: 600;">
-      AI-POWERED HEALTH OPTIMIZATION
-    </div>
-    <h1 class="title-bold-1" style="max-width: 48rem; margin: 0 auto 1.25rem auto; font-size: 3.5rem; font-weight: 800; line-height: 1.1;">
-      Vibrantly
-    </h1>
-    <p class="body-lg" style="max-width: 40rem; margin: 0 auto 2.5rem auto; color: #4b5563; font-size: 1.25rem;">
-      Advanced health optimization suite by Eliza. Personalized supplement protocols, blood work analysis, and comprehensive wellness tracking.
-    </p>
-    
-    <!-- Stats Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-      <div style="text-align: center;">
-        <div style="font-size: 2.5rem; font-weight: 800; color: #7a12d4; margin-bottom: 0.5rem;">6</div>
-        <div style="font-size: 0.875rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">Health Tools</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.5rem; font-weight: 800; color: #7a12d4; margin-bottom: 0.5rem;">40+</div>
-        <div style="font-size: 0.875rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">Supplements</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.5rem; font-weight: 800; color: #7a12d4; margin-bottom: 0.5rem;">32</div>
-        <div style="font-size: 0.875rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">Biomarkers</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2.5rem; font-weight: 800; color: #7a12d4; margin-bottom: 0.5rem;">100%</div>
-        <div style="font-size: 0.875rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em;">Personalized</div>
-      </div>
-    </div>
-    
-    <a href="#tools" class="button" style="
-      padding: 1rem 2.5rem; background-color: #7a12d4; color: white;
-      font-size: 1.125rem; margin-top: 1rem;
-    ">Explore Health Tools</a>
-  </section>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold">Vibrantly</h1>
+                    <p class="text-blue-100">Vishen's Complete Health Dashboard</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold">92%</div>
+                    <div class="text-sm text-blue-100">Health Score</div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <!-- Tools Section -->
-  <section id="tools" style="background-color: #f9fafb;">
-    <div class="mv-container" style="padding: 5rem 0;">
-      <h2 class="title-bold-3" style="margin-bottom: 3rem; text-align: center; font-size: 2.25rem; font-weight: 700;">
-        Health Optimization Suite
-      </h2>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 2rem;" class="grid-responsive">
-        
-        <!-- Ultimate Supplement Dashboard -->
-        <div class="tool-card">
-          <div class="status-badge status-live">● Live</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">💊</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Ultimate Supplement Dashboard
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Complete supplement protocol optimized for your blood work. Interactive timing, synergies, and personalized recommendations based on your health markers.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Blood work integration (testosterone, cholesterol)
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Anti-inflammatory skin protocol
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Perfect timing recommendations
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Synergy analysis & interactions
-            </li>
-          </ul>
-          <a href="ultimate-supplement-dashboard.html" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">Open Dashboard</a>
+    <!-- Quick Stats -->
+    <section class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-success">16/20</div>
+                <div class="text-sm text-gray-600">Running Speed</div>
+                <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div class="bg-success h-2 rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-accent">24kg</div>
+                <div class="text-sm text-gray-600">Kettlebell PR</div>
+                <div class="text-xs text-green-600 mt-1">↗ +2kg this week</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-warning">1</div>
+                <div class="text-sm text-gray-600">Pending Reminder</div>
+                <div class="text-xs text-orange-600 mt-1">OneRebel Pilates</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 shadow-sm card-hover">
+                <div class="text-2xl font-bold text-primary">-4yr</div>
+                <div class="text-sm text-gray-600">Bio Age Goal</div>
+                <div class="text-xs text-blue-600 mt-1">3 months target</div>
+            </div>
         </div>
 
-        <!-- Comprehensive Health Dashboard -->
-        <div class="tool-card">
-          <div class="status-badge status-live">● Live</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">📊</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Comprehensive Health Dashboard
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Complete health overview with real blood work data, biomarker tracking, and personalized health insights with trend analysis.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              32 tracked biomarkers with lab results
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Visual health trends and patterns
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Personalized recommendations
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Mobile-responsive design
-            </li>
-          </ul>
-          <a href="comprehensive-health-dashboard.html" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">View Health Data</a>
+        <!-- Navigation Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Workouts -->
+            <a href="workouts.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-success">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">💪 Workouts</h3>
+                        <div class="bg-success bg-opacity-10 text-success px-3 py-1 rounded-full text-sm">2 this week</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Latest: DABBS</span>
+                            <span class="font-medium">Today</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Next: OneRebel</span>
+                            <span class="font-medium text-primary">Book Pilates</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Progress</span>
+                            <span class="font-medium text-green-600">↗ Strong gains</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Supplements -->
+            <a href="supplements.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-primary">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">💊 Supplements</h3>
+                        <div class="bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-full text-sm">8 daily</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Morning Stack</span>
+                            <span class="font-medium">6 pills</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Evening</span>
+                            <span class="font-medium">2 pills</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Interactions</span>
+                            <span class="font-medium text-yellow-600">1 warning</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Blood Work -->
+            <a href="bloodwork.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-accent">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">🩸 Blood Work</h3>
+                        <div class="bg-accent bg-opacity-10 text-accent px-3 py-1 rounded-full text-sm">Oct 2025</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">LDL Cholesterol</span>
+                            <span class="font-medium text-red-600">171 ↑</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Testosterone</span>
+                            <span class="font-medium text-green-600">30.5 ✓</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Vitamin D</span>
+                            <span class="font-medium text-green-600">41.8 ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Goals -->
+            <a href="goals.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-warning">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">🎯 Goals</h3>
+                        <div class="bg-warning bg-opacity-10 text-warning px-3 py-1 rounded-full text-sm">Q1 2026</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Muscle Gain</span>
+                            <span class="font-medium text-green-600">On Track</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Waist: 82→79cm</span>
+                            <span class="font-medium">-1cm so far</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Bio Age -4yr</span>
+                            <span class="font-medium text-blue-600">3mo target</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Reminders -->
+            <a href="reminders.html" class="block">
+                <div class="bg-white rounded-2xl p-6 shadow-sm card-hover border-l-4 border-purple-500 pulse-glow">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-semibold">⏰ Reminders</h3>
+                        <div class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm">1 urgent</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">OneRebel Pilates</span>
+                            <span class="font-medium text-red-600">Book now</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Blood work follow-up</span>
+                            <span class="font-medium">Next month</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600">Supplement review</span>
+                            <span class="font-medium">2 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Health Insights -->
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-semibold">🧠 AI Insights</h3>
+                    <div class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">Updated</div>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-gray-700 text-sm">Your 24kg kettlebell pulls show excellent functional strength gains. Perfect for martial arts prep.</p>
+                    <p class="text-gray-700 text-sm">LDL levels suggest adding more cardio. OneRebel classes are ideal.</p>
+                    <p class="text-gray-700 text-sm">Consistent HIIT could reverse biological age by 2-4 years based on current progress.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Enhanced Health Dashboard v2 -->
-        <div class="tool-card">
-          <div class="status-badge status-live">● Live</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">🎯</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Enhanced Health Dashboard v2
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Advanced version with visual supplement library, unique gradient patterns, and enhanced user experience design.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Visual supplement library
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Real blood work integration
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Interactive animations
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Flagged high/low values
-            </li>
-          </ul>
-          <a href="enhanced-health-dashboard-v2.html" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">Explore v2</a>
+    <!-- Family Section -->
+    <section class="container mx-auto px-6 py-8">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <h3 class="text-xl font-semibold mb-4">👨‍👦 Family Fitness</h3>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Vishen</span>
+                        <span class="text-blue-600 font-bold">Speed 16</span>
+                    </div>
+                    <div class="text-sm text-gray-600">Latest: DABBS Fitness (24kg kettlebell)</div>
+                    <div class="text-sm text-gray-600">Next: OneRebel Pilates</div>
+                </div>
+                <div class="bg-green-50 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Hayden</span>
+                        <span class="text-green-600 font-bold">Speed 21</span>
+                    </div>
+                    <div class="text-sm text-gray-600">Latest: OneRebel Reshape</div>
+                    <div class="text-sm text-gray-600">Schedule: DABBS 12 PM</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <!-- Vibrantly MVP -->
-        <div class="tool-card">
-          <div class="status-badge status-beta">● Beta</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">🚀</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Vibrantly MVP
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Full interactive app experience with multiple screens, goal selection, and complete user journey prototype.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Multi-screen interactive app
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Goal selection & personalization
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Complete user onboarding
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Product experience prototype
-            </li>
-          </ul>
-          <a href="vibrantly-mvp/" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">Launch MVP</a>
-        </div>
-
-        <!-- Blood Work Analysis -->
-        <div class="tool-card">
-          <div class="status-badge status-live">● Live</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">🩸</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Blood Work Analysis
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Deep dive into your lab results with AI-powered insights, trend identification, and personalized improvement protocols.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Complete biomarker analysis
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Health risk assessments
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Improvement protocols
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Supplement integration
-            </li>
-          </ul>
-          <a href="bloodwork.html" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">Analyze Results</a>
-        </div>
-
-        <!-- Workout Dashboard -->
-        <div class="tool-card">
-          <div class="status-badge status-live">● Live</div>
-          <div style="font-size: 3rem; margin-bottom: 1.5rem;">💪</div>
-          <h3 class="title-bold-6" style="margin-bottom: 1rem; font-size: 1.5rem; font-weight: 700;">
-            Workout Dashboard
-          </h3>
-          <p style="color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">
-            Track your DABBS workouts, log progress, and optimize your training schedule with performance analytics.
-          </p>
-          <ul style="list-style: none; margin-bottom: 2rem; padding: 0;">
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              DABBS workout tracking
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Progress visualization
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Exercise logging & metrics
-            </li>
-            <li style="padding: 0.5rem 0; position: relative; padding-left: 1.5rem; color: #4b5563;">
-              <span style="position: absolute; left: 0; color: #7a12d4; font-weight: bold;">✓</span>
-              Performance analytics
-            </li>
-          </ul>
-          <a href="workout-dashboard.html" class="button" style="
-            padding: 0.75rem 1.5rem; background-color: #7a12d4; color: white;
-          ">Track Workouts</a>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section style="background-color: #ffffff;">
-    <div class="mv-container" style="padding: 5rem 0; text-align: center;">
-      <h2 class="title-bold-3" style="max-width: 40rem; margin: 0 auto 1rem auto; font-size: 2.25rem; font-weight: 700;">
-        Ready to Optimize Your Health?
-      </h2>
-      <p class="body-lg" style="max-width: 36rem; margin: 0 auto 2.5rem auto; color: #4b5563; font-size: 1.25rem;">
-        These tools represent the cutting edge of personalized health optimization, powered by AI analysis of your unique biomarkers and health goals.
-      </p>
-      <a href="mailto:vishen@mindvalley.com?subject=Vibrantly Meeting Request&body=Hi Vishen, I'd like to schedule a meeting to discuss the new Vibrantly health optimization suite and explore potential insights for supplements, workouts, and personalized health protocols." class="button" style="
-        padding: 1rem 2.5rem; background-color: #7a12d4; color: white;
-        font-size: 1.125rem;
-      ">Schedule Meeting</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="mv-container" style="padding: 4rem 0; color: #6b7280; text-align: center;">
-    <p style="margin: 0;">© Mindvalley • Vibrantly Health Optimization Suite</p>
-  </footer>
-
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate progress bars
+            const progressBars = document.querySelectorAll('[style*="width"]');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                    bar.style.transition = 'width 1s ease-out';
+                }, 300);
+            });
+        });
+    </script>
 </body>
 </html>
