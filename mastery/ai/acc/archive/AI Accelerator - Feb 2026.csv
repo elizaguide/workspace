@@ -1,0 +1,158 @@
+﻿Name,Day,Duration,Speaker,Tool,Content Notes,Clear Outcomes,Emotional Arc
+Day #1: CustomGPT (Content Creation Clone),Feb 9,2:00,Vishen,ChatGPT,"Part 0: Intro (20 min)
+- Struggling to get real value from AI? Fear of missing out while everyone on social media boasts about their AI usage?
+- The Clone Mindset = Simplest + Most Practically Applicable
+    - Genius is in simplicity.
+- The Aman Tokyo principle: Invisible service
+- Quick poll: ""What repetitive task steals the most time from your week?""
+- Commitment: ""We're building this week, not just observing""
+- The Tools required this week:
+    - ChatGPT ($20/month)
+    - Granola AI (Free Tier)
+    - Buffer (Free Tier)
+
+Part 1: CAPTURE Your Content Brain (30 min)
+- What are we doing in this stage?
+    - Collecting context -> Context Engineering is more important than prompting
+- Use Deep Research to get custom Content Creation knowledge base with key principles
+    - Provide all your context to get a fully personalized knowledge base (DNA)
+- Create a new Clone (GPT)
+- Add instruction: ""You also create social content in my voice"" (Template prepared)
+- Upload 3-5 of your best LinkedIn posts/tweets
+    - Don't have your posts? Find posts by others that you like and that perform well
+- Upload your content creation DNA (Principles)
+    - Summary in Instructions
+    - Long doc as Knowledge
+
+Part 2: BUILD Your Communication Clone (35 min)
+- Create Custom GPT: ""[Your Name]'s Content Creator""
+- Instructions
+    - Copy system instructions (template provided)
+    - Provide your content DNA Summary
+- Knowledge
+    - Upload 3-5 of your best LinkedIn posts/tweets
+        - Don't have your posts? Find posts by others that you like and that perform well
+    - Upload your content creation DNA (Principles)
+        - Summary in Instructions
+        - Long doc as Knowledge
+    - ---
+    - Explain Few-Shot Prompting (Providing ""Examples"" (in simple language) as the most powerful prompting technique)
+- Tools
+    - ...
+- Explain the key elements of any Custom GPT / Project:
+    - Instructions
+    - Knowledge
+    - Tools
+
+Part 3: TEST & Deploy (20 min)
+- Step 1: Record a 3-minute voice note about ANY topic
+- Step 2: Generate content (LinkedIn post, Twitter thread, Email intro)
+- Result: You just created 3 pieces of content in 10 minutes
+
+Part #4: Closing & Anticipation
+Create a sense of completion + result + anticipation (for tomorrow).
+- Today:
+    - Completed their first Clone (Custom GPT) and learnt about the basics of prompt engineering and GPTs
+    - Have a Communication Clone you can use every day - saving you 15-23 hours/week
+- Tomorrow:
+    - Content Creation Clone
+    - Go deeper into more advanced techniques of prompt and context engineering
+- This week:
+    - Build 5 clones
+    - The 5th clone will teach you how to identify and build any custom clone you want
+    - Get awarded and recognized by Mindvalley & the community during the graduation
+","[ ] Communication Clone Built
+[ ] 15-23 hours/week saved
+[ ] Learnt:
+    [ ] Custom GPT Basics
+    [ ] Prompting Basics",
+Day #2: Meetings (Granola) + Integration,Feb 10,2:00,Vishen,"ChatGPT,Granola AI","Part 0: Intro (5 min)
+- So far we've built clones CREATING new content
+- Now let's learn about the other super power of Generative AI — EXTRACTING factual information from an existing content (meeting transcript)
+- Let's also learn how to combine different tools together (Granola + ChatGPT)
+
+Part 1: CAPTURE Your Meeting Style (10 min)
+- Think of your last important meeting
+- What did you wish you had documented?
+- Poll: What's your #1 meeting pain point?
+
+Part 2: BUILD Your Meeting Clone (40 min)
+Setup Granola AI (15 min):
+- Install Granola app (everyone follows along)
+- Connect to calendar
+- Test with sample meeting recording (provided)
+- Review what it captures automatically
+Create Your Meeting Templates (25 min):
+- Template 1: Action Items Tracker (10 min)
+- Template 2: Meeting Brief Generator (10 min)
+- Test on same sample meeting
+- Pick ONE template that solves your biggest pain point
+
+Part 3: TEST in Simulation (20 min)
+Breakout Rooms (groups of 4):
+- 5 min: One person shares a real business challenge
+- 5 min: Group discusses (Granola recording)
+- 5 min: Granola processes it
+- 5 min: Review the output - did it capture everything?
+- Back in main room: 2 volunteers share their results
+
+Part 4: Integrate Your Clones to Work Together (20 min)
+Meeting → Content Pipeline
+- Granola records meeting
+- Extract key insight from transcript
+- Feed to Content Clone
+- Generate LinkedIn post about the insight
+- Schedule in Buffer
+- Everyone builds this workflow right now
+
+Part #5 Closing & Anticipation (5 min)
+Create a sense of completion + result + anticipation (for tomorrow).
+- Today:
+    - -
+- Tomorrow:
+    - -
+- This week:
+    - -
+
+","[ ] AI Meetings Assistant = Built
+[ ] 9-10 hours/week saved
+    [ ] worth $47K-$260K/year depending on hourly rate
+[ ]  Learnt:
+    [ ] Granola
+    [ ] Integrating different tools and clones into workflows",
+Day #3: Video Clone & AI Influencer,Feb 11,2:00,Iman Oubou,,"Part 0: Intro (5 min)
+- So far we've built clones focusing on text content and using the most basic (yet powerful) tool - ChatGPT
+- Next let's explore different content formats AI can create
+- Today you'll create your AI video clone speaking in your voice
+
+Part 1: CAPTURE  (10 min)
+- -
+
+Part 2: BUILD (40 min)
+- -
+
+Part 3: TEST in Simulation (20 min)
+- -
+- -
+
+Part #4 Closing & Anticipation (5 min)
+Create a sense of completion + result + anticipation (for tomorrow).
+- Today:
+    - -
+- Tomorrow:
+    - -
+- This week:
+    - -
+
+","[ ] AI Video Clone created
+[ ]  Learnt:
+    [ ] Tools (?)
+    [ ] Image generation prompting
+    [ ] Turning images into videos",
+Day #4: Learning Clone (NotebookLM),Feb 12,2:00,Vykintas Glodenis,NotebookLM,- ,"[ ] Learning Clone created for a selected topic
+[ ] Become a research, learning, and content transformation machine
+[ ] All NotebookLM features (and uniqueness vs ChatGPT understood)",
+Day #5: Automated Clones (Airtable AI Field Agents)s,Feb 13,2:00,Vykintas Glodenis,Airtable,- ,"[ ] 
+[ ] ",
+Day #6: GRADUATION & AWARDS,Feb 15,2:00,Vishen,,,"[ ] 
+[ ] ",
