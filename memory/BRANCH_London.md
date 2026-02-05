@@ -6,7 +6,13 @@
 - **Status:** Primary residence
 
 ## London Experiences
-*[To be populated with specific London experiences, places, insights]*
+### Mayfair Dining & Nightlife
+- **34 Mayfair:** Dinner location (2026-02-04) - date with Elena, Ukrainian aesthetician
+- **Cocktail recommendations near 32 Mayfair:**
+  - **Connaught Bar:** World-renowned, intimate booths, legendary martinis (2 min walk)
+  - **Sketch:** Pink tearoom/cocktail space, Instagram-worthy, pod bathrooms (3 min walk)
+  - **Sexy Fish:** Berkeley Square, dramatic atmosphere, sexy date vibes (5 min walk)
+  - **Mr Fogg's Residence:** Victorian parlour, cozy, private conversation (8 min walk)
 
 ## City Insights & Observations
 - *[Cultural observations about living in London]*

@@ -43,37 +43,10 @@ fi
 
 echo ""
 
-# 3. Model Router (auto Ollama ↔ Sonnet)
-ROUTER_SRC="$DIR/model-router.js"
-REPLY_DST="/opt/homebrew/lib/node_modules/clawdbot/dist/auto-reply/reply/get-reply.js"
-if [ -f "$ROUTER_SRC" ] && [ -f "$REPLY_DST" ]; then
-  BACKUP="$REPLY_DST.original"
-  [ ! -f "$BACKUP" ] && cp "$REPLY_DST" "$BACKUP"
-  # Check if already patched
-  if grep -q "Model Router" "$REPLY_DST" 2>/dev/null; then
-    echo "[3/3] Model Router already patched"
-  else
-    # Insert router block after applyResetModelOverride closing brace
-    sed -i '' '/^    });$/,/^    const directiveResult = await resolveReplyDirectives({$/{
-      /^    const directiveResult = await resolveReplyDirectives({$/i\
-\    // --- Model Router: auto-classify simple vs complex ---\
-\    try {\
-\        const { classifyComplexity } = await import("/Users/vishen/clawd/patches/model-router.js");\
-\        const routed = classifyComplexity(triggerBodyNormalized);\
-\        if (routed?.provider \&\& routed?.model) {\
-\            sessionEntry.providerOverride = routed.provider;\
-\            sessionEntry.modelOverride = routed.model;\
-\        }\
-\    } catch (_routerErr) { /* router missing or broken — use default */ }\
-\    // --- End Model Router ---
-    }' "$REPLY_DST"
-    echo "[3/3] Model Router patched"
-  fi
-  echo "  - Simple messages → ollama/llama3.1:8b"
-  echo "  - Complex messages → anthropic/claude-sonnet-4-0"
-else
-  echo "[3/3] SKIPPED: Model Router files not found"
-fi
+# 3. Model Router — DISABLED
+# Ollama 8B can't reliably use tools/skills on 16GB RAM.
+# All messages now go to Sonnet.
+echo "[3/3] Model Router: DISABLED (Sonnet only)"
 
 echo ""
 echo "Done! Now restart the gateway:"

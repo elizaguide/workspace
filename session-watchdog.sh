@@ -36,7 +36,8 @@ REASON=""
 
 # --- Check 1: Format errors ---
 if [ -f "$LOG" ]; then
-  RECENT_ERRORS=$(tail -200 "$LOG" 2>/dev/null | grep -c "format error" 2>/dev/null || echo "0")
+  RECENT_ERRORS=$(tail -200 "$LOG" 2>/dev/null | grep -c "format error" 2>/dev/null || true)
+  RECENT_ERRORS=${RECENT_ERRORS:-0}
   if [ "$RECENT_ERRORS" -gt 0 ]; then
     NEEDS_CLEAR=1
     REASON="format error ($RECENT_ERRORS occurrences)"
