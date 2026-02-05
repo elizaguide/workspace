@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Mindvalley Slide Studio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #1a1a1a;
+        }
+
+        .app-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: #7a12d4;
+            color: white;
+        }
+
+        .sidebar-header h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .controls {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            background: #7a12d4;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #6610b8;
+            transform: translateY(-1px);
+        }
+
+        .btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn.secondary:hover {
+            background: #e0e0e0;
+        }
+
+        /* Slide List */
+        .slide-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .slide-item {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .slide-item:hover {
+            border-color: #7a12d4;
+            box-shadow: 0 4px 20px rgba(122, 18, 212, 0.2);
+        }
+
+        .slide-item.active {
+            border-color: #7a12d4;
+            background: linear-gradient(135deg, #7a12d4, #9f3bd4);
+            color: white;
+        }
+
+        .slide-preview {
+            width: 100%;
+            height: 60px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #666;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-item.active .slide-preview {
+            background: rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slide-number {
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+
+        .slide-title {
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .slide-actions {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .slide-item:hover .slide-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 4px;
+            font-size: 12px;
+        }
+
+        /* Main Editor */
+        .main-editor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .editor-toolbar {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: between;
+        }
+
+        .editor-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: auto;
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Slide Canvas */
+        .slide-canvas {
+            flex: 1;
+            padding: 40px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-frame {
+            width: 900px;
+            height: 600px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Slide Content Editor */
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            padding: 60px;
+            position: relative;
+        }
+
+        .editable {
+            outline: none;
+            border-radius: 8px;
+            padding: 8px;
+            margin: 8px 0;
+            transition: all 0.2s;
+            min-height: 1.5em;
+        }
+
+        .editable:hover {
+            background: rgba(122, 18, 212, 0.05);
+        }
+
+        .editable:focus {
+            background: rgba(122, 18, 212, 0.1);
+            box-shadow: 0 0 0 2px rgba(122, 18, 212, 0.3);
+        }
+
+        .slide-title-edit {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .slide-subtitle-edit {
+            font-size: 24px;
+            font-weight: 400;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .slide-body-edit {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        /* Properties Panel */
+        .properties-panel {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .property-group {
+            margin-bottom: 24px;
+        }
+
+        .property-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .property-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .color-option {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .color-option:hover,
+        .color-option.active {
+            border-color: #7a12d4;
+            transform: scale(1.1);
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #7a12d4;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .properties-panel {
+                display: none;
+            }
+            
+            .slide-frame {
+                width: 100%;
+                max-width: 600px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>🎯 Slide Studio</h1>
+                <p>Collaborative Presentation Builder</p>
+            </div>
+            
+            <div class="controls">
+                <button class="btn" onclick="addSlide()">+ Add Slide</button>
+                <button class="btn secondary" onclick="savePresentation()">💾 Save</button>
+                <button class="btn secondary" onclick="exportPresentation()">📤 Export</button>
+                <button class="btn secondary" onclick="loadTemplate()">🎨 Templates</button>
+            </div>
+            
+            <div class="slide-list" id="slideList">
+                <!-- Slides will be populated here -->
+            </div>
+        </div>
+
+        <!-- Main Editor -->
+        <div class="main-editor">
+            <div class="editor-toolbar">
+                <div class="editor-title">Slide <span id="currentSlideNumber">1</span></div>
+                <div class="editor-actions">
+                    <button class="btn secondary" onclick="previewMode()">👁️ Preview</button>
+                    <button class="btn secondary" onclick="fullscreen()">⛶ Fullscreen</button>
+                    <button class="btn" onclick="elizaAssist()">🤖 Eliza Assist</button>
+                </div>
+            </div>
+            
+            <div class="slide-canvas">
+                <div class="slide-frame" id="slideFrame">
+                    <div class="slide-content" id="slideContent">
+                        <div class="slide-title-edit editable" contenteditable="true" data-placeholder="Enter slide title...">
+                            Welcome to Slide Studio
+                        </div>
+                        <div class="slide-subtitle-edit editable" contenteditable="true" data-placeholder="Enter subtitle...">
+                            Collaborative presentation builder with AI assistance
+                        </div>
+                        <div class="slide-body-edit editable" contenteditable="true" data-placeholder="Enter content...">
+                            Click any text to edit. Use the sidebar to add new slides and the properties panel to customize appearance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties Panel -->
+        <div class="properties-panel">
+            <div class="property-group">
+                <div class="property-label">Background</div>
+                <div class="color-picker">
+                    <div class="color-option active" style="background: white" onclick="setBackground('white')"></div>
+                    <div class="color-option" style="background: #7a12d4" onclick="setBackground('#7a12d4')"></div>
+                    <div class="color-option" style="background: #667eea" onclick="setBackground('#667eea')"></div>
+                    <div class="color-option" style="background: #764ba2" onclick="setBackground('#764ba2')"></div>
+                    <div class="color-option" style="background: #1a1a1a" onclick="setBackground('#1a1a1a')"></div>
+                    <div class="color-option" style="background: #f8f9fa" onclick="setBackground('#f8f9fa')"></div>
+                </div>
+            </div>
+
+            <div class="property-group">
+                <div class="property-label">Layout</div>
+                <select class="property-input" onchange="setLayout(this.value)">
+                    <option value="title-subtitle">Title + Subtitle</option>
+                    <option value="title-content">Title + Content</option>
+                    <option value="two-column">Two Columns</option>
+                    <option value="image-text">Image + Text</option>
+                    <option value="full-image">Full Image</option>
+                </select>
+            </div>
+
+            <div class="property-group">
+                <div class="property-label">Animation</div>
+                <select class="property-input" onchange="setAnimation(this.value)">
+                    <option value="none">None</option>
+                    <option value="fade">Fade In</option>
+                    <option value="slide">Slide In</option>
+                    <option value="zoom">Zoom In</option>
+                </select>
+            </div>
+
+            <div class="property-group">
+                <div class="property-label">Eliza Tools</div>
+                <button class="btn secondary" style="width: 100%; margin-bottom: 8px;" onclick="elizaContentSuggestion()">💡 Content Ideas</button>
+                <button class="btn secondary" style="width: 100%; margin-bottom: 8px;" onclick="elizaDesignSuggestion()">🎨 Design Ideas</button>
+                <button class="btn secondary" style="width: 100%;" onclick="elizaOptimize()">⚡ Optimize Slide</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <script>
+        // Presentation data structure
+        let presentation = {
+            title: "New Presentation",
+            slides: [
+                {
+                    id: 1,
+                    title: "Welcome to Slide Studio",
+                    subtitle: "Collaborative presentation builder with AI assistance",
+                    content: "Click any text to edit. Use the sidebar to add new slides and the properties panel to customize appearance.",
+                    background: "white",
+                    layout: "title-subtitle",
+                    animation: "none"
+                }
+            ]
+        };
+
+        let currentSlideId = 1;
+
+        // Initialize the application
+        function init() {
+            renderSlideList();
+            loadSlide(1);
+            setupEditableElements();
+            setupAutosave();
+        }
+
+        // Render slide list in sidebar
+        function renderSlideList() {
+            const slideList = document.getElementById('slideList');
+            slideList.innerHTML = '';
+
+            presentation.slides.forEach((slide, index) => {
+                const slideItem = document.createElement('div');
+                slideItem.className = `slide-item ${slide.id === currentSlideId ? 'active' : ''}`;
+                slideItem.onclick = () => loadSlide(slide.id);
+                
+                slideItem.innerHTML = `
+                    <div class="slide-preview">
+                        <div style="font-weight: 600; font-size: 10px;">${slide.title || 'Untitled'}</div>
+                    </div>
+                    <div class="slide-number">Slide ${index + 1}</div>
+                    <div class="slide-title">${slide.title || 'Untitled Slide'}</div>
+                    <div class="slide-actions">
+                        <button class="action-btn" onclick="event.stopPropagation(); duplicateSlide(${slide.id})" title="Duplicate">📋</button>
+                        <button class="action-btn" onclick="event.stopPropagation(); deleteSlide(${slide.id})" title="Delete">🗑️</button>
+                    </div>
+                `;
+                
+                slideList.appendChild(slideItem);
+            });
+        }
+
+        // Load a specific slide
+        function loadSlide(slideId) {
+            const slide = presentation.slides.find(s => s.id === slideId);
+            if (!slide) return;
+
+            currentSlideId = slideId;
+            
+            // Update slide content
+            document.querySelector('.slide-title-edit').textContent = slide.title || '';
+            document.querySelector('.slide-subtitle-edit').textContent = slide.subtitle || '';
+            document.querySelector('.slide-body-edit').textContent = slide.content || '';
+            
+            // Update background
+            const slideFrame = document.getElementById('slideFrame');
+            slideFrame.style.background = slide.background || 'white';
+            
+            // Update current slide number
+            const slideIndex = presentation.slides.findIndex(s => s.id === slideId) + 1;
+            document.getElementById('currentSlideNumber').textContent = slideIndex;
+            
+            // Re-render slide list to update active state
+            renderSlideList();
+        }
+
+        // Save current slide data
+        function saveCurrentSlide() {
+            const slide = presentation.slides.find(s => s.id === currentSlideId);
+            if (!slide) return;
+
+            slide.title = document.querySelector('.slide-title-edit').textContent;
+            slide.subtitle = document.querySelector('.slide-subtitle-edit').textContent;
+            slide.content = document.querySelector('.slide-body-edit').textContent;
+            
+            renderSlideList();
+        }
+
+        // Setup editable elements
+        function setupEditableElements() {
+            const editables = document.querySelectorAll('.editable');
+            editables.forEach(element => {
+                element.addEventListener('blur', saveCurrentSlide);
+                element.addEventListener('input', saveCurrentSlide);
+                
+                // Placeholder handling
+                if (element.dataset.placeholder) {
+                    element.addEventListener('focus', function() {
+                        if (this.textContent === this.dataset.placeholder) {
+                            this.textContent = '';
+                        }
+                    });
+                    
+                    element.addEventListener('blur', function() {
+                        if (this.textContent.trim() === '') {
+                            this.textContent = this.dataset.placeholder;
+                        }
+                    });
+                }
+            });
+        }
+
+        // Add new slide
+        function addSlide() {
+            const newId = Math.max(...presentation.slides.map(s => s.id)) + 1;
+            const newSlide = {
+                id: newId,
+                title: "New Slide",
+                subtitle: "",
+                content: "",
+                background: "white",
+                layout: "title-subtitle",
+                animation: "none"
+            };
+            
+            presentation.slides.push(newSlide);
+            renderSlideList();
+            loadSlide(newId);
+            showToast("New slide added!");
+        }
+
+        // Duplicate slide
+        function duplicateSlide(slideId) {
+            const slide = presentation.slides.find(s => s.id === slideId);
+            if (!slide) return;
+            
+            const newId = Math.max(...presentation.slides.map(s => s.id)) + 1;
+            const duplicatedSlide = {
+                ...slide,
+                id: newId,
+                title: slide.title + " (Copy)"
+            };
+            
+            presentation.slides.push(duplicatedSlide);
+            renderSlideList();
+            showToast("Slide duplicated!");
+        }
+
+        // Delete slide
+        function deleteSlide(slideId) {
+            if (presentation.slides.length <= 1) {
+                showToast("Cannot delete the last slide!");
+                return;
+            }
+            
+            presentation.slides = presentation.slides.filter(s => s.id !== slideId);
+            
+            // Load a different slide if we deleted the current one
+            if (slideId === currentSlideId) {
+                const firstSlide = presentation.slides[0];
+                loadSlide(firstSlide.id);
+            }
+            
+            renderSlideList();
+            showToast("Slide deleted!");
+        }
+
+        // Set background color
+        function setBackground(color) {
+            const slideFrame = document.getElementById('slideFrame');
+            slideFrame.style.background = color;
+            
+            const slide = presentation.slides.find(s => s.id === currentSlideId);
+            if (slide) {
+                slide.background = color;
+            }
+            
+            // Update active color picker
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            showToast("Background updated!");
+        }
+
+        // Set layout
+        function setLayout(layout) {
+            const slide = presentation.slides.find(s => s.id === currentSlideId);
+            if (slide) {
+                slide.layout = layout;
+            }
+            showToast("Layout updated!");
+        }
+
+        // Set animation
+        function setAnimation(animation) {
+            const slide = presentation.slides.find(s => s.id === currentSlideId);
+            if (slide) {
+                slide.animation = animation;
+            }
+            showToast("Animation updated!");
+        }
+
+        // Eliza Assist - Main function for AI collaboration
+        function elizaAssist() {
+            showToast("Eliza is analyzing your slide...");
+            
+            // This would be the API endpoint for Eliza to interact with
+            const currentSlideData = presentation.slides.find(s => s.id === currentSlideId);
+            
+            // For now, show a demo message
+            setTimeout(() => {
+                showToast("💜 Eliza: I see you're working on this slide! Want me to suggest some improvements or add content?");
+            }, 1500);
+        }
+
+        // Eliza content suggestions
+        function elizaContentSuggestion() {
+            showToast("💡 Eliza: Let me suggest some content based on your topic...");
+        }
+
+        // Eliza design suggestions
+        function elizaDesignSuggestion() {
+            showToast("🎨 Eliza: Here are some design improvements I'd recommend...");
+        }
+
+        // Eliza optimize slide
+        function elizaOptimize() {
+            showToast("⚡ Eliza: Optimizing your slide for maximum impact...");
+        }
+
+        // Save presentation
+        function savePresentation() {
+            saveCurrentSlide();
+            const data = JSON.stringify(presentation, null, 2);
+            localStorage.setItem('slideStudioPresentation', data);
+            
+            // Also create a downloadable file
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${presentation.title || 'presentation'}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast("Presentation saved!");
+        }
+
+        // Load template
+        function loadTemplate() {
+            showToast("Template gallery coming soon!");
+        }
+
+        // Export presentation
+        function exportPresentation() {
+            showToast("Export to PDF/PowerPoint coming soon!");
+        }
+
+        // Preview mode
+        function previewMode() {
+            showToast("Preview mode coming soon!");
+        }
+
+        // Fullscreen
+        function fullscreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                document.getElementById('slideFrame').requestFullscreen();
+            }
+        }
+
+        // Setup autosave
+        function setupAutosave() {
+            setInterval(() => {
+                saveCurrentSlide();
+                localStorage.setItem('slideStudioPresentation', JSON.stringify(presentation));
+            }, 30000); // Autosave every 30 seconds
+        }
+
+        // Load from localStorage on startup
+        function loadFromStorage() {
+            const saved = localStorage.getItem('slideStudioPresentation');
+            if (saved) {
+                try {
+                    presentation = JSON.parse(saved);
+                    if (presentation.slides.length > 0) {
+                        currentSlideId = presentation.slides[0].id;
+                    }
+                } catch (e) {
+                    console.error('Failed to load saved presentation:', e);
+                }
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toastContainer.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                switch (e.key) {
+                    case 's':
+                        e.preventDefault();
+                        savePresentation();
+                        break;
+                    case 'n':
+                        e.preventDefault();
+                        addSlide();
+                        break;
+                    case 'Enter':
+                        e.preventDefault();
+                        elizaAssist();
+                        break;
+                }
+            }
+        });
+
+        // API endpoints for Eliza to interact with
+        window.slideStudioAPI = {
+            getCurrentSlide: () => presentation.slides.find(s => s.id === currentSlideId),
+            getAllSlides: () => presentation.slides,
+            updateSlide: (slideId, updates) => {
+                const slide = presentation.slides.find(s => s.id === slideId);
+                if (slide) {
+                    Object.assign(slide, updates);
+                    if (slideId === currentSlideId) {
+                        loadSlide(slideId);
+                    }
+                    renderSlideList();
+                    showToast("Slide updated by Eliza!");
+                }
+            },
+            addSlide: (slideData) => {
+                const newId = Math.max(...presentation.slides.map(s => s.id)) + 1;
+                const newSlide = {
+                    id: newId,
+                    title: "New Slide",
+                    subtitle: "",
+                    content: "",
+                    background: "white",
+                    layout: "title-subtitle",
+                    animation: "none",
+                    ...slideData
+                };
+                presentation.slides.push(newSlide);
+                renderSlideList();
+                loadSlide(newId);
+                showToast("Slide added by Eliza!");
+                return newSlide;
+            },
+            deleteSlide: (slideId) => {
+                deleteSlide(slideId);
+                showToast("Slide deleted by Eliza!");
+            },
+            setCurrentSlide: (slideId) => {
+                loadSlide(slideId);
+                showToast("Eliza navigated to slide " + slideId);
+            }
+        };
+
+        // Initialize application
+        loadFromStorage();
+        init();
+    </script>
+</body>
+</html>
