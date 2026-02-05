@@ -52,6 +52,18 @@ Things like:
 3. Commit & push to GitHub
 4. Share GitHub URL (not localhost) for WhatsApp
 
+## 💬 Platform Formatting Rules
+
+**WhatsApp Specific:**
+- ✅ **URLs:** Send plain links only - NEVER use **bold** formatting around URLs
+- ✅ **No markdown tables** - Use bullet lists instead
+- ✅ **No headers** - Use **bold** or CAPS for emphasis
+- ✅ **Keep it clean** - WhatsApp doesn't need fancy formatting
+
+**Discord:**
+- ✅ **Multiple links:** Wrap in `<>` to suppress embeds: `<https://example.com>`
+- ✅ **Tables OK** - Discord supports markdown tables
+
 ## Examples
 
 ```markdown

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hiring Mastery: The Job Quadrant Framework — Mindvalley</title>
+  <meta name="description" content="Master the art of transformational hiring using Vishen's Job Quadrant framework and 3MIQ process" />
+  <meta name="theme-color" content="#7a12d4" />
+  <link rel="icon" href="data:text/plain;base64,8J+agA==" />
+  <link rel="stylesheet" href="public/mindvalley-font.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Google Sans Flex', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      color: #0f131a;
+      background: #ffffff;
+      overflow-x: hidden;
+    }
+
+    .mv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .mv-container {
+        padding: 0 1rem;
+      }
+    }
+
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      scroll-snap-align: start;
+    }
+
+    .slide:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
+    /* Title Slide */
+    .title-slide {
+      text-align: center;
+      background: linear-gradient(135deg, #7a12d4 0%, #5c0ba0 100%);
+      color: white;
+    }
+
+    .title-slide h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .title-slide .subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      opacity: 0.9;
+      margin-bottom: 3rem;
+    }
+
+    .mindvalley-logo {
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    /* Content Slides */
+    .content {
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .overline-text {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #7a12d4;
+      margin-bottom: 1rem;
+    }
+
+    .slide h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .slide h3 {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #0f131a;
+    }
+
+    .slide p {
+      font-size: 1.125rem;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, rgba(122, 18, 212, 0.1) 0%, transparent 100%);
+      padding: 0.2em 0.4em;
+      border-radius: 0.25rem;
+      color: #7a12d4;
+      font-weight: 600;
+    }
+
+    /* Job Quadrant Grid */
+    .quadrant-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .quadrant-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .quadrant-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .quadrant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(122, 18, 212, 0.15);
+      border-color: #7a12d4;
+    }
+
+    .quadrant-card h4 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #7a12d4;
+    }
+
+    .quadrant-card .maslow {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .quadrant-card p {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #7a12d4;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.5rem;
+    }
+
+    /* Process Steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .step {
+      position: relative;
+      padding: 2rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      width: 2rem;
+      height: 2rem;
+      background: #7a12d4;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+
+    .step h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #0f131a;
+    }
+
+    /* Quote Style */
+    .quote {
+      background: #f9fafb;
+      padding: 3rem;
+      border-radius: 1rem;
+      border-left: 4px solid #7a12d4;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    .quote p {
+      font-size: 1.375rem;
+      color: #0f131a;
+      margin: 0;
+    }
+
+    .quote-author {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #7a12d4;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* Navigation */
+    .nav-dots {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(122, 18, 212, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-dot.active,
+    .nav-dot:hover {
+      background: #7a12d4;
+      transform: scale(1.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-dots {
+        right: 1rem;
+      }
+      
+      .slide {
+        padding: 2rem 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.8s ease-out;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Dots -->
+  <div class="nav-dots">
+    <div class="nav-dot active" data-slide="0"></div>
+    <div class="nav-dot" data-slide="1"></div>
+    <div class="nav-dot" data-slide="2"></div>
+    <div class="nav-dot" data-slide="3"></div>
+    <div class="nav-dot" data-slide="4"></div>
+    <div class="nav-dot" data-slide="5"></div>
+    <div class="nav-dot" data-slide="6"></div>
+    <div class="nav-dot" data-slide="7"></div>
+  </div>
+
+  <!-- Slide 1: Title -->
+  <section class="slide title-slide">
+    <div class="content">
+      <h1 class="animate-in">Hiring Mastery</h1>
+      <p class="subtitle animate-in">The Job Quadrant Framework for Building Transformational Teams</p>
+      <div class="mindvalley-logo animate-in">Mindvalley Entrepreneurship Mastery</div>
+    </div>
+  </section>
+
+  <!-- Slide 2: The Problem -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">THE HIRING CRISIS</div>
+        <h2>85% of People Hate Their Jobs</h2>
+        <p>Most companies hire for <span class="highlight">skills</span> instead of <span class="highlight">values</span> and growth orientation.</p>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number">85%</span>
+            <div class="stat-label">Job Dissatisfaction Globally</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">150%</span>
+            <div class="stat-label">Average Call Center Turnover</div>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">100</span>
+            <div class="stat-label">Résumés per Position</div>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>"Here's what most companies get wrong: They focus on what someone can DO instead of who they ARE and what they WANT to become."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3: Mindvalley's Selective Process -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">THE MINDVALLEY DIFFERENCE</div>
+        <h2>Selective Hiring Process</h2>
+        <p>Quality over quantity. Intentional selectivity that attracts transformational candidates.</p>
+
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Screen 100 Résumés</h4>
+            <p>Look for nonprofit/volunteer experience as a non-negotiable requirement</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Interview 10+ People</h4>
+            <p>Deep conversations using the Job Quadrant framework to assess motivations</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Select the Best Fit</h4>
+            <p>"A people attract A people" — quality compounds over time</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>"100 percent of our employees have spent significant time volunteering or working for nonprofits."</p>
+          <div class="quote-author">— Values-Based Screening</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4: Job Quadrant Framework -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">THE CORE FRAMEWORK</div>
+        <h2>The Job Quadrant</h2>
+        <p>Discovered during Vishen's interview process. Four fundamental motivations that align with Maslow's hierarchy.</p>
+
+        <div class="quadrant-grid">
+          <div class="quadrant-card">
+            <h4>🤝 Friendship</h4>
+            <div class="maslow">Connection & Belonging</div>
+            <p>Seeks meaningful relationships and collaborative culture at work</p>
+          </div>
+          
+          <div class="quadrant-card">
+            <h4>💎 Abundance</h4>
+            <div class="maslow">Self-Esteem</div>
+            <p>Wants respect and recognition (not just money — it's about the respect money represents)</p>
+          </div>
+          
+          <div class="quadrant-card">
+            <h4>🌱 Growth</h4>
+            <div class="maslow">Self-Actualization</div>
+            <p>Committed to continuous personal development and learning</p>
+          </div>
+          
+          <div class="quadrant-card">
+            <h4>🎯 Meaning</h4>
+            <div class="maslow">Self-Transcendence</div>
+            <p>Wants to contribute to something bigger than themselves</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5: The Key Interview Question -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">THE MAGIC QUESTION</div>
+        <h2>How to Identify Candidates</h2>
+        
+        <div class="quote" style="background: #7a12d4; color: white; border: none;">
+          <p style="color: white; font-size: 1.5rem;">"What matters most to you in a job — is it the mission, personal growth, financial security, or the relationships you'll build?"</p>
+        </div>
+
+        <div style="margin-top: 3rem;">
+          <h3 style="color: #10b981; margin-bottom: 1rem;">✅ Ideal Combinations:</h3>
+          <p style="margin-bottom: 0.5rem;"><strong>Growth + Meaning:</strong> Perfect fit — naturally transformational</p>
+          <p style="margin-bottom: 0.5rem;"><strong>Friendship + Growth:</strong> Great fit — thrives in collaborative culture</p>
+          <p style="margin-bottom: 2rem;"><strong>Meaning + Abundance:</strong> Good fit — mission-driven but needs recognition</p>
+
+          <h3 style="color: #ef4444; margin-bottom: 1rem;">🚩 Red Flags:</h3>
+          <p style="margin-bottom: 0.5rem;"><strong>Abundance Only:</strong> Money-focused, likely to job-hop</p>
+          <p style="margin-bottom: 0.5rem;"><strong>No Clear Preference:</strong> Lacks self-awareness</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6: 3MIQ Process -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">ONBOARDING EXCELLENCE</div>
+        <h2>The 3MIQ Process</h2>
+        <p><span class="highlight">Three Most Important Questions</span> — See beyond the façade to understand who they really are.</p>
+
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Create 3MIQ</h4>
+            <p>All new hires define their personal dreams and goals during onboarding</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Public Sharing</h4>
+            <p>Posted on bulletin board, shared with managers, CEO keeps photos on phone</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Regular Support</h4>
+            <p>Used in one-on-ones and career development conversations</p>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>"When everyone can see each other's 3MIQs, we become a better team and can support each other in being our own unique badass self."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7: Success Story -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">SUCCESS STORY</div>
+        <h2>When Work Fulfills Dreams</h2>
+        
+        <div style="background: white; padding: 3rem; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); margin: 2rem 0;">
+          <h3 style="color: #7a12d4; margin-bottom: 1rem;">Luminita Saviuc</h3>
+          <p style="margin-bottom: 1rem;"><strong>Started as:</strong> Customer support agent from Romania</p>
+          <p style="margin-bottom: 1rem;"><strong>3MIQ Dream:</strong> "Become a published author and speak internationally"</p>
+          <p style="margin-bottom: 1rem;"><strong>What Happened:</strong> Wrote "15 Things to Give Up to Be Happy" on personal blog</p>
+          <p style="margin-bottom: 1rem;"><strong>Result:</strong> 1.2M Facebook shares → Penguin Random House book deal</p>
+          <p style="color: #10b981; font-weight: 600;">✅ Left company 2 years later as published author</p>
+        </div>
+
+        <div class="quote">
+          <p>"I was sad to see her go. But I was proud for her. That's what happens when companies invest in employees' dreams."</p>
+          <div class="quote-author">— Vishen Lakhiani</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8: The Complete System -->
+  <section class="slide">
+    <div class="mv-container">
+      <div class="content">
+        <div class="overline-text">PUTTING IT ALL TOGETHER</div>
+        <h2>Your Action Plan</h2>
+        
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h4>Attraction Phase</h4>
+            <p>Create manifesto that speaks to values, not just job skills. Screen for service orientation.</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">2</div>
+            <h4>Selection Phase</h4>
+            <p>Use Job Quadrant framework. Look for Growth + Meaning combinations.</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">3</div>
+            <h4>Onboarding Phase</h4>
+            <p>Implement 3MIQ process immediately. Connect individual goals to company mission.</p>
+          </div>
+          
+          <div class="step">
+            <div class="step-number">4</div>
+            <h4>Development Phase</h4>
+            <p>Regular 3MIQ check-ins, co-visioning, and growth opportunities in all four quadrants.</p>
+          </div>
+        </div>
+
+        <div class="quote" style="background: #7a12d4; color: white; border: none;">
+          <p style="color: white;">"When work fulfills dreams and dreams drive work, you don't have employees — you have co-creators of transformation."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple slide navigation
+    const slides = document.querySelectorAll('.slide');
+    const navDots = document.querySelectorAll('.nav-dot');
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      const currentSlide = document.querySelector('.nav-dot.active').dataset.slide;
+      const current = parseInt(currentSlide);
+      
+      if (e.key === 'ArrowRight' && current < slides.length - 1) {
+        goToSlide(current + 1);
+      } else if (e.key === 'ArrowLeft' && current > 0) {
+        goToSlide(current - 1);
+      }
+    });
+
+    // Click navigation
+    navDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+
+    function goToSlide(index) {
+      // Update active dot
+      navDots.forEach(dot => dot.classList.remove('active'));
+      navDots[index].classList.add('active');
+      
+      // Scroll to slide
+      slides[index].scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Auto-update active dot on scroll
+    let ticking = false;
+    
+    function updateActiveDot() {
+      const scrolled = window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      
+      slides.forEach((slide, index) => {
+        const slideTop = slide.offsetTop;
+        const slideHeight = slide.offsetHeight;
+        
+        if (scrolled >= slideTop - viewportHeight / 2 && 
+            scrolled < slideTop + slideHeight - viewportHeight / 2) {
+          navDots.forEach(dot => dot.classList.remove('active'));
+          navDots[index].classList.add('active');
+        }
+      });
+      
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveDot);
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
