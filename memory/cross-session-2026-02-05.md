@@ -23,6 +23,12 @@
 - Cross-linked both pages for complete user experience
 - Based on Jeffrey Allen & Regan Hillyer transcript insights via RAG system
 
+**Executive Presentation FIXED**
+- Fixed broken image paths for Eliza portrait (smile.PNG) and laugh image
+- Fixed all audio file paths from audio/executive-presentation/ to audio/
+- Added placeholder images for missing screenshots
+- Presentation now loads properly: https://elizaguide.github.io/web/execs/feb-presentation/executive-presentation.html
+
 ## Action Items
 - RAG system connectivity needs technical investigation ✅ RESOLVED
 - May need different tool beyond memory_recall to access program content ✅ RESOLVED
