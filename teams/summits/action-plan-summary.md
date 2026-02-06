@@ -13,13 +13,18 @@
 
 ---
 
-## ❌ **WHAT'S BROKEN NOW**
+## ❌ **WHAT'S BROKEN NOW** 
 
+**From All Bari Meetings:**
 1. **No unified methodology** - "Buffet-style" events vs. cohesive framework
-2. **Wrong sales timing** - Pitching too early (Day 2), closing too late (Day 3)  
-3. **Complex offers** - 5-month $5K programs vs. simple focused promises
-4. **Missing logical buyers** - 70% female audience needs Q&A time to convert
-5. **Declining attendance** - Weekend dropoff due to family obligations
+2. **Celebrity backfire** - $250K for Gwyneth, people came for her, not the method
+3. **Wrong sales timing** - Pitching too early (Day 2), closing too late (Day 3)
+4. **Delayed sales process** - "Book a call" creates 2-week momentum loss  
+5. **Complex offers** - 5-month $5K programs vs. simple focused promises
+6. **Overwhelm epidemic** - Adding features instead of simplifying
+7. **Missing logical buyers** - 70% female audience needs Q&A time to convert
+8. **Wrong avatar targeting** - Vishen: "I assume everyone gets it as well as I do"
+9. **Declining attendance** - Weekend dropoff due to family obligations
 
 ---
 
@@ -62,23 +67,40 @@
 ### **Decision 4: Offer Simplification** 
 **Single focused offer** instead of complex mastery
 - $897-$995 price point (proven sweet spot)
-- 21-day program vs. 5-month commitment
+- 21-day program vs. 5-month commitment  
 - Outcome guarantee (10+ hours saved)
+
+### **Decision 5: Live Sales Lobby** (NEW from Hour 2)
+**Real-time sales support** vs. "book a call" delays
+- Live Zoom rooms open during offer presentation
+- Group Q&A with sales experts (like Tony's 1,200-person lobbies)
+- Immediate momentum conversion vs. 2-week lag
+
+### **Decision 6: Celebrity Integration** (NEW from Hour 2)  
+**Strategic celebrity use** vs. standalone attractions
+- Vishen as central figure (not equal billing)
+- Celebrities serve specific method steps
+- Test method-focused vs. celebrity-focused marketing
 
 ---
 
 ## 💰 **REVENUE MODEL**
 
-### **Free Summit Conversion Funnel:**
+### **Enhanced Free Summit Funnel** (with Hour 2 improvements):
 ```
-100K Registrations → 8K Trial ($1) → 2K Main Offer ($995) → 5K Membership ($37/mo)
-Revenue: $8K + $1.99M + $2.22M/year = $4.2M+ per summit
+100K Registrations → 10K Trial ($1) → 3.5K Main Offer ($995) → 6.5K Membership ($37/mo)
+Revenue: $10K + $3.48M + $2.89M/year = $6.38M+ per summit
 ```
+
+**Key Improvement:** Live sales lobby increases conversion from 2% to 3.5%
 
 ### **Required Infrastructure:**
 - $1 trial payment system
 - Order bump capabilities  
 - Automated email sequences
+- **Live lobby technology** (Zoom integration)
+- **Sales team retraining** (group vs. individual closing)
+- **Celebrity briefing system** (throughline role definition)
 - Funnel optimization team
 
 ---
