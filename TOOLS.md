@@ -269,6 +269,7 @@ All critical content is now centralized in the `eliza-content` folder with works
 **📂 eliza-content Folder:**
 ```
 /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/
+├── PRD/             → Product Requirements Documents
 ├── screenshots/     → screenshots (symlink in workspace)
 └── transcripts/     → transcripts (symlink in workspace)
 ```
