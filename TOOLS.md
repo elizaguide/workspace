@@ -261,6 +261,37 @@ https://elizaguide.github.io/web/project-name/
 - ✅ **Multiple links:** Wrap in `<>` to suppress embeds: `<https://example.com>`
 - ✅ **Tables OK** - Discord supports markdown tables
 
+## 📁 Eliza Content Structure
+
+**✅ Centralized Dropbox Storage:**
+All critical content is now centralized in the `eliza-content` folder with workspace symbolic links for easy access.
+
+**📂 eliza-content Folder:**
+```
+/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/
+├── screenshots/     → screenshots (symlink in workspace)
+└── transcripts/     → transcripts (symlink in workspace)
+```
+
+**🔗 Access Patterns:**
+- **Screenshots:** `screenshots/filename.png` or direct Dropbox path
+- **Transcripts:** `transcripts/folder/file.txt` or direct Dropbox path  
+- **RAG System:** Automatically uses transcripts via symlink
+- **Image References:** Use `screenshots/` prefix for all image access
+
+**📸 Available Screenshots:**
+- `eliza-intro.png` - Eliza introduction portrait
+- `bug.png` - Bug documentation screenshots  
+- `levels.png` - System level visualizations
+- `social-comms-screenshot*.jpg` - Social communications
+- `spanish-quiz-screenshot.jpg` - Spanish quiz interface
+
+**🎯 Benefits:**
+- ✅ **Dropbox sync** - Available on all devices
+- ✅ **Centralized** - No scattered files across system
+- ✅ **Transparent access** - Existing code works unchanged  
+- ✅ **Organized** - Clear separation of content types
+
 ## Examples
 
 ```markdown
@@ -274,6 +305,11 @@ https://elizaguide.github.io/web/project-name/
 ### TTS
 - Preferred voice: "Nova" (warm, slightly British)
 - Default speaker: Kitchen HomePod
+
+### Screenshots
+- Access via: screenshots/filename.png
+- Location: /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/screenshots/
+- Always use workspace symlink path for code
 ```
 
 ## Why Separate?
