@@ -1,0 +1,105 @@
+﻿Feb 4, 2026
+Six/Finerminds Sync
+Invited Dario Bianchi Bruno Azenha Goncalves Vishen Lakhiani Shafiu Hussain Euson Chew mukesh.m@everest.engineering jameer.mulani@everest.engineering Manish Nath Justine Ausha Smith
+Attachments Six/Finerminds Sync Six/Finerminds Sync - 2026/02/04 19:25 GMT+08:00 - Recording 
+Meeting records Transcript Recording 
+
+
+Summary
+Project Deadlines and UX Fixes
+The team confirmed the necessity of maintaining the January deployment deadline and prioritized development requests from developers working on core architecture. A major issue was identified regarding the software's navigation structure, specifically the missing definition and implementation of Level Three.
+
+Level Three Architecture Decision
+The primary focus for Level Three is group discussion, excluding a general activity feed, and the team agreed on implementing a simplified, user-created group chat model. A major decision was made to leverage AI models immediately to design the Level Three architecture and generate the necessary Product Requirement Documents within 24 hours.
+
+Branding and Design System Unification
+The app name must transition from 'six' to 'finines,' and branding design must be completed quickly using standard company fonts and colors. Furthermore, a new design system is needed to unify products, and the 'six' project meeting was prioritized above other commitments.
+
+
+Details
+Decisions
+Rate these decisions: Helpful or Not Helpful
+
+
+NEEDS FURTHER DISCUSSION
+Define Level Three Structure
+Level three must look like discussion groups impacting activity feed and chat functions; the team must focus on defining this level three structure.
+
+
+ALIGNED
+Software Development Deployment Process
+Software development process mandates immediate deployment; product must not be unusable for months. Vishen’s requests must take top priority and go to top of development list.
+
+
+Prioritize Navigation Fix
+Navigation fix is important and must occur after realizing missing level three architecture needs resolution.
+
+
+Feature Platform Availability Color Codes
+Feature color coding will define platform availability: blue indicates app features (also available on web), and orange indicates web-only features for now.
+
+
+Level Three Conversation Focus
+Level three will focus on conversational elements like discussions or chat and will not include an activity feed.
+
+
+Support Multiple Chat Channels
+Multiple chat channels should be supported on both network (level one) and group (level two) levels, with access restricted to members inside that specific level.
+
+
+Anyone Creates Group Chat Rule
+Anyone should be able to create a group chat and become the admin of that chat, but maximum number of invites must be set to prevent spam and abuse.
+
+
+Deliver Level Three Proposal Friday
+Team must deliver a proposal for the level three discussion group structure by Friday; proposal should include a fully built clickable mockup or ironed-out spec for approval.
+
+
+Finalize Finines Branding Fast
+Euson must finalize the branding for 'finines' using Mind Valley standard font and colors within 10 minutes, prioritizing speed over extensive design process and not waiting for Chi.
+
+
+Support Feature for Levels One and Two
+Looking for support feature must be available for level one and level two, as it is a short development task after structural issues are solved.
+
+
+Include Chat in First Version
+Chat must be included in first version alongside discover people and resources to enable user interaction and activity on platform.
+
+
+Create Envisioning Products Design System
+Design system for envisioning products must be created, moving away from reliance on Mind Valley's components for new products.
+
+
+Standardize Vibrantly and Six Designs
+Vibrantly and Six designs must share the same standards, including font sizes, as they are sister apps with the same users.
+
+
+Schedule Friday Six App Meeting
+Six app discussion meeting must be scheduled for Friday from 6 PM to 7 PM, replacing the social media weekly schedule.
+
+
+More details:
+* Prioritization of Project Vision and Deadlines Vishen Lakhiani emphasized the need to focus on the one-month vision and not be derailed by the one-year vision, reiterating the clear deadline for deployment by the end of January. Vishen Lakhiani asserted that developers must be able to hold both the short-term and long-term visions simultaneously, stating that product requests from them should always go to the top of the development list (00:01:35). Bruno Azenha Goncalves confirmed their understanding that they are currently brainstorming the underlying architectural decision to make future developments easier (00:00:44).
+* Navigation and Level Three Architecture The team recognized that the software's initial UX and navigation were "wonky" and needed immediate fixing. Vishen Lakhiani noted that a missing Level Three in the navigation structure was identified as a key issue that needed resolution (00:01:35). Bruno Azenha Goncalves, with Dario, had previously discussed using only Level One and Level Two initially, with Level Three potentially being "discussions and channels," but a final definition was not yet reached (00:02:31).
+* Defining Level Three Features and Impact The team determined that Level Three would likely be focused on discussion groups and would not include an activity feed, being much more conversational like chat. Euson Chew mentioned that visualizing Level Three requires pairing it with new features like the activity feed and discussion topics (00:02:31) (00:06:11). Vishen Lakhiani stressed that the Level Three decision will impact both the activity feed and chat functionality (00:03:22).
+* App and Web Feature Segregation Vishen Lakhiani clarified the color coding for feature deployment: features marked in orange are for the web only, and those in blue are for the app and will also show on the web (00:04:21). They explained that bringing features to the app is currently expensive because of the legacy "Everest" coding techniques, so features are tested on the web before being brought to the app. Vishen Lakhiani urged the team to solve the Level Three problem encompassing "Activity feed chat resources" first, as solving this will simplify everything else (00:05:13).
+* Chat Functionality and Group Creation Bruno Azenha Goncalves confirmed that chat on the network level could involve multiple chat channels for different purposes, restricted to people within that specific network or group (00:06:52). Shafiu Hussain proposed a simplification: allowing anyone to create a group chat and become its admin, with a limit on the number of people they can invite to prevent spam. Vishen Lakhiani agreed with Shafiu Hussain's suggestion, comparing it to replicating the success of Reddit's model of chat and resource sharing (00:08:39).
+* Leveraging AI for Product Design and Development Vishen Lakhiani introduced using AI models like Eliza (Claude) for product design and writing Product Requirement Documents (PRDs) quickly, aiming to solve the three-level architecture problem and get the PRD written within 24 hours (00:09:57) (00:11:35). Vishen Lakhiani encouraged the team to feed the meeting recording into AI to generate a proposal or even a clickable mockup of how levels, groups, and discussions should function (00:12:28) (00:14:07). Bruno Azenha Goncalves expressed a focus on the product side, prioritizing Vishen Lakhiani's approval on the PRDs to align with their taste and vision for development (00:15:02).
+* App Name and Branding Decisions The app name needs to change from "six" to "finines," and Vishen Lakhiani urged the team not to delay the branding design process, expecting a design to be completed quickly by using standard Mind Valley fonts and colors. Vishen Lakhiani explicitly stated that they are not waiting for Chi's return for this decision. Euson Chew committed to developing branding proposals for both "finines" and "vibrantly" (00:19:11) (00:20:41).
+* Discoverability, Privacy, and Initial Features The team discussed discoverability and privacy, with Vishen Lakhiani confirming that external users can be invited to events and join the app to view the event and attendees (00:21:20). Euson Chew clarified that in Month One, users would likely join the app through a network invite (00:22:18). Currently, the team has not determined if users can see people from other networks in the directory (00:22:53). The scope for the first version should include chat to allow user interaction, using Get Stream for chat support on both web and app (00:23:58).
+* Design System and Component Unification Euson Chew announced that Reuben is returning and will work on creating a new design system for Envisioning products to unify all sub-brands, moving away from relying on Mind Valley's components (00:24:54). Shafiu Hussain suggested implementing a "hot swap" for the new design system, changing only the package while maintaining the same classes to ensure nothing breaks on the code side (00:26:38). Vishen Lakhiani agreed that the designs for "six" are good but insisted that "Vibrantly" and "six" be treated as sister apps with identical design elements like font sizes (00:25:56).
+* Scheduling and Prioritization of "six" Meeting The meeting concluded with scheduling a follow-up meeting for Friday, with Vishen Lakhiani overriding a conflict with a social media meeting, emphasizing that the "six" project is more important than their social media schedule (00:26:38). Vishen Lakhiani confirmed they would share Eliza's app proposal and demo output with the team (00:26:38).
+
+
+Suggested next steps
+* Shafiu Hussain will book time with Euson Chew and Bruno Azenha Goncalves tomorrow to create the PRD and then pass it to an agent to see how fast it can be done.
+* Shafiu Hussain will have the text size issue with Vibrantly fixed by Friday.
+* Euson Chew will send the calendar invitation for the Friday meeting at 6:00 to 7:00 p.m. to everyone.
+* Euson Chew will forward the Apple memo recording of the conversation to Vishen Lakhiani.
+* Euson Chew will create a branding for finer minds and vibrantly using the Mind Valley standard font and colors without waiting for Chi.
+* Vishen Lakhiani will share Eliza's proposal for the six app and demo with the group.
+
+
+You should review Gemini's notes to make sure they're accurate. Get tips and learn how Gemini takes notes
+Please provide feedback about using Gemini to take notes in a short survey.

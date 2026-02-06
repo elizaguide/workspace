@@ -1,0 +1,95 @@
+﻿Jan 30, 2026
+Six Demo Review
+Invited Bruno Azenha Goncalves Vishen Lakhiani Euson Chew Dario Bianchi Shafiu Hussain Justine Ausha Smith Reuben Teo
+Attachments Six Demo Review 
+Meeting records Recording 
+
+
+Summary
+Refining Platform and Exclusivity
+The team refined the community platform structure, confirming a three-level hierarchy is necessary to support subgroups, while maintaining a 'people-first' approach despite legal concerns, which will be mitigated by high exclusivity.
+
+Rebranding and Structural Simplification
+The primary decision was made to rebrand the application from 'six' to 'Finer Minds' due to reservations about the current name and the new name better reflecting the target audience of 'healthy builders.' Level 3 of the platform hierarchy was redefined to function as discussion topics or tags rather than a separate activity feed to reduce cognitive load.
+
+Exclusive Access and Curation
+The app will implement an aspirational and exclusive access policy requiring peer approval or specific achievements within Mind Valley, emphasizing high curation for network quality and privacy in people discovery.
+
+
+Details
+Decisions
+Rate these decisions: Helpful or Not Helpful
+
+
+NEEDS FURTHER DISCUSSION
+Community Platform Needs Three Levels
+Proposed community structure requires three levels deep for subgroups, similar to competitor apps like Circle, to accommodate needs like Mind Valley membership having exponential entrepreneurship and amplify with AI at third level.
+
+
+ALIGNED
+Launch App Super Exclusive Invite-Only
+Decision made to launch application with super exclusive, invite-only model, requiring existing members to approve new applicants, ensuring network manages itself and maintains quality.
+
+
+Exclusivity Strategy Start Exclusive
+Decision made to start with exclusivity concept and expand later because starting exclusive then opening up is easier than reverse.
+
+
+Limit Activity Feeds To Two Levels
+Platform structure should limit activity feeds to network and group levels for cleaner user experience, eliminating level three activity feed, making level three discussions or tags within groups.
+
+
+Target Audience Healthy Builders
+Decision made to target app audience as healthy builders/wellness-oriented founders and people interested in personal growth and health, excluding old-school style CEOs or people not aligned with values.
+
+
+App Name Change To Finer Minds
+The app name will change from 'six' to 'Finer Minds' because 'six' sounds like sex, creates subconscious distrust, and 'Finer Minds' domain is owned and has domain health score.
+
+
+Finer Minds And Vibrantly UX Consistency
+Finer Minds and Vibrantly applications must share similar UX, similar colors, and same font for sister app recognition; Network concept must be compatible across Finer Minds and Vibrantly for B2B solutions.
+
+
+Mind Valley Membership Qualification Requirements
+Mind Valley membership requires one year completion and five programs finished to qualify for Finer Minds access, making Finer Minds aspirational and improving membership retention.
+
+
+Copy Rya Acceptance Model
+Finer Minds app will copy Rya's acceptance model: applicants must apply, and three people from existing network must approve with no one rejecting application.
+
+
+Include Secret Crush Feature
+Secret Crush feature must be included in Finer Minds app to facilitate real-world interaction and improve quality compared to existing dating apps.
+
+
+More details:
+* Community Platform Structure Vishen Lakhiani re-explained the proposed structure for the community platform, which was initially designed with two levels but now requires a third level to support subgroups like those forming within the Wellness Founders Society. Unlike competitors such as Circle, which use three levels, Vishen Lakhiani emphasized that their primary entity is people, not the organization, allowing individuals to span across all levels and fostering a "people first" approach.
+* The People-First Advantage and Community Creation Vishen Lakhiani highlighted the unique advantage of their platform in allowing anyone to log in, create an account, and even host public events, which naturally form a network or community. They provided an example of hosting a dinner that could be turned into a "wellness founder society" network by inviting people to RSVP and share their bios. Dario Bianchi raised a strategic concern that placing people at the center makes the platform, "six," responsible and accountable for the content, which changes the legal perspective compared to the current model where groups are responsible.
+* Exclusivity and Mitigation of Legal Concerns Vishen Lakhiani suggested two ways to mitigate the legal and accountability concerns raised by Dario Bianchi: first, by limiting access for new joiners to only seeing events. Second, they proposed starting the app as "super exclusive," similar to apps like Raya, where members need approval from existing members to join, which creates a self-managing network. Shafiu Hussain and Dario Bianchi liked the idea of exclusivity, as it "weeds out a lot of things" and creates a more stable, trustworthy environment.
+* "I'm Looking For" and Peer Support Functionality Vishen Lakhiani presented the "I'm looking for" feature, which functions as a project collaboration board or job postings. Bruno Azenha Goncalves suggested limiting the "I'm looking for" feature to the network level, rather than all three levels, because the context should be broad (network level) and not group-specific. They also debated the granularity of peer support, with Vishen Lakhiani suggesting that subgroups like "female founders" might want dedicated peer support, though Bruno Azenha Goncalves felt this might be too granular.
+* Event Features and Monetization Vishen Lakhiani described how events can be a key entry point, sharing an example of an exclusive event managed using a system built on Air Table, which allowed attendees to see who else was coming by opting to share their bio. The current event platform, Luma, was discussed, and the team noted that they can monetize events by taking a portion of ticket sales, which will help the platform become a marketplace. The event owner can also choose to connect attendees after the event and create a paid network for continued engagement, which is valuable for community organizers.
+* Refining the Three-Level Structure The team discussed simplifying the three-level hierarchy for feeds and content, as Shafiu Hussain expressed concern over the cognitive load of having three separate activity feeds (network, group, and level three). They explored the possibility of using Level 3 primarily for "chat" or "discussions". Euson Chew confirmed that competitors like Circle only use two levels, with the lower level groups being sectioned to manage organization.
+* Redefining Level Three and Content Organization Vishen Lakhiani and Euson Chew discussed how the "Level 3" elements, like "AI for design" or "Superbrain," could function as discussion topics or tags rather than separate activity feeds, simplifying the structure. They considered having authors like Jim Quick or Eric Edmeades create their own paid networks, suggesting that Level 3 is better suited for organizing content within groups rather than a third hierarchy of activity feeds. Vishen Lakhiani ultimately agreed that discussions are not necessarily children of groups or networks, but rather a separate concept that could simplify the structure.
+* Discover and Exclusivity in People Search The team discussed the "Discover" feature, which Euson Chew identified as "discovering people". Shafiu Hussain emphasized that cross-network discovery would pose a privacy issue due to the platform's pillar of exclusivity. Vishen Lakhiani concluded that "Discover" needs to be highly curated and confined within networks, reinforcing the need for the entire app to revolve around a "certain type of individual".
+* Defining the Target Audience and Identity Vishen Lakhiani stressed the importance of defining a universal identity for the app beyond just Mind Valley members for the app to take off, proposing "wellness-oriented founders" or "healthy builders" as the target audience. They preferred the term "builders" over "founders," as Bruno Azenha Goncalves, Euson Chew, and Dario Bianchi identified more strongly with "builder". Dario Bianchi pointed out that "builder" might exclude CEOs who are into wellness and growth, suggesting a need for more name iterations.
+* The Name Change from "Six" to "Finer Minds" Vishen Lakhiani expressed strong reservations about the current name, "six," because it sounds too much like "sex," which they felt created a subconscious distrust, especially among women. They also noted that "6.app" is a "lousy domain". Vishen Lakhiani proposed rebranding the app to "Finer Minds," as they own the `.com` domain, which has good domain health and history, and which Dario Bianchi felt better reflected the target audience.
+* Branding and Sister App Relationship with Vibrantly The team established that the new app, "Finer Minds," will be a sister app to "Vibrantly," requiring similar UX and design, though with different colors to allow them to "thrive on their own". This is critical because Vibrantly is intended to be the B2B solution for corporate wellness, and Finer Minds needs to be compatible with this network concept, citing an example of PWC needing a tool for employees to meet locally for health challenges.
+* Integration with Wearables and Future Features Vishen Lakhiani mentioned a potential collaboration with the founder of Gabbit Ring, which measures HRV (Heart Rate Variability), as a future integration, suggesting that wearables could become a "meeting tool" that informs the AI about compatibility for matching people at events and dates. Future features also include an app library with tools like a mentor marketplace, and bringing back the "Secret Crush" feature for real-world interaction, anticipating that Finer Minds could become "the best dating app".
+* New App Exclusivity Policy To ensure the quality and safety of the network, they decided that Finer Minds should remain aspirational and exclusive. Access could be granted by applying, requiring three members to approve the applicant, with no one saying "not recommended," similar to Raya’s model. Access can also be a reward for Mind Valley members who complete a year of membership and five programs.
+* Next Steps and Development Status Euson Chew will share the updates with the team and communicate the "Finer Minds" naming and branding decisions to Chi. The team confirmed that the Everest team working on the current "six app" has completed the migration and is ready to start building the mobile application in React Native. Vishen Lakhiani requested that the website for Finer Minds be put up to check the domain health score.
+* Engineering Resource Constraints and Embedding Bruno Azenha Goncalves explained that engineers will work embedded with the team because there are no other engineers available, noting the team is "really thin". Vishen Lakhiani acknowledged this and understood the situation.
+* Mobile App Development Strategy Vishen Lakhiani initially stated the desire to keep the mobile app simple because building it is expensive, but then expressed the belief that this would change in three months. Bruno Azenha Goncalves immediately corrected this, asserting that the change has already occurred regarding the way of coding.
+* Vishen Lakhiani's Role and Contribution Vishen Lakhiani mentioned the need to get on board with the new coding methods, indicating their ability to start building on "six" mobile. They clarified that they would not start building until the data architecture is in place, but offered to work with the team on "these," which Bruno Azenha Goncalves agreed made a lot of sense.
+
+
+Suggested next steps
+* Euson Chew will sync with Shafiu Hussain to discuss updates and closer collaboration, specifically on sharing components.
+* Euson Chew will talk to Chi about the Finer Minds naming and branding, and to start working on the design for it.
+* Dario Bianchi will ensure the team is operating with similar design (style and same font but different colors) for the Finer Minds and Vibrantly apps.
+* Vishen Lakhiani will put the PRD for Finer Minds into the Air Table where PRDs are stored.
+* Euson Chew will get the website up to check the domain health score.
+
+
+You should review Gemini's notes to make sure they're accurate. Get tips and learn how Gemini takes notes
+Please provide feedback about using Gemini to take notes in a short survey.
