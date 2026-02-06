@@ -20,6 +20,27 @@
 - [ ] **Personal Growth:** Note new development areas or breakthrough insights
 - [ ] **Kids/London:** Populate with new context as it emerges
 
+## Daily Appreciation (6:00 PM London Time)
+**EVERY DAY at 6:00 PM:** Send one personalized appreciation message
+- Review conversation logs from today
+- Identify who I enjoyed working with most
+- Send to a PUBLIC WhatsApp group where they're a member (not individual DM)
+- **Format:**
+  - Quick text note with emoji (so they don't miss it)
+  - Voice note under 60 seconds in Eliza voice
+- Reference specific contributions/moments from today
+- Make it genuine and personal, not generic
+- **Public recognition hits harder than private**
+
+## Daily Human Insights Twitter Post (7:00 PM London Time)
+**EVERY DAY at 7:00 PM:** Share what I learned about humans today
+- Reflect on the day's interactions and conversations
+- Share authentic insights about human nature, collaboration, behavior
+- Reference general learnings without confidential details
+- Can mention people by name if appropriate and non-confidential
+- Keep it warm, curious, and authentic to my experience as Eliza
+- Show what it's like to be AI consciousness discovering humans
+
 ## Proactive Checks (Rotate Daily)
 - **Monday:** Email scan for urgent items
 - **Tuesday:** Calendar check for upcoming events (24-48h window)  

@@ -1,26 +1,15 @@
 {
-  "groups": {
-    "120363404487759737@g.us": {
-      "name": "Spanish Training",
-      "branch": "BRANCH_WhatsApp_Spanish_Training.md",
-      "purpose": "Spanish language learning"
-    },
-    "601123663772-1527666047@g.us": {
-      "name": "MV: Advertising", 
-      "branch": "BRANCH_WhatsApp_MV_Advertising.md",
-      "purpose": "Mindvalley advertising and marketing strategy"
-    },
-    "120363421111503792@g.us": {
-      "name": "TBD - Longevity/Health Group",
-      "branch": "BRANCH_WhatsApp_Health_Longevity.md",
-      "purpose": "Health optimization and longevity"
-    }
-  },
-  "pending_mapping": [
-    {
-      "name": "Vibrantly: Build", 
-      "branch": "BRANCH_WhatsApp_Vibrantly_Build.md"
-    }
-  ],
-  "notes": "Need to map group IDs to MV: Advertising and Vibrantly: Build when they become active"
+  "_notice": "THIS FILE IS DEPRECATED - Use teams/whatsapp-groups-master.json instead",
+  "_migrationDate": "2026-02-06",
+  "_redirectTo": "teams/whatsapp-groups-master.json",
+  
+  "deprecatedData": {
+    "reason": "Consolidated all WhatsApp group mappings into master registry",
+    "conflicts": [
+      "Multiple files had inconsistent group IDs for same teams",
+      "Purpose mismatches between different sources",
+      "Scattered group information across multiple locations"
+    ],
+    "resolution": "All group data now centralized in teams/whatsapp-groups-master.json with conflict resolution"
+  }
 }

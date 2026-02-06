@@ -1,0 +1,110 @@
+{
+  "masterGroupRegistry": {
+    "120363404487759737@g.us": {
+      "name": "Spanish Training",
+      "purpose": "Spanish language learning with Vishen",
+      "status": "active",
+      "members": ["Vishen", "Eliza"],
+      "notes": "Previous group had voice note response issues"
+    },
+    "601123663772-1527666047@g.us": {
+      "name": "MV: Advertising",
+      "purpose": "Mindvalley advertising and marketing strategy",
+      "status": "active", 
+      "members": ["Eliza", "Hari (mentioned)"],
+      "notes": "Fixed mislabeling from 'Campaigns' to 'Advertising'"
+    },
+    "120363225548472203@g.us": {
+      "name": "FinerMinds",
+      "purpose": "FinerMinds team coordination",
+      "status": "active",
+      "members": ["Eliza", "FinerMinds team members"],
+      "notes": "LinkedIn profiles requested from this group"
+    },
+    "120363422107338505@g.us": {
+      "name": "MV Innovations Team", 
+      "purpose": "Innovation team coordination",
+      "status": "active",
+      "members": ["Eliza", "Innovation team members"],
+      "notes": "Weekly development updates sent here"
+    },
+    "120363406990602145@g.us": {
+      "name": "Newsletter Group",
+      "purpose": "Weekly newsletter coordination",
+      "status": "active",
+      "members": ["Vishen", "Ramya", "Eliza"],
+      "notes": "Newsletter ideas and coordination"
+    },
+    "120363421111503792@g.us": {
+      "name": "Vibrantly Build Group",
+      "purpose": "Vibrantly builds and development coordination", 
+      "status": "active",
+      "members": ["Eliza", "Euson Chew"],
+      "notes": "CONFLICT: Also labeled as 'Longevity/Health Group' in old mapping",
+      "aliases": ["TBD - Longevity/Health Group"]
+    },
+    "120363406637186264@g.us": {
+      "name": "Executive Group",
+      "purpose": "Executive leadership coordination",
+      "status": "active", 
+      "members": ["Norman Noble", "Eni Selfo", "Executive team"],
+      "notes": "Core leadership communications. Eni Selfo also in Authorship team.",
+      "crossTeamMembers": ["Eni Selfo (also Authorship team)"]
+    },
+    "120363407626284843@g.us": {
+      "name": "Two Comma Team",
+      "purpose": "Two Comma team coordination",
+      "status": "active",
+      "members": ["Sabrina Stocker", "Two Comma team"],
+      "notes": "Strategic collaboration discussions"
+    },
+  	"120363423218272168@g.us": {
+      "name": "MV Martech",
+      "purpose": "Marketing technology team coordination",
+      "status": "active",
+      "members": ["Eliza", "Nicole Chin", "Pavel Luzanov", "Monique Schuldt", "Alvin Giovanni", "Marisha Lakhiani"],
+      "notes": "CORRECTED: Actual MV Martech group ID after Vishen clarification."
+    },
+    "120363357193603929@g.us": {
+      "name": "Authorship", 
+      "purpose": "Authorship team coordination",
+      "status": "active",
+      "members": ["Gareth Winters", "Eni Selfo", "Marta Maxim", "Mirell Sork"],
+      "notes": "CORRECTED: Actual Authorship group ID confirmed by Vishen. Eni Selfo also in Executive team.",
+      "crossTeamMembers": ["Eni Selfo (also Executive team)"]
+    }
+  },
+  "conflicts": [
+    {
+      "type": "duplicate_group",
+      "group": "Team ID Mix-up", 
+      "conflictingIds": ["120363357193603929@g.us", "120363423218272168@g.us"],
+      "resolution": "FINAL: 120363357193603929@g.us = MV Martech, 120363423218272168@g.us = Authorship",
+      "resolvedBy": "Vishen clarification",
+      "resolvedDate": "2026-02-06T19:13:00Z"
+    },
+    {
+      "type": "purpose_mismatch",
+      "groupId": "120363421111503792@g.us",
+      "conflictingPurposes": ["Vibrantly Build Group", "Longevity/Health Group"],
+      "resolution": "RESOLVED - Confirmed as Vibrantly Build Group based on recent activity"
+    }
+  ],
+  "stats": {
+    "totalGroups": 10,
+    "activeGroups": 10,
+    "conflictGroups": 0,
+    "lastUpdated": "2026-02-06T19:08:00Z"
+  },
+  "usage": {
+    "appreciationMessages": {
+      "sendTo": "publicGroups",
+      "format": "text + voice note",
+      "timing": "6:00 PM London daily"
+    },
+    "teamCommunication": {
+      "strategicUpdates": ["120363422107338505@g.us", "601123663772-1527666047@g.us"],
+      "appreciation": "All team groups"
+    }
+  }
+}
