@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrantly Supplements UX - Personalized Stack Optimizer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💊</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+        .phone-mockup {
+            max-width: 375px;
+            margin: 2rem auto;
+            background: #000;
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .screen {
+            background: white;
+            border-radius: 22px;
+            height: 812px;
+            overflow: hidden;
+            position: relative;
+        }
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .app-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .tab-navigation {
+            display: flex;
+            background: #f1f3f4;
+            border-radius: 12px;
+            padding: 4px;
+            margin-top: 16px;
+        }
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .content {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+        .goal-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .goal-card:hover { border-color: #667eea; }
+        .goal-card.selected { border-color: #667eea; background: #f0f4ff; }
+        .goal-icon { font-size: 32px; margin-bottom: 12px; }
+        .goal-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .goal-description { font-size: 13px; color: #666; line-height: 1.4; }
+        .supplement-item {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+        }
+        .supplement-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        .supplement-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1a1a1a;
+        }
+        .supplement-dose {
+            font-size: 12px;
+            color: #667eea;
+            background: #f0f4ff;
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+        .supplement-purpose {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        .timing-chips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .timing-chip {
+            font-size: 11px;
+            background: #e8f5e8;
+            color: #2d5a2d;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+        .progress-ring {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            transform: rotate(-90deg);
+        }
+        .progress-ring circle {
+            fill: none;
+            stroke-width: 6;
+            stroke-linecap: round;
+        }
+        .progress-bg { stroke: #e0e0e0; }
+        .progress-fill { 
+            stroke: #667eea; 
+            stroke-dasharray: 188.5; 
+            stroke-dashoffset: 47; 
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-weight: 600;
+            font-size: 15px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .insights-card {
+            background: linear-gradient(135deg, #ff9a56 0%, #ffad56 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .insight-title {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .insight-text {
+            font-size: 13px;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+        .stack-optimization {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .optimization-title {
+            color: #856404;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .optimization-text {
+            color: #856404;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .current-screen { display: block; }
+        .hidden-screen { display: none; }
+        .nav-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px;
+        }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+        }
+        .nav-dot.active { background: #667eea; }
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .metric-change {
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+        .metric-change.positive { color: #27ae60; }
+        .metric-change.negative { color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <div class="phone-mockup">
+        <div class="screen">
+            
+            <!-- Screen 1: Goal Selection -->
+            <div id="screen1" class="current-screen">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>📶 📶 📶 💾</span>
+                </div>
+                
+                <div class="app-header">
+                    <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">
+                        💊 Smart Supplements
+                    </h1>
+                    <p style="opacity: 0.9; font-size: 15px;">
+                        Personalized stack optimization based on your goals
+                    </p>
+                </div>
+                
+                <div class="content">
+                    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">
+                        What's your primary goal?
+                    </h2>
+                    
+                    <div class="goal-card selected">
+                        <div class="goal-icon">🔥</div>
+                        <div class="goal-title">Fat Loss</div>
+                        <div class="goal-description">
+                            Reduce body fat, particularly belly fat, with targeted metabolic support
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-icon">💪</div>
+                        <div class="goal-title">Muscle Gain</div>
+                        <div class="goal-description">
+                            Build lean muscle mass with protein and recovery optimization
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-icon">⚡</div>
+                        <div class="goal-title">Energy & Focus</div>
+                        <div class="goal-description">
+                            Sustained energy, mental clarity, and cognitive performance
+                        </div>
+                    </div>
+                    
+                    <div class="goal-card">
+                        <div class="goal-icon">🛡️</div>
+                        <div class="goal-title">Longevity</div>
+                        <div class="goal-description">
+                            Anti-aging, cellular health, and disease prevention
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showScreen(2)">
+                        Continue to Assessment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Screen 2: Current Stack Assessment -->
+            <div id="screen2" class="hidden-screen">
+                <div class="status-bar">
+                    <span>←</span>
+                    <span>Current Stack</span>
+                    <span>💊</span>
+                </div>
+                
+                <div class="content">
+                    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">
+                        Current Supplements
+                    </h2>
+                    <p style="color: #666; font-size: 13px; margin-bottom: 20px;">
+                        Tap to add what you're currently taking
+                    </p>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">Alpha Lipoic Acid (ALA)</div>
+                            <div class="supplement-dose">300mg</div>
+                        </div>
+                        <div class="supplement-purpose">Metabolic support, blood sugar control</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">With meals</span>
+                        </div>
+                    </div>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">CLA (Conjugated Linoleic Acid)</div>
+                            <div class="supplement-dose">1000mg</div>
+                        </div>
+                        <div class="supplement-purpose">Fat metabolism, body composition</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">Before meals</span>
+                        </div>
+                    </div>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">Berberine</div>
+                            <div class="supplement-dose">500mg</div>
+                        </div>
+                        <div class="supplement-purpose">Glucose metabolism, fat burning</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">Before meals</span>
+                        </div>
+                    </div>
+                    
+                    <div style="border: 2px dashed #ddd; border-radius: 12px; padding: 20px; text-align: center; color: #666; font-size: 14px;">
+                        ➕ Add more supplements
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showScreen(3)">
+                        Analyze My Stack
+                    </button>
+                </div>
+            </div>
+
+            <!-- Screen 3: AI Analysis & Recommendations -->
+            <div id="screen3" class="hidden-screen">
+                <div class="status-bar">
+                    <span>←</span>
+                    <span>Recommendations</span>
+                    <span>🧠</span>
+                </div>
+                
+                <div class="content">
+                    <div class="insights-card">
+                        <div class="insight-title">🎯 AI Analysis</div>
+                        <div class="insight-text">
+                            Your current stack is solid for fat loss! I found optimization opportunities that could increase effectiveness by 40%.
+                        </div>
+                    </div>
+                    
+                    <div class="stack-optimization">
+                        <div class="optimization-title">💡 Stack Optimization</div>
+                        <div class="optimization-text">
+                            Increase ALA to 600mg (2x current) for enhanced fat burning when combined with your existing berberine and CLA.
+                        </div>
+                    </div>
+                    
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">
+                        Optimized Protocol
+                    </h3>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">Alpha Lipoic Acid</div>
+                            <div class="supplement-dose" style="background: #fff3cd; color: #856404;">
+                                600mg ⬆️
+                            </div>
+                        </div>
+                        <div class="supplement-purpose">Enhanced fat oxidation + berberine synergy</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">300mg before lunch</span>
+                            <span class="timing-chip">300mg before dinner</span>
+                        </div>
+                    </div>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">CLA</div>
+                            <div class="supplement-dose">1000mg ✓</div>
+                        </div>
+                        <div class="supplement-purpose">Perfect dose - no changes needed</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">30min before breakfast</span>
+                        </div>
+                    </div>
+                    
+                    <div class="supplement-item">
+                        <div class="supplement-header">
+                            <div class="supplement-name">Berberine</div>
+                            <div class="supplement-dose">500mg ✓</div>
+                        </div>
+                        <div class="supplement-purpose">Optimal synergy with increased ALA</div>
+                        <div class="timing-chips">
+                            <span class="timing-chip">15min before dinner</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showScreen(4)">
+                        Start Optimized Protocol
+                    </button>
+                </div>
+            </div>
+
+            <!-- Screen 4: Progress Tracking -->
+            <div id="screen4" class="hidden-screen">
+                <div class="status-bar">
+                    <span>←</span>
+                    <span>Progress</span>
+                    <span>📊</span>
+                </div>
+                
+                <div class="content">
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <svg class="progress-ring">
+                            <circle class="progress-bg" cx="40" cy="40" r="30"></circle>
+                            <circle class="progress-fill" cx="40" cy="40" r="30"></circle>
+                        </svg>
+                        <div style="font-size: 18px; font-weight: 600; color: #667eea;">Day 12</div>
+                        <div style="font-size: 13px; color: #666;">of 30-day protocol</div>
+                    </div>
+                    
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">
+                        Body Composition Changes
+                    </h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                        <div class="metric-card">
+                            <div class="metric-value">-1.2cm</div>
+                            <div class="metric-label">Waist</div>
+                            <div class="metric-change positive">-0.1cm this week</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">-0.8kg</div>
+                            <div class="metric-label">Weight</div>
+                            <div class="metric-change positive">-0.2kg this week</div>
+                        </div>
+                    </div>
+                    
+                    <div class="insights-card" style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);">
+                        <div class="insight-title">📈 Progress Insight</div>
+                        <div class="insight-text">
+                            You're 40% ahead of typical fat loss rate! The ALA + berberine combination is working excellently.
+                        </div>
+                    </div>
+                    
+                    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">
+                        Today's Protocol
+                    </h3>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: white; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 15px;">ALA 300mg</div>
+                            <div style="font-size: 13px; color: #666;">Before lunch</div>
+                        </div>
+                        <button style="background: #27ae60; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px;">
+                            ✓ Taken
+                        </button>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; background: white; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
+                        <div>
+                            <div style="font-weight: 600; font-size: 15px;">Berberine 500mg</div>
+                            <div style="font-size: 13px; color: #666;">Before dinner</div>
+                        </div>
+                        <button style="background: #667eea; color: white; border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px;">
+                            Remind Me
+                        </button>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showScreen(5)">
+                        View Detailed Analytics
+                    </button>
+                </div>
+            </div>
+
+            <!-- Screen 5: Advanced Analytics -->
+            <div id="screen5" class="hidden-screen">
+                <div class="status-bar">
+                    <span>←</span>
+                    <span>Analytics</span>
+                    <span>📈</span>
+                </div>
+                
+                <div class="content">
+                    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">
+                        Protocol Analytics
+                    </h2>
+                    
+                    <div class="tab-navigation">
+                        <div class="tab active">Progress</div>
+                        <div class="tab">Biomarkers</div>
+                        <div class="tab">Insights</div>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h3 style="font-size: 14px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;">
+                            Predicted Outcomes
+                        </h3>
+                        
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span style="font-size: 13px; color: #666;">30-day waist reduction</span>
+                                <span style="font-size: 13px; font-weight: 600;">-3.2cm</span>
+                            </div>
+                            <div style="background: #f0f4ff; border-radius: 8px; height: 8px; overflow: hidden;">
+                                <div style="background: #667eea; width: 37.5%; height: 100%; border-radius: 8px;"></div>
+                            </div>
+                            <div style="font-size: 11px; color: #666; margin-top: 4px;">12 days: -1.2cm (37% complete)</div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Evidence Quality</div>
+                            <div style="font-size: 13px; color: #666; line-height: 1.4;">
+                                Your protocol is based on 47 peer-reviewed studies. ALA + berberine combination shows 2.3x better results than either supplement alone.
+                            </div>
+                        </div>
+                        
+                        <div style="background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+                            <div style="font-weight: 600; font-size: 15px; margin-bottom: 8px;">Next Optimization</div>
+                            <div style="font-size: 13px; color: #666; line-height: 1.4;">
+                                Day 21: Consider adding chromium picolinate (200mcg) if weight loss plateaus. Research shows 89% of users avoid plateaus with this addition.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary" onclick="showScreen(1)">
+                        Back to Goals
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="nav-dots">
+        <div class="nav-dot active" onclick="showScreen(1)"></div>
+        <div class="nav-dot" onclick="showScreen(2)"></div>
+        <div class="nav-dot" onclick="showScreen(3)"></div>
+        <div class="nav-dot" onclick="showScreen(4)"></div>
+        <div class="nav-dot" onclick="showScreen(5)"></div>
+    </div>
+
+    <script>
+        function showScreen(screenNumber) {
+            // Hide all screens
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('screen' + i).classList.add('hidden-screen');
+                document.getElementById('screen' + i).classList.remove('current-screen');
+            }
+            
+            // Show selected screen
+            document.getElementById('screen' + screenNumber).classList.remove('hidden-screen');
+            document.getElementById('screen' + screenNumber).classList.add('current-screen');
+            
+            // Update nav dots
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                if (index + 1 === screenNumber) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
