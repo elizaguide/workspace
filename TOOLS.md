@@ -34,7 +34,7 @@ Things like:
 **🎯 DESIGN MANDATE (NON-NEGOTIABLE):**
 - ✅ **ALL WEB PAGES use Mindvalley design by default** - No exceptions
 - ✅ **ALWAYS invoke mindvalley-design skill BEFORE coding**
-- ✅ **Use mindvalley-font.css and Mindvalley brand colors** (#7a12d4, #0f131a, etc.)
+- ✅ **Use mindvalley-core.css + mindvalley-utilities.css** - Speed-optimized utility system
 - ✅ **Professional, clean aesthetic** matching brand guidelines
 
 **WhatsApp vs Gateway Deployment:**
@@ -59,6 +59,98 @@ Things like:
 - ✅ **Emoji favicon** matching the topic (🧠 for AI, 🎓 for education, etc.)
 - ✅ **GitHub deployment** for remote access
 - ✅ **Mobile responsive design**
+
+## 🚀 Mindvalley Utility CSS - Speed Development
+
+**NEW: Utility-First Framework** - Build pages 10x faster with pre-built classes!
+
+### Essential Imports (Always Include):
+```html
+<link rel="stylesheet" href="mindvalley-core.css">
+<link rel="stylesheet" href="mindvalley-utilities.css">
+```
+
+### ⚡ Quick Page Patterns:
+```html
+<!-- Hero Section (1 line) -->
+<section class="mv-hero-quick">
+  <div class="mv-container">
+    <h1 class="title-bold-1 mv-mb-4">Your Title</h1>
+    <p class="body-lg mv-mb-8">Your subtitle</p>
+    <a href="#" class="mv-btn mv-btn-primary">Call to Action</a>
+  </div>
+</section>
+
+<!-- Feature Grid (Auto-responsive) -->
+<div class="mv-features">
+  <div class="mv-card">Feature 1</div>
+  <div class="mv-card">Feature 2</div>
+  <div class="mv-card">Feature 3</div>
+</div>
+
+<!-- Mobile Stack (Column mobile, row desktop) -->
+<div class="mv-mobile-stack">
+  <div>Content 1</div>
+  <div>Content 2</div>
+</div>
+```
+
+### 🎨 Color System:
+- **Purple brand:** `mv-text-purple` `mv-bg-purple` `mv-bg-gradient-purple`
+- **Dark text:** `mv-text-dark` `mv-bg-dark` `mv-bg-gradient-dark`
+- **Status:** `mv-text-success` `mv-text-warning` `mv-text-error`
+
+### 📱 Mobile-First Grid:
+- **Base:** `mv-grid-1` `mv-grid-2` `mv-grid-3` `mv-grid-4`
+- **Responsive:** `md:mv-grid-2` `lg:mv-grid-3` (breakpoints: 768px, 1024px)
+- **Example:** `mv-grid-1 md:mv-grid-2 lg:mv-grid-3` = 1 col mobile, 2 col tablet, 3 col desktop
+
+### 📏 Spacing (Mobile-optimized):
+- **Margin:** `mv-mt-4` `mv-mb-8` `mv-mx-auto`
+- **Padding:** `mv-p-4` `mv-px-6` `mv-py-8`
+- **Gaps:** `mv-gap-4` `mv-gap-8`
+
+### ⚡ Instant Components:
+- **Buttons:** `mv-btn mv-btn-primary` or `mv-btn mv-btn-secondary`
+- **Cards:** `mv-card` (auto-padding, shadows, rounded)
+- **Hero:** `mv-hero-quick` (gradient background, centered)
+- **Section:** `mv-section` or `mv-section-lg` (responsive padding)
+
+### 🏃‍♂️ Speed Tips:
+1. **Start with layout:** `mv-container` → `mv-mobile-stack` or `mv-features`
+2. **Add typography:** `title-bold-3` `body` `mv-text-center`
+3. **Apply colors:** `mv-text-purple` `mv-bg-white`
+4. **Fine-tune spacing:** `mv-mb-8` `mv-px-4`
+
+**Example Page in 5 minutes:**
+```html
+<section class="mv-hero-quick">
+  <div class="mv-container">
+    <h1 class="title-bold-1 mv-mb-4">Amazing Product</h1>
+    <p class="body-lg mv-mb-8">Transform your life today</p>
+    <a href="#" class="mv-btn mv-btn-primary">Get Started</a>
+  </div>
+</section>
+
+<div class="mv-section">
+  <div class="mv-container">
+    <div class="mv-features">
+      <div class="mv-card">
+        <h3 class="title-bold-6 mv-text-purple mv-mb-4">Feature 1</h3>
+        <p class="body">Amazing feature description</p>
+      </div>
+      <div class="mv-card">
+        <h3 class="title-bold-6 mv-text-purple mv-mb-4">Feature 2</h3>
+        <p class="body">Another great feature</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**Files:**
+- Reference: `web/skills/mindvalley-design/utility-example.html`
+- Framework: `web/skills/mindvalley-design/mindvalley-utilities.css`
 
 **Deployment Flow:**
 1. **ASK:** "Where should I create this website?" (if not specified)
