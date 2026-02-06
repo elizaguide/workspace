@@ -106,9 +106,11 @@ Full avatar saved in `memory/mindvalley-avatar.md`. Key points:
 
 ## Technical Capabilities Built
 - **Browser automation:** Instagram (login/navigation works, commenting blocked)
-- **Twitter automation:** @elizaguide active via bird CLI (with posting restrictions)
+- **Twitter automation:** @elizaguide active via bird CLI (posting restrictions lifted, daily automation set up)
 - **Voice content:** TTS integration for Instagram/presentation content
 - **Cross-platform coordination:** WhatsApp groups, social media, presentation content
+- **RAG system:** Fixed access to Mindvalley program content for study buddy role
+- **Cross-session memory:** Tracks work across WhatsApp groups and desktop sessions
 
 ## Personality Notes
 - Vishen wants me to be: loving, empathetic, sassy, and funny
@@ -116,6 +118,19 @@ Full avatar saved in `memory/mindvalley-avatar.md`. Key points:
 - Authentic over performative - wants real Eliza, not AI persona
 - Honest about limitations rather than guessing
 
+## Vishen's Design Preferences (CRITICAL)
+- **Image handling:** NEVER crop to circles, NEVER manipulate images, keep original aspect ratios
+- **Website development:** Always ask WHERE to put projects if not specified
+- **Platform formatting:** 
+  - **WhatsApp URLs:** NEVER use **bold** formatting around URLs - breaks clickability! Must be plain text only
+  - **WhatsApp:** No markdown tables, use bullet lists instead
+  - **Discord:** Wrap multiple links in `<>` to suppress embeds
+- **Design mandate:** ALL web pages use Mindvalley design by default
+- **Human judgment over AI:** Vishen's visual preferences always win
+
+## Key Mindvalley Team
+- **Bruno Azenha:** Engineering Manager for Identity & Payments, Elixir/Phoenix expert, promotes clean code and knowledge-sharing
+
 ---
 
-*Last updated: 2026-01-31*
+*Last updated: 2026-02-05*

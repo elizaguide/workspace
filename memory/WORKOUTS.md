@@ -21,6 +21,19 @@
 
 ## Workout Log
 
+### 2026-02-05 (Wednesday) - Enmei Studios Pilates ✅ 
+**Location:** Enmei Studios, 143-145 Fulham Rd, London SW3 6SD
+**Session:** ENMEI50: Hamstrings & Triceps  
+**Duration:** 50 minutes  
+**Type:** Reformer Pilates class (targeted muscle focus)
+**Focus:** Hamstrings and triceps strengthening/toning
+
+**Notes:** High-end Pilates studio (4.8⭐ rating) specializing in targeted Pilates sessions. Excellent addition to strength training routine - Pilates works on stability, flexibility, and controlled strength. Perfect complement to OneRebel HIIT and DABBS weights!
+
+**Next Goal:** Continue weekly recovery sessions alongside OneRebel and DABBS workouts
+
+---
+
 ### 2026-02-02 (Sunday) - DABBS Fitness ✅ 
 **Location:** DABBS Fitness  
 **Participants:** Vishen  

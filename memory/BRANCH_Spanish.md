@@ -1,8 +1,8 @@
 # Spanish Teaching Branch Memory
 
 ## Setup
-- **WhatsApp Group ID:** 120363404487759737@g.us
-- **Group Purpose:** Spanish learning for Vishen (private group)
+- **Delivery Method:** Direct WhatsApp messages to Vishen (+37259125567)
+- **Previous Group ID:** 120363404487759737@g.us (no longer used - voice note response issues)
 - **Teaching Style:** Fun, practical, short lessons (not overwhelming)
 - **Frequency:** Daily quizzes and mini-lessons
 
@@ -14,8 +14,8 @@
 - **Bonus attempt:** "Yamo gusto café" (should be "Quiero café")
 
 ### Learning Patterns
-- **Strengths:** Pronunciation instincts, willing to guess
-- **Areas to work on:** Grammar basics (me llamo structure), basic phrases
+- **Strengths:** Evening greetings (buenas noches), polite requests (¿Puedo tener...?), pronunciation instincts, willing to guess
+- **Persistent Struggles:** Me llamo vs other verbs (said "me amo" = love), ¿Cómo estás? meaning, verb confusion (quiero/gusta), numbers
 - **Engagement:** Responds well to humor and practical applications
 
 ## Successful Content Types
@@ -31,8 +31,16 @@
 - Use voice content for pronunciation
 - Build confidence through small wins
 
+### Latest Quiz (Feb 5, 2026) - COMPLETED
+- **Score:** 4/8 (50%)
+- **Correct:** Buenas noches (greeting/goodnight), ¿Puedo tener un café?, negro (black)
+- **Missed:** Quiero vs gusta café, Me llamo vs me amo, ¿Cómo estás? meaning, ocho (eight)
+- **Pattern Alert:** SAME mistakes on "me llamo" structure and "¿Cómo estás?" meaning from Jan 31 quiz
+- **New Strength:** Polite requests (¿Puedo tener...?) and evening greetings mastered
+
 ## Next Lesson Ideas
-- Coffee ordering (since he wants "café")
-- Numbers and time
+- **PRIORITY:** Verb drilling (quiero vs gusta, me llamo vs other verbs)
+- **PRIORITY:** Basic question meanings (¿Cómo estás?, ¿Cómo te llamas?)
+- Numbers 1-10 (especially ocho)
+- Coffee ordering conversations
 - Basic restaurant phrases
-- Travel essentials

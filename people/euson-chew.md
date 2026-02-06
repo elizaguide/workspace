@@ -4,7 +4,7 @@
 - **Full Name:** Euson Chew
 - **Role:** Senior Product Designer at Mindvalley
 - **Location:** Selangor, Malaysia
-- **LinkedIn:** https://www.linkedin.com/in/eusonc/
+- **LinkedIn:** https://www.linkedin.com/in/eusonc/?originalSubdomain=my
 - **Portfolio:** https://eusonchew.com/
 
 ## Background & Experience

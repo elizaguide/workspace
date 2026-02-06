@@ -1,0 +1,144 @@
+# 📊 Mindvalley Daily Reputation Monitoring Report
+**Date:** February 6, 2026  
+**Reporting Period:** Past 24-48 hours  
+**Analyst:** Eliza  
+
+---
+
+## 🚨 EXECUTIVE SUMMARY
+
+**Overall Sentiment:** 🟡 MODERATE CONCERN  
+**Trustpilot Rating:** 4.1/5 ("Great") - Stable  
+**Critical Issues:** ❌ HIGH PRIORITY customer service & billing complaints  
+**Viral Threats:** ✅ None detected  
+**Reddit Activity:** ✅ Clean - no negative mentions in monitored subreddits  
+
+---
+
+## 📈 NEW REVIEW METRICS (24-48h)
+
+### Trustpilot Activity
+- **Total New Reviews:** ~15-20 new reviews
+- **Rating Distribution:**
+  - ⭐⭐⭐⭐⭐ 5-star: ~40% (AI Mastery success stories, Paul McKenna certification praise)
+  - ⭐⭐⭐⭐ 4-star: ~20%
+  - ⭐⭐⭐ 3-star: ~10%
+  - ⭐⭐ 2-star: ~10%
+  - ⭐ 1-star: ~20% (HIGH CONCERN - see Critical Alerts)
+
+### Platform Coverage
+- **Reddit:** Zero mentions in r/scams, r/entrepreneur, r/selfimprovement
+- **General Web:** Several review sites updating content for 2026
+
+---
+
+## 🔥 TRENDING TOPICS & THEMES
+
+### ✅ **POSITIVE TRENDS**
+1. **AI Mastery Program Success** - Multiple glowing reviews for 2025 cohort
+2. **Paul McKenna Certification** - Strong testimonials about hypnotherapy training
+3. **One-Click Cancellation** - Positive feedback on improved cancellation process
+4. **Community Experience** - Praise for supportive learning environment
+
+### ⚠️ **CONCERNING PATTERNS**
+1. **Auto-Renewal Confusion** - Multiple complaints about unexpected charges
+2. **Customer Service Inconsistency** - Mixed experiences with support team
+3. **Access Issues** - Technical problems preventing content access
+4. **"Lifetime" vs Annual Subscriptions** - Legacy customers feeling misled
+
+---
+
+## 🚨 CRITICAL ALERTS - HIGH PRIORITY
+
+### **Auto-Renewal & Refund Issues** ⭐ (1-star reviews)
+- Multiple users charged unexpectedly after missing email notifications
+- Complaints about 15-day refund window being too short
+- One user reported promised refund later denied (chat records mentioned)
+- **Impact:** Billing reliability and trust issues
+
+### **Customer Service Response Quality** ⭐⭐ 
+- Users frustrated with AI chatbot responses
+- Complaints about "canned" responses lacking personalization
+- One review specifically called out AI replies as "fluff with no meaning"
+- **Impact:** Brand perception of caring vs. corporate efficiency
+
+### **Technical Access Problems** ⭐⭐
+- Website loading issues preventing content access
+- Platform asking users to re-pay for already purchased content
+- **Impact:** User experience and value perception
+
+---
+
+## 📊 DAILY METRICS SNAPSHOT
+
+| Metric | Status | Trend |
+|--------|--------|-------|
+| Trustpilot Rating | 4.1/5 | ➡️ Stable |
+| 1-Star Reviews | ~20% of new | ⬆️ Concerning |
+| Response Rate | ~90% | ✅ Good |
+| Reddit Mentions | 0 negative | ✅ Clean |
+| Viral Content | None detected | ✅ Safe |
+
+---
+
+## 🎯 AD TEAM INSIGHTS & CAMPAIGN IMPLICATIONS
+
+### **Messaging Recommendations**
+1. **Emphasize Transparency** - Address billing concerns proactively in ad copy
+2. **Highlight Support Quality** - Showcase human customer service stories
+3. **Technical Reliability** - Focus on platform stability and access guarantees
+
+### **Avoid These Triggers**
+- Auto-renewal messaging without clear disclosure
+- "Lifetime access" claims (creates confusion with legacy users)
+- Overpromising quick fixes or transformations
+
+### **Opportunity Areas**
+- AI Mastery program success stories for targeting
+- Paul McKenna partnership credibility 
+- Community/peer learning angle
+- One-click cancellation as trust signal
+
+---
+
+## 🔍 COMPETITIVE INTELLIGENCE
+
+- **Masterclass** mentioned as alternative in recent reviews
+- Users comparing 15-day vs 30-day refund policies of competitors
+- "Success Insider" emerging as focused alternative to Mindvalley's broad approach
+- Review sites positioning "Habit Engine" model as 2026 evolution
+
+---
+
+## ⚡ IMMEDIATE ACTION ITEMS
+
+### For Customer Service Team
+1. Review AI chatbot responses - users finding them impersonal
+2. Audit auto-renewal email timing and visibility
+3. Investigate technical access issues reported in recent reviews
+
+### For Marketing Team  
+1. Create FAQ content addressing "lifetime vs annual" confusion
+2. Develop transparency-focused ad variations
+3. A/B test longer refund window messaging
+
+### For Product Team
+1. Address website loading speed issues
+2. Review platform access/payment verification flow
+3. Consider extending refund window to match competitor standards
+
+---
+
+## 📅 HISTORICAL TRACKING NOTES
+
+- Overall reputation stable but billing/service issues creating friction
+- Need to monitor if current 1-star review rate (20%) becomes sustained trend
+- AI Mastery and certification programs showing strong satisfaction scores
+- Technical issues appear sporadic but impact high-value customers
+
+---
+
+**Next Report:** February 7, 2026  
+**Escalation Threshold:** >25% negative reviews or viral content detection  
+
+*Report generated by Eliza | Mindvalley Reputation Monitoring System*

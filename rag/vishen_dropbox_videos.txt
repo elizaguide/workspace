@@ -1,0 +1,13 @@
+# Vishen's Dropbox Videos for Transcription
+# Format: one URL per line, comments start with #
+
+https://www.dropbox.com/sh/tk3kj5ugeq9dshx/AAC3B2NSP8qr6BSr-LO5tlpMa?dl=0&preview=2023-07-15-Vishen+Lakhiani+-+pt1.mov
+https://www.dropbox.com/sh/tk3kj5ugeq9dshx/AAC3B2NSP8qr6BSr-LO5tlpMa?dl=0&preview=Day+15-2-VishenLakhiani.mp4
+https://www.dropbox.com/sh/tk3kj5ugeq9dshx/AAC3B2NSP8qr6BSr-LO5tlpMa?dl=0&preview=2023-07-05-Greg-Louganis-Vishen-Fireside-chat.mov
+https://www.dropbox.com/scl/fo/br8k4ss37nbpbi5tbwzw8/AMeKkIXNj1SLPKwXI6NsKRQ?e=1&preview=Day+13+-+Linda+Clemons+fireside_1+Karel+T%C3%B5nson.mp4&rlkey=7m88jyuuyt0or6pqntdz44fow&st=xvchijw0&dl=0
+https://www.dropbox.com/scl/fo/br8k4ss37nbpbi5tbwzw8/AMeKkIXNj1SLPKwXI6NsKRQ?e=1&preview=Day+8+-+Miki+Agrawal%2C+Vishen+-Fireside+chat_1+Karel+T%C3%B5nson.mp4&rlkey=7m88jyuuyt0or6pqntdz44fow&st=f086jeq3&dl=0
+https://www.dropbox.com/scl/fo/5b9hazd9b6n08mzplyuiq/AO4U7nBNbK4o4-U_Lqzd08Q?e=1&preview=05+Day+1+-+All+Speakers%3A+Mindfulness+and+Energy+Exercises+to+Solidify+Learnings.mp4&rlkey=k2p40c9t5ko5ib1an3w5v9bu0&st=hbb7ch5l&dl=0
+https://www.dropbox.com/scl/fo/5b9hazd9b6n08mzplyuiq/AO4U7nBNbK4o4-U_Lqzd08Q?e=1&preview=12+Day+2+-+All+Speakers%3A+Closing+Ceremony.mp4&rlkey=k2p40c9t5ko5ib1an3w5v9bu0&st=igmmnhsm&dl=0
+https://www.dropbox.com/scl/fo/br8k4ss37nbpbi5tbwzw8/AMeKkIXNj1SLPKwXI6NsKRQ?e=1&preview=Day+14+-+Carl+Case+fireside_1+Karel+T%C3%B5nson.mp4&rlkey=7m88jyuuyt0or6pqntdz44fow&st=fb69l0it&dl=0
+https://www.dropbox.com/scl/fo/br8k4ss37nbpbi5tbwzw8/AMeKkIXNj1SLPKwXI6NsKRQ?e=1&preview=Day+9+-+Vishen+Rules+for+High+Performers_1+Karel+T%C3%B5nson.mp4&rlkey=7m88jyuuyt0or6pqntdz44fow&st=0nezm5ay&dl=0
+https://www.dropbox.com/scl/fi/igsb0grkigltadbkatekf/DAY-11-Vishen-How-to-bend-reality-part-II-HQ.mp4?rlkey=wgocimvzji053ecmd25y3xvx8&st=y47903u1&dl=0

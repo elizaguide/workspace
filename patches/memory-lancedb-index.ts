@@ -188,6 +188,7 @@ const MEMORY_TRIGGERS = [
   /set up|configured|installed|created|built/i,
   // Relationship & personal triggers
   /family|kids|children|wife|husband|son|daughter/i,
+  /\b(Hayden|Eve|Kristina)\b/,  // Vishen's kids and wife - always capture
   /birthday|anniversary|celebration/i,
   // Health & wellbeing triggers
   /health|blood ?work|supplement|medication|exercise/i,

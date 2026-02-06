@@ -6,9 +6,9 @@
       "purpose": "Spanish language learning"
     },
     "601123663772-1527666047@g.us": {
-      "name": "MV: Campaigns", 
-      "branch": "BRANCH_WhatsApp_MV_Campaigns.md",
-      "purpose": "Mindvalley campaign optimization"
+      "name": "MV: Advertising", 
+      "branch": "BRANCH_WhatsApp_MV_Advertising.md",
+      "purpose": "Mindvalley advertising and marketing strategy"
     },
     "120363421111503792@g.us": {
       "name": "TBD - Longevity/Health Group",
@@ -17,10 +17,6 @@
     }
   },
   "pending_mapping": [
-    {
-      "name": "MV: Advertising",
-      "branch": "BRANCH_WhatsApp_MV_Advertising.md"
-    },
     {
       "name": "Vibrantly: Build", 
       "branch": "BRANCH_WhatsApp_Vibrantly_Build.md"
