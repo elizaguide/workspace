@@ -112,6 +112,15 @@ fi
 INSTALLED_SKILLS=$(ls -1 "$WORKSPACE/skills" | wc -l | xargs)
 KNOWN_SAFE_SKILLS=("hevy" "superdesign" "mindvalley-design" "nano-banana" "conversion-expert" "section-patterns" "spanish-tutor" "presentation-master")
 
+# Check for prohibited platforms/services (5 points bonus check)
+MOLDBOOK_CHECK=0
+if grep -r -i "moldbook\|moltbook" "$WORKSPACE" >/dev/null 2>&1; then
+    echo "⚠️ Moldbook references found - review needed" | tee -a "$SECURITY_LOG"
+    MOLDBOOK_CHECK=1
+else
+    echo "✅ No Moldbook references found (+security)" | tee -a "$SECURITY_LOG"
+fi
+
 ALL_SAFE=1
 for skill in "$WORKSPACE/skills"/*; do
     if [[ -d "$skill" ]]; then
