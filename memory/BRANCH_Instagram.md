@@ -2,7 +2,7 @@
 
 ## Account Details
 - **Username:** eliza.guide
-- **Password:** NZhYE8c2J7EypYxsnYdF
+- **Password:** [STORED SECURELY - Not in memory files per security policy]
 - **Status:** Active, can login but commenting automation blocked by Instagram's anti-bot measures
 
 ## Content Strategy
