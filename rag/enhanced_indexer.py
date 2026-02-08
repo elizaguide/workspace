@@ -2,15 +2,16 @@
 """
 Enhanced Mindvalley RAG Indexer
 
-Indexes all content types: transcripts, books, newsletters, YouTube videos
+Indexes all content types: transcripts, books, newsletters, YouTube videos, Summit Playbook
 with improved metadata and source tracking.
 
 Usage:
-    python enhanced_indexer.py --all          # Index everything
-    python enhanced_indexer.py --newsletters  # Just newsletters
-    python enhanced_indexer.py --youtube      # Just YouTube
-    python enhanced_indexer.py --books        # Just books
-    python enhanced_indexer.py --transcripts  # Just quest transcripts
+    python enhanced_indexer.py --all             # Index everything
+    python enhanced_indexer.py --newsletters     # Just newsletters
+    python enhanced_indexer.py --youtube         # Just YouTube
+    python enhanced_indexer.py --books           # Just books
+    python enhanced_indexer.py --transcripts     # Just quest transcripts
+    python enhanced_indexer.py --summit-playbook # Just Summit Mastery Playbook
 """
 
 import argparse
@@ -31,7 +32,7 @@ def get_content_type(file_path: Path, transcripts_root: Path) -> str:
     try:
         relative_path = file_path.relative_to(transcripts_root)
         parts = relative_path.parts
-        
+
         if 'newsletters' in parts:
             return 'newsletter'
         elif 'youtube' in parts:
@@ -40,6 +41,8 @@ def get_content_type(file_path: Path, transcripts_root: Path) -> str:
             return 'book'
         elif 'soul' in parts:
             return 'quest'
+        elif 'summit-mastery-playbook' in parts:
+            return 'summit-playbook'
         else:
             return 'transcript'
     except ValueError:
@@ -103,8 +106,8 @@ def index_content_type(
     files_to_process = []
     
     if not content_types or 'all' in content_types:
-        content_types = ['newsletters', 'youtube', 'books', 'transcripts']
-    
+        content_types = ['newsletters', 'youtube', 'books', 'transcripts', 'summit-playbook']
+
     for content_type in content_types:
         if content_type == 'newsletters':
             pattern = transcripts_root / "newsletters" / "*.txt"
@@ -115,9 +118,12 @@ def index_content_type(
         elif content_type == 'transcripts':
             # Original quest transcripts
             pattern = transcripts_root / "soul" / "*.txt"
+        elif content_type == 'summit-playbook':
+            # Summit Mastery Playbook markdown files
+            pattern = transcripts_root / "summit-mastery-playbook" / "*.md"
         else:
             continue
-            
+
         files_to_process.extend(list(pattern.parent.glob(pattern.name)))
     
     # Remove duplicates and sort
@@ -219,6 +225,7 @@ def main():
     parser.add_argument("--youtube", action="store_true", help="Index YouTube videos")
     parser.add_argument("--books", action="store_true", help="Index books")
     parser.add_argument("--transcripts", action="store_true", help="Index quest transcripts")
+    parser.add_argument("--summit-playbook", action="store_true", help="Index Summit Mastery Playbook")
     
     args = parser.parse_args()
     
@@ -235,6 +242,8 @@ def main():
             content_types.append('books')
         if args.transcripts:
             content_types.append('transcripts')
+        if args.summit_playbook:
+            content_types.append('summit-playbook')
     
     if not content_types:
         content_types = ['all']  # Default to all if nothing specified

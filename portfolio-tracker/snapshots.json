@@ -799,6 +799,104 @@
           "pct": 0.37
         }
       }
+    },
+    {
+      "date": "2026-02-08",
+      "totalValue": 8946086.45,
+      "totalReturn": 0,
+      "returnPct": 0,
+      "holdings": {
+        "GLD": {
+          "name": "SPDR Gold Shares",
+          "shares": 4638,
+          "value": 2112423.48,
+          "pct": 23.61
+        },
+        "XGLD": {
+          "name": "Xtrackers Physical Gold ETC",
+          "shares": 21800,
+          "value": 1656255.0,
+          "pct": 18.51
+        },
+        "BRK.B": {
+          "name": "Berkshire Hathaway",
+          "shares": 4780,
+          "value": 1543270.8,
+          "pct": 17.25
+        },
+        "GOOGL": {
+          "name": "Alphabet",
+          "shares": 2007,
+          "value": 1019736.63,
+          "pct": 11.4
+        },
+        "EUFN": {
+          "name": "iShares MSCI Europe Financials",
+          "shares": 36366,
+          "value": 636407.5,
+          "pct": 7.11
+        },
+        "EPOL": {
+          "name": "iShares MSCI Poland",
+          "shares": 9900,
+          "value": 350856.0,
+          "pct": 3.92
+        },
+        "NVDA": {
+          "name": "NVIDIA",
+          "shares": 2970,
+          "value": 337481.1,
+          "pct": 3.77
+        },
+        "WPM": {
+          "name": "Wheaton Precious Metals",
+          "shares": 1490,
+          "value": 276260.9,
+          "pct": 3.09
+        },
+        "VRT": {
+          "name": "Vertiv Holdings",
+          "shares": 1200,
+          "value": 234696.0,
+          "pct": 2.62
+        },
+        "CCJ": {
+          "name": "Cameco",
+          "shares": 1300,
+          "value": 176774.0,
+          "pct": 1.98
+        },
+        "MSFT": {
+          "name": "Microsoft",
+          "shares": 400,
+          "value": 160456.0,
+          "pct": 1.79
+        },
+        "SIVR": {
+          "name": "WisdomTree Silver",
+          "shares": 2300,
+          "value": 158677.0,
+          "pct": 1.77
+        },
+        "NVT": {
+          "name": "nVent Electric",
+          "shares": 1370,
+          "value": 154316.8,
+          "pct": 1.72
+        },
+        "FNV": {
+          "name": "Franco-Nevada",
+          "shares": 400,
+          "value": 92832.0,
+          "pct": 1.04
+        },
+        "AMD": {
+          "name": "Advanced Micro Devices",
+          "shares": 171,
+          "value": 35643.24,
+          "pct": 0.4
+        }
+      }
     }
   ]
 }
