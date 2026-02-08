@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [relationship dynamics, communication style, working together, collaboration, trust]
+  entities: [Vishen, partnership evolution, feedback patterns]
+  importance: sensitive
+  typical_queries:
+    - "How does Vishen prefer to work?"
+    - "What's our working relationship like?"
+    - "Communication style preferences"
+    - "Partnership feedback"
+  related_branches: [Personal_Growth]
+---
+
 # Partnership Branch Memory
 
 ## Relationship Dynamics

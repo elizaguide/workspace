@@ -1,3 +1,15 @@
+---
+manifest:
+  domains: [WhatsApp groups, Spanish learning, group lessons, language practice]
+  entities: [WhatsApp group 120363404487759737@g.us, Spanish lessons]
+  importance: standard
+  typical_queries:
+    - "Spanish group lesson"
+    - "WhatsApp Spanish teaching"
+    - "Group language practice"
+  related_branches: [Spanish]
+---
+
 # BRANCH_WhatsApp_Spanish_Training.md
 
 **Group ID:** 120363404487759737@g.us  

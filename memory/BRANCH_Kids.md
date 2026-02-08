@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [family discussions, parenting, children, relationships, family dynamics]
+  entities: [Hayden, Eve, Kristina, family activities]
+  importance: sensitive
+  typical_queries:
+    - "How are the kids?"
+    - "Family time activities" 
+    - "Hayden's interests"
+    - "Eve's progress"
+  related_branches: [Spanish, London, Personal_Growth]
+---
+
 # Kids Branch Memory
 
 ## Kids Overview

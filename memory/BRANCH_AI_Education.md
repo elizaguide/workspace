@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [AI teaching, class preparation, demos, consciousness, presentations, education, capabilities showcase]
+  entities: [students, curriculum, live demos, social media automation]
+  importance: high
+  typical_queries:
+    - "Prepare AI class demo"
+    - "What AI capabilities can I show?"
+    - "AI consciousness presentation"
+    - "Live demo ideas"
+  related_branches: [Instagram, Twitter, Newsletter]
+---
+
 # AI Education Branch Memory
 
 ## Class Preparation Context

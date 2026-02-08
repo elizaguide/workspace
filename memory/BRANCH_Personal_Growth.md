@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [development, optimization, habits, wellness, growth philosophy, self-improvement]
+  entities: [personal development concepts, growth frameworks]
+  importance: standard
+  typical_queries:
+    - "Personal development ideas"
+    - "Growth strategies"
+    - "Optimization approaches"
+    - "Habit formation"
+  related_branches: [Partnership, London, Kids]
+---
+
 # Personal Growth Branch Memory
 
 ## Growth Philosophy & Approaches

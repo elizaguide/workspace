@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [social media, Instagram, content creation, @eliza.guide, voice content, reels]
+  entities: [eliza.guide, voice notes, reels, browser automation]
+  importance: standard
+  typical_queries:
+    - "Post to Instagram"
+    - "Instagram content strategy"
+    - "What's @eliza.guide doing?"
+    - "Social media posting"
+  related_branches: [Twitter, Newsletter, AI_Education]
+---
+
 # Instagram Branch Memory
 
 ## Account Details

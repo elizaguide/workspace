@@ -43,12 +43,18 @@ Instead of loading all context into every conversation, load only the relevant b
 | `BRANCH_Personal_Growth.md` | Development, growth, optimization |
 | `BRANCH_Partnership.md` | Relationship with Vishen, working dynamics |
 
-**How to use:**
-1. Detect conversation topic from the user's message
-2. Load the matching BRANCH file(s) — usually 1-2 max
-3. Use branch context for focused, relevant responses
-4. **Update the branch** after conversations with new learnings
-5. If no branch matches, fall back to MEMORY.md
+**Branch Selection (Revised):**
+1. Read `memory/MANIFEST.md` (~500 tokens) for branch index
+2. Consider the user's message alongside manifest entries
+3. Select 1-3 branches whose domains, entities, and typical queries best match what the user is asking about
+4. Load those branch files
+5. If the conversation shifts topic significantly mid-session, re-check MANIFEST.md and load additional branches (max 3 total)
+
+**DO NOT use simple keyword matching.** Use judgment about what the user actually needs, considering:
+- Direct topic mentions
+- Implied context (e.g., "the Dubai thing" → Investments + Dubai-Relocation if they exist)
+- Entity mentions (e.g., "Hayden" → Kids + possibly relevant projects)
+- Cross-domain queries (e.g., "social media performance of certification" → Instagram + certification project)
 
 **Cross-referencing:** Sometimes topics overlap (e.g. Spanish content for Instagram). Load both relevant branches when needed, but keep it to 2-3 max to avoid context bloat.
 

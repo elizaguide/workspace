@@ -1,3 +1,15 @@
+---
+manifest:
+  domains: [WhatsApp groups, Vibrantly team, build discussions, group context]
+  entities: [Vibrantly team, build processes]
+  importance: standard
+  typical_queries:
+    - "Vibrantly team updates"
+    - "Build discussions"
+    - "Vibrantly group context"
+  related_branches: []
+---
+
 # BRANCH_WhatsApp_Vibrantly_Build.md
 
 **Group ID:** [TBD - need to map from group list]  

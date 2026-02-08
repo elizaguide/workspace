@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [London living, local context, city experiences, culture, locations]
+  entities: [London locations, local services, 62 Welbeck Street]
+  importance: standard
+  typical_queries:
+    - "London recommendations"
+    - "Local context"
+    - "City experiences" 
+    - "London activities"
+  related_branches: [Kids, Personal_Growth]
+---
+
 # London Branch Memory
 
 ## Living Context

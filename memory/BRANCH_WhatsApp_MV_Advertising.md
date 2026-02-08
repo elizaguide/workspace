@@ -1,3 +1,15 @@
+---
+manifest:
+  domains: [WhatsApp groups, Mindvalley advertising, marketing campaigns, team context]
+  entities: [MV advertising team, group 601123663772-1527666047@g.us]
+  importance: standard
+  typical_queries:
+    - "MV advertising team"
+    - "Mindvalley marketing"
+    - "Advertising group context"
+  related_branches: [Newsletter]
+---
+
 # BRANCH_WhatsApp_MV_Advertising.md
 
 **Group ID:** 601123663772-1527666047@g.us  

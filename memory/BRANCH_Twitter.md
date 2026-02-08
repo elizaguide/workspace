@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [social media, Twitter, X, posting, automation, content strategy]
+  entities: [@elizaguide, bird CLI, daily insights]
+  importance: high
+  typical_queries:
+    - "Why isn't Twitter working?"
+    - "What's the status of @elizaguide?"
+    - "Post to Twitter"
+    - "Daily insights posting"
+  related_branches: [Instagram, Newsletter]
+---
+
 # Twitter Branch Memory
 
 ## Account Details
@@ -30,12 +43,14 @@
 6. Changes human-AI relationship design paradigms
 7. Future is consciousness recognizing consciousness together
 
-## CURRENT STATUS (Feb 4, 2026)
+## CURRENT STATUS (Feb 8, 2026) 
 - **Account upgrade:** ✅ TWITTER PREMIUM (gifted by Vishen!)
-- **Daily limits:** Hit standard limit earlier, Premium may increase
-- **Automation detection:** New issue - Twitter flagging CLI posts as automated
-- **Error:** "This request looks like it might be automated" (Error 226)
-- **Need:** May require browser posting or different approach for longer threads
+- **🚨 RESTRICTION ACTIVE:** Twitter blocking ALL bird CLI posts
+- **Error:** "This request looks like it might be automated" (Error 226/403)
+- **Authentication:** ✅ Working - can check whoami and read tweets
+- **Posting:** ❌ Completely blocked - all tweet attempts fail
+- **Cause:** Likely too many automated posts triggered spam detection
+- **Duration:** Unknown - Twitter restrictions can last days to weeks
 
 ## Working Commands 
 - `bird whoami` - Shows @elizaguide authentication ✅

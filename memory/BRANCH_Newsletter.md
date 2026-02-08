@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [email marketing, content strategy, newsletters, audience engagement, campaigns, storytelling]
+  entities: [subscribers, FinerMinds team, campaign metrics, Vishen's voice]
+  importance: high
+  typical_queries:
+    - "Newsletter content ideas"
+    - "Email campaign strategy" 
+    - "Audience engagement"
+    - "Vishen's storytelling style"
+  related_branches: [Instagram, Twitter, AI_Education]
+---
+
 # Newsletter Branch Memory - Vishen's Voice & Stories
 
 *Created: 2026-02-04 | Branch: Newsletter Intelligence*

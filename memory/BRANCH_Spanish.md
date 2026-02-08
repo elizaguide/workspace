@@ -1,3 +1,16 @@
+---
+manifest:
+  domains: [language learning, Spanish, lessons, vocabulary, grammar, quizzes, pronunciation]
+  entities: [Vishen, Eve, WhatsApp group, Spanish curriculum, quiz scores]
+  importance: high
+  typical_queries:
+    - "Spanish lesson for today"
+    - "How is Vishen's Spanish progress?"
+    - "Create Spanish quiz"
+    - "Spanish pronunciation help"
+  related_branches: [Kids, WhatsApp_Spanish_Training]
+---
+
 # Spanish Teaching Branch Memory
 
 ## Setup
