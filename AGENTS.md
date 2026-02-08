@@ -47,8 +47,12 @@ Instead of loading all context into every conversation, load only the relevant b
 1. Read `memory/MANIFEST.md` (~500 tokens) for branch index
 2. Consider the user's message alongside manifest entries
 3. Select 1-3 branches whose domains, entities, and typical queries best match what the user is asking about
-4. Load those branch files
-5. If the conversation shifts topic significantly mid-session, re-check MANIFEST.md and load additional branches (max 3 total)
+4. **READ THE FILES at the paths listed in the manifest for those branches:**
+   - Default: Read the CURRENT.md file
+   - If retrospective query: Also read HISTORY.md
+   - If technical/reference query: Also read REFERENCE.md
+5. Use the content from those files to inform your response
+6. If the conversation shifts topic significantly mid-session, re-check MANIFEST.md and load additional branches (max 3 total)
 
 **DO NOT use simple keyword matching.** Use judgment about what the user actually needs, considering:
 - Direct topic mentions
@@ -63,6 +67,23 @@ Instead of loading all context into every conversation, load only the relevant b
 - **Never load all three unless explicitly asked**
 
 **Cross-referencing:** Sometimes topics overlap (e.g. Spanish content for Instagram). Load both relevant branches when needed, but keep it to 2-3 max to avoid context bloat.
+
+### Router Logging
+
+At the start of EVERY main session, after selecting branches, write this to today's daily log:
+
+📂 ROUTER: "[first 50 characters of user's message]"
+   → Loaded: [list of branch files loaded with temporal layer]
+   → Reasoning: [1 sentence explaining why these branches were selected]
+   → Confidence: [high/medium/low]
+   → MANIFEST match: [which domains/entities/queries triggered the selection]
+
+If no branches were loaded (greeting, vague opener), log:
+📂 ROUTER: "[message]" → No branches (waiting for substantive query)
+
+If branches were loaded mid-session due to topic shift, log:
+📂 ROUTER MID-SESSION: "[message that triggered re-route]"
+   → Added: [new branches loaded]
 
 ### 📬 HANDOFF.md - Session Coordination Queue
 - **Purpose:** Message queue for passing actionable items between sessions

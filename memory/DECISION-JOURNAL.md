@@ -46,6 +46,24 @@
 - **Review date**: 2026-02-29 (30-day assessment)
 - **Status**: Executed (public posts successful, positive reception)
 
+## 2026-02-03: Portfolio Rebalance — Reduce US Tech Concentration
+- **Decision**: Sell VGT positions, purchase diversified positions in TSM, CCJ (Cameco), VRT (Vertiv), NVT (nVent Electric). Increase gold (GLD) allocation.
+- **Rationale**: Portfolio was over-concentrated in US tech (~70%). Geopolitical diversification needed given tariff uncertainty, dollar weakness signals, and de-dollarization trends. Maintain AI infrastructure exposure through individual picks rather than broad tech ETF.
+- **Context**: Over $1M in trades executed. Moving from concentrated US tech to balanced allocation with European industrials, AI infrastructure, and commodity exposure.
+- **Stakeholders**: Portfolio performance, risk management, geographic diversification
+- **Success criteria**: Improved risk-adjusted returns, reduced single-country exposure, maintained upside participation
+- **Review date**: 2026-03-03 (30-day assessment)
+- **Status**: Executed, monitoring performance
+
+## 2026-01-30: Gold Allocation Increase
+- **Decision**: Sell VGT to purchase GLD, increasing gold allocation to 40%+ of portfolio
+- **Rationale**: Hedge against dollar weakness and geopolitical uncertainty. Gold as store of value during potential economic turbulence and de-dollarization trends.
+- **Context**: Part of broader portfolio rebalancing away from US tech concentration
+- **Stakeholders**: Portfolio hedging strategy, inflation protection
+- **Success criteria**: Portfolio protection during market stress, inflation hedge effectiveness
+- **Review date**: 2026-04-30 (quarterly review)
+- **Status**: Executed, gold performing well (+20%+)
+
 ## 2026-01-31: Branched Memory System Creation
 - **Decision**: Implement domain-specific BRANCH_*.md files instead of loading full context every session  
 - **Rationale**: Token efficiency and context relevance. Load only what's needed for specific conversation topics

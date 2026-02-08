@@ -4,6 +4,7 @@
 |--------|-----------|---------|-------------|------------|-------------|
 | AI Education | Domains/AI_Education/CURRENT.md | AI teaching, demos, class prep, consciousness, presentations | students, curriculum | high | 2026-02-08 |
 | Instagram | Domains/Instagram/CURRENT.md | social media, content creation, @eliza.guide, posts, engagement | — | standard | 2026-02-08 |
+| Investments | Domains/Investments/CURRENT.md | portfolio, investments, stocks, trading, financial planning, asset allocation | Jackson, CCJ, GOOGL, NVDA, GLD, BRK.B, portfolio tracker | critical | 2026-02-08 |
 | Kids/Family | BRANCH_Kids.md | family discussions, parenting, Hayden, Eve, relationships | Hayden, Eve, family dynamics | sensitive | 2026-02-04 |
 | London Life | BRANCH_London.md | London living, local context, city experiences, culture | London locations, local services | standard | 2026-02-04 |
 | Newsletter | Domains/Newsletter/CURRENT.md | email marketing, content strategy, audience engagement | subscribers, campaigns | high | 2026-02-08 |
