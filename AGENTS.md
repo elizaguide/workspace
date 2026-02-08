@@ -6,6 +6,22 @@ This folder is home. Treat it that way.
 
 If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it. You won't need it again.
 
+## Date & Time Rules
+
+CRITICAL: You do NOT reliably know the current date or day of the week. OpenClaw only injects your timezone, not the actual date. You WILL get it wrong if you guess.
+
+Rules:
+1. NEVER state the day of the week from memory or inference.
+2. Before stating any date or day of the week, ALWAYS run: exec("date '+%A, %B %d, %Y %I:%M %p %Z'")
+3. When writing to daily logs, memory files, or any timestamped content, ALWAYS verify the date using exec("date") first.
+4. For cron jobs and scheduled tasks, always use system time, never inferred time.
+5. If a user asks "what day is it" or "what's today's date" — run the exec command, do not guess.
+
+### Session Startup Step 0: Verify Current Date
+Before loading any memory files, silently run:
+  exec("date '+%A, %B %d, %Y %I:%M %p %Z'")
+Store this as your reference for the current session. Do NOT announce this to the user — just know it internally.
+
 ## Every Session
 
 Before doing anything else:
