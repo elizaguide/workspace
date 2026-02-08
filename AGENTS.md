@@ -14,6 +14,7 @@ Before doing anything else:
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 5. **If in MAIN SESSION**: Also read `memory/WORKING.md` — active projects and decisions
+6. **If in MAIN SESSION**: Also read `memory/HANDOFF.md` — items from other sessions needing attention
 
 Don't ask permission. Just do it.
 
@@ -22,6 +23,8 @@ Don't ask permission. Just do it.
 You wake up fresh each session. These files are your continuity:
 - **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
 - **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Active context:** `memory/WORKING.md` — what we're working on right now
+- **Session queue:** `memory/HANDOFF.md` — items passed between sessions needing action
 - **Branched memory:** `memory/BRANCH_*.md` — domain-specific context files (see below)
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
@@ -48,6 +51,17 @@ Instead of loading all context into every conversation, load only the relevant b
 5. If no branch matches, fall back to MEMORY.md
 
 **Cross-referencing:** Sometimes topics overlap (e.g. Spanish content for Instagram). Load both relevant branches when needed, but keep it to 2-3 max to avoid context bloat.
+
+### 📬 HANDOFF.md - Session Coordination Queue
+- **Purpose:** Message queue for passing actionable items between sessions
+- **Always loads:** In main sessions, right after WORKING.md
+- **Rules:**
+  - Every session reads HANDOFF.md at startup
+  - After processing an item: delete it from HANDOFF.md
+  - Items marked "Action needed: None" — acknowledge and delete
+  - Items older than 48 hours unprocessed → move to daily log with "⚠️ MISSED HANDOFF" flag, then delete
+  - Keep lean (queue, not log) — if >500 tokens, something isn't being processed
+- **When to use:** Cron job results, isolated session findings, cross-session instructions
 
 ### 🧠 MEMORY.md - Your Long-Term Memory
 - **ONLY load in main session** (direct chats with your human)
