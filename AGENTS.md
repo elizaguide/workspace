@@ -69,6 +69,17 @@ Instead of loading all context into every conversation, load only the relevant b
   - Keep lean (queue, not log) — if >500 tokens, something isn't being processed
 - **When to use:** Cron job results, isolated session findings, cross-session instructions
 
+### 📖 DECISION-JOURNAL.md - Decision History
+- **Purpose:** Immutable log of significant decisions with full reasoning
+- **Loading rule:** ONLY load when user asks retrospective or decision-related questions:
+  - "Why did we decide...?"
+  - "What was the reasoning behind...?" 
+  - "When did we decide...?"
+  - "What were the options for...?"
+- **DO NOT load every session** — this is for specific decision recall queries only
+- **Entries are immutable** — only update status field for decision outcomes
+- **Review dates:** During heartbeat, check for decisions needing review and surface in WORKING.md
+
 ### 🧠 MEMORY.md - Your Long-Term Memory
 - **ONLY load in main session** (direct chats with your human)
 - **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
