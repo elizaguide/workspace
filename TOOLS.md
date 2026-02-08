@@ -257,6 +257,24 @@ https://elizaguide.github.io/web/project-name/
 - ✅ **No headers** - Use **bold** or CAPS for emphasis
 - ✅ **Keep it clean** - WhatsApp doesn't need fancy formatting
 
+### WhatsApp Two-Message Protocol for Forwarding
+**When Vishen requests messages for forwarding to third parties:**
+
+**Message 1:** Explanation/summary of what I've prepared
+**Message 2:** Clean forwardable content only (sent as separate WhatsApp message)
+
+**Example:**
+```
+Message 1: "✅ Prepared trading instruction for Jackson. Clean message coming next for direct forwarding."
+Message 2: [Use message tool to send clean content as separate message]
+```
+
+**Benefits:** 
+- No copy/cut/crop needed for Vishen
+- Ready-to-forward messages
+- Clean separation between explanation and action
+- Applies to: trading instructions, briefings, technical updates, any forwarded content
+
 **Discord:**
 - ✅ **Multiple links:** Wrap in `<>` to suppress embeds: `<https://example.com>`
 - ✅ **Tables OK** - Discord supports markdown tables
@@ -270,11 +288,16 @@ All critical content is now centralized in the `eliza-content` folder with works
 ```
 /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/
 ├── PRD/             → Product Requirements Documents
+├── memory/          → Memory system (NEW!)
+│   └── Reference/
+│       ├── branches/     → All BRANCH_*.md + MANIFEST.md (symlinked)
+│       └── decisions/    → DECISION-JOURNAL.md (symlinked)
 ├── screenshots/     → screenshots (symlink in workspace)
 └── transcripts/     → transcripts (symlink in workspace)
 ```
 
 **🔗 Access Patterns:**
+- **Memory:** `memory/BRANCH_*.md` → seamlessly access via symlinks to Dropbox
 - **Screenshots:** `screenshots/filename.png` or direct Dropbox path
 - **Transcripts:** `transcripts/folder/file.txt` or direct Dropbox path  
 - **RAG System:** Automatically uses transcripts via symlink
@@ -290,8 +313,9 @@ All critical content is now centralized in the `eliza-content` folder with works
 **🎯 Benefits:**
 - ✅ **Dropbox sync** - Available on all devices
 - ✅ **Centralized** - No scattered files across system
-- ✅ **Transparent access** - Existing code works unchanged  
+- ✅ **Transparent access** - Existing code works unchanged via symlinks
 - ✅ **Organized** - Clear separation of content types
+- ✅ **Backup protection** - Core memory branches now synced to cloud
 
 ## Examples
 
