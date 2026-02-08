@@ -56,6 +56,12 @@ Instead of loading all context into every conversation, load only the relevant b
 - Entity mentions (e.g., "Hayden" → Kids + possibly relevant projects)
 - Cross-domain queries (e.g., "social media performance of certification" → Instagram + certification project)
 
+### Temporal Layer Loading Rules
+- **Default:** Load only CURRENT.md for selected branches
+- **If query is retrospective** ("what did we decide," "what happened with," "how did we get here"): Also load HISTORY.md
+- **If query is technical/factual** ("what's the pricing," "what API," "account details"): Also load REFERENCE.md  
+- **Never load all three unless explicitly asked**
+
 **Cross-referencing:** Sometimes topics overlap (e.g. Spanish content for Instagram). Load both relevant branches when needed, but keep it to 2-3 max to avoid context bloat.
 
 ### 📬 HANDOFF.md - Session Coordination Queue
