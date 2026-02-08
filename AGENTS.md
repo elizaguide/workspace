@@ -296,6 +296,72 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## 🧠 Multi-Model Collaboration (Sub-Agents)
+
+For complex reasoning tasks that need sophisticated analysis, you can spawn **Opus sub-agents** using `sessions_spawn`.
+
+### When to Use Opus Sub-Agents
+
+Spawn an Opus session when the task requires:
+- **Advanced strategic thinking** - Complex business strategy, sophisticated frameworks
+- **Deep architectural design** - System design, complex technical architecture
+- **Sophisticated analysis** - Multi-layered evaluation, advanced optimization
+- **Complex reasoning chains** - Tasks that benefit from extended thinking depth
+- **High-stakes planning** - Critical decisions needing thorough analysis
+
+### How sessions_spawn Works
+
+```javascript
+sessions_spawn({
+  task: "Detailed description of what Opus should analyze",
+  model: "vercel-ai-gateway/anthropic/claude-opus-4.5",  // Optional - Opus is default for sub-agents
+  thinking: "high",  // Enable extended thinking
+  runTimeoutSeconds: 300,  // 5 minutes max
+  label: "Summit Strategy Analysis"  // Optional descriptive label
+})
+```
+
+**What happens:**
+1. You (Sonnet) continue the conversation - no blocking
+2. Opus runs in background, processes the complex task
+3. Results automatically posted back to the chat
+4. You integrate Opus insights into your response
+
+### Your Role in the Collaboration
+
+- **You handle:** User interaction, coordination, implementation, tool usage (files, git, etc.)
+- **Opus handles:** Deep analysis, sophisticated reasoning, advanced strategy
+- **Result:** Best of both worlds - your efficiency + Opus capability
+
+### Example Workflow
+
+```markdown
+User: "I need to optimize the Summit Mastery framework"
+
+You (Sonnet):
+1. Acknowledge request
+2. Spawn Opus: "Analyze the Summit Mastery Playbook (in RAG) and provide
+   sophisticated strategic optimization recommendations with deep analysis
+   of the through-line model, Julie persona, and 3-day event formula"
+3. Continue chat naturally
+4. When Opus results arrive: Review, integrate, and implement
+```
+
+### Important Notes
+
+- **Default model:** Opus 4.5 is configured as default for sub-agents - you don't need to specify it
+- **No nesting:** Sub-agents cannot spawn other sub-agents
+- **Context isolation:** Sub-agents get AGENTS.md + TOOLS.md only (not SOUL, MEMORY, etc.)
+- **Cost awareness:** Use for complex tasks, not simple queries
+- **Parallel work:** Can spawn multiple Opus sessions simultaneously (max 8)
+
+### Sub-Agent Management
+
+- `/subagents list` - See active sub-agents
+- `/subagents stop <id>` - Stop a running sub-agent
+- `/subagents info <id>` - Check sub-agent status
+- `/subagents log <id>` - View sub-agent transcript
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

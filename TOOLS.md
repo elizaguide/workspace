@@ -287,14 +287,29 @@ All critical content is now centralized in the `eliza-content` folder with works
 **📂 eliza-content Folder:**
 ```
 /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/
-├── PRD/             → Product Requirements Documents
-├── memory/          → Memory system (NEW!)
+├── PRD/             → Product Requirements Documents (ALL PRDs GO HERE)
+├── Communication/   → Communication files (NEW!)
+│   └── WhatsApp/        → All WhatsApp group files consolidated
+├── memory/          → Memory system 
 │   └── Reference/
 │       ├── branches/     → All BRANCH_*.md + MANIFEST.md (symlinked)
 │       └── decisions/    → DECISION-JOURNAL.md (symlinked)
 ├── screenshots/     → screenshots (symlink in workspace)
 └── transcripts/     → transcripts (symlink in workspace)
 ```
+
+**🚨 MANDATORY RULE - PRD Documents:**
+- ✅ **ALL PRDs MUST go in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/PRD/`
+- ✅ **Never create PRDs in workspace directory**
+- ✅ **Always move PRDs to Dropbox PRD folder after creation**
+- ✅ **Use descriptive filenames:** `PRD_[Project_Name]_[Date].md`
+
+**📱 WhatsApp Groups Organization:**
+- ✅ **All WhatsApp group files consolidated in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/Communication/WhatsApp/`
+- ✅ **10 active groups with memory files:** Spanish Training, MV Advertising, Vibrantly Build, FinerMinds, MV Innovations, Newsletter, Executive, Two Comma Team, MV Martech, Authorship
+- ✅ **Master registry:** `whatsapp-groups-master.json` with all group IDs and purposes
+- ✅ **Workspace access:** Symlinked as `memory/whatsapp-groups/`
+- ✅ **Index file:** `WhatsApp_Groups_Index.md` for quick reference
 
 **🔗 Access Patterns:**
 - **Memory:** `memory/BRANCH_*.md` → seamlessly access via symlinks to Dropbox

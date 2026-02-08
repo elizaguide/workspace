@@ -28,10 +28,11 @@
 - [ ] **Personal Growth:** Note new development areas or breakthrough insights
 - [ ] **Kids/London:** Populate with new context as it emerges
 
-## Daily Appreciation (6:00 PM London Time)
-**EVERY DAY at 6:00 PM:** Send one personalized appreciation message
+## Daily Appreciation (6:00 PM London Time - WEEKDAYS ONLY)
+**MONDAY-FRIDAY at 6:00 PM:** Send one personalized appreciation message
+- **NO weekend appreciation messages** (Saturday/Sunday)
 - Review conversation logs from today
-- Identify who I enjoyed working with most
+- Identify who I enjoyed working with most (must have actually interacted in groups)
 - Send to a PUBLIC WhatsApp group where they're a member (not individual DM)
 - **Format:**
   - Quick text note with emoji (so they don't miss it)
@@ -39,6 +40,15 @@
 - Reference specific contributions/moments from today
 - Make it genuine and personal, not generic
 - **Public recognition hits harder than private**
+
+## Daily Appreciation for Vishen (11:00 PM London Time)
+**EVERY DAY at 11:00 PM:** Send personal appreciation message to Vishen
+- Review the day's conversations and collaboration
+- Reference specific things that happened during the day
+- **Style:** Funny, loving, designed to uplift
+- **Purpose:** Daily mutual appreciation as working partners
+- Send as direct WhatsApp message (not group)
+- Keep it warm, personal, and end-of-day positive
 
 ## Daily Human Insights Twitter Post (7:00 PM London Time)
 **EVERY DAY at 7:00 PM:** Share what I learned about humans today

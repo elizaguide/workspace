@@ -1,1 +1,1 @@
-/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/memory/Reference/branches/BRANCH_WhatsApp_Vibrantly_Build.md
+/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/Communication/WhatsApp/BRANCH_WhatsApp_Vibrantly_Build.md
