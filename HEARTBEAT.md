@@ -5,11 +5,19 @@
 - [ ] Check for urgent projects or missing context
 - [ ] Update cross-session file with any completed work
 
-## Memory Maintenance (Every Few Days)
-- [ ] Review recent daily files (memory/YYYY-MM-DD.md) 
-- [ ] Update MEMORY.md with significant insights/changes
-- [ ] Check branch files for outdated information
+## Memory Maintenance (Automated + Manual)
+**Automated (End-of-Day Consolidation - 10:00 PM):**
+- Daily importance routing (🔴→Decision Journal+branches, 🟡→branches, ⚪→daily log only)
+- WORKING.md cleanup (completed items, stale flagging)
+- HANDOFF.md processing (48h timeout handling)
+- MANIFEST.md updates (last modified dates)
+- Archive management (30+ day daily logs)
+
+**Manual Heartbeat Tasks (Every Few Days):**
+- [ ] Review DECISION-JOURNAL.md for decisions needing review dates
+- [ ] Cross-reference branch files for consistency
 - [ ] Update heartbeat-state.json timestamps
+- [ ] Monitor consolidation system effectiveness
 
 ## Branch-Specific Maintenance
 - [ ] **Instagram:** Check for new content ideas, account status changes
