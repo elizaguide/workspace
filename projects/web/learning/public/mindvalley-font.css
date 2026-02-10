@@ -1,0 +1,165 @@
+/* Mindvalley Typography System */
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* CSS Variables for Typography */
+:root {
+  --font-family-primary: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  
+  /* Font weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+}
+
+/* Base font setup */
+body {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.6;
+}
+
+/* Heading Classes (Responsive) */
+.title-bold-1 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 3rem;     /* 48px */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.title-bold-2 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.25rem;  /* 36px */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.title-bold-3 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.875rem; /* 30px */
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.title-bold-4 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.75rem;  /* 28px */
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.title-bold-5 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.5rem;   /* 24px */
+  line-height: 1.4;
+}
+
+.title-bold-6 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.375rem; /* 22px */
+  line-height: 1.4;
+}
+
+.title-bold-7 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.25rem;  /* 20px */
+  line-height: 1.4;
+}
+
+/* Body Text Classes */
+.body-lg {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: 1.25rem;  /* 20px */
+  line-height: 1.6;
+}
+
+.body {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: 1rem;     /* 16px */
+  line-height: 1.6;
+}
+
+.body-sm {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+.body-italic {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-style: italic;
+  font-size: 1rem;     /* 16px */
+  line-height: 1.6;
+}
+
+/* Special Text Styles */
+.overline-text {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Desktop responsive breakpoints */
+@media (min-width: 1024px) {
+  .title-bold-1 {
+    font-size: 4.5rem;   /* 72px */
+  }
+  
+  .title-bold-2 {
+    font-size: 3.75rem;  /* 60px */
+  }
+  
+  .title-bold-3 {
+    font-size: 3rem;     /* 48px */
+  }
+  
+  .title-bold-4 {
+    font-size: 2.25rem;  /* 36px */
+  }
+  
+  .title-bold-5 {
+    font-size: 1.75rem;  /* 28px */
+  }
+  
+  .title-bold-6 {
+    font-size: 1.5rem;   /* 24px */
+  }
+  
+  .title-bold-7 {
+    font-size: 1.375rem; /* 22px */
+  }
+}
+
+/* Ensure headings use the correct classes */
+h1 { font-size: inherit; font-weight: inherit; }
+h2 { font-size: inherit; font-weight: inherit; }
+h3 { font-size: inherit; font-weight: inherit; }
+h4 { font-size: inherit; font-weight: inherit; }
+h5 { font-size: inherit; font-weight: inherit; }
+h6 { font-size: inherit; font-weight: inherit; }
+
+/* Utility classes */
+.font-light { font-weight: var(--font-weight-light); }
+.font-normal { font-weight: var(--font-weight-normal); }
+.font-medium { font-weight: var(--font-weight-medium); }
+.font-bold { font-weight: var(--font-weight-bold); }
+.font-black { font-weight: var(--font-weight-black); }
+
+.font-mono { font-family: var(--font-family-mono); }

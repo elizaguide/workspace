@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Accelerator Program — Mindvalley</title>
+  <meta name="description" content="Transform your productivity with AI. Master communication clones, automation, and advanced AI systems in 7 days." />
+  <meta name="theme-color" content="#7a12d4" />
+  <link rel="stylesheet" href="../public/mindvalley-font.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .mv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .mv-container { padding: 0 1rem; }
+    }
+    
+    body {
+      font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #0f131a;
+      background: #ffffff;
+    }
+    
+    /* Password Protection Styles */
+    .password-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .password-form {
+      background: white;
+      padding: 3rem;
+      border-radius: 1rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .password-title {
+      margin-bottom: 1.5rem;
+      color: #0f131a;
+    }
+    
+    .password-input {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    
+    .password-input:focus {
+      outline: none;
+      border-color: #7a12d4;
+    }
+    
+    .password-button {
+      width: 100%;
+      padding: 1rem;
+      background: #7a12d4;
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .password-button:hover {
+      background: #6b21a8;
+    }
+    
+    .password-error {
+      color: #ef4444;
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .hidden { display: none; }
+    
+    /* Main Content Styles */
+    .hero {
+      background: linear-gradient(135deg, #7a12d4 0%, #9333ea 100%);
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero p {
+      max-width: 40rem;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .lesson-card {
+      background: white;
+      border: 2px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .lesson-card:hover {
+      border-color: #7a12d4;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(122, 18, 212, 0.1);
+    }
+    
+    .lesson-day {
+      background: #7a12d4;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .lesson-title {
+      margin-bottom: 1rem;
+      color: #0f131a;
+    }
+    
+    .lesson-description {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+    }
+    
+    .lesson-topics {
+      list-style: none;
+    }
+    
+    .lesson-topics li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    
+    .lesson-topics li:before {
+      content: '✓';
+      color: #10b981;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    
+    .lesson-status {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+    
+    .status-available {
+      color: #10b981;
+      font-weight: 600;
+    }
+    
+    .status-coming-soon {
+      color: #6b7280;
+    }
+    
+    .program-stats {
+      background: #f9fafb;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .stat-item {
+      padding: 1.5rem;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #7a12d4;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #4b5563;
+      font-weight: 500;
+    }
+    
+    .footer {
+      background: #0f131a;
+      color: #6b7280;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .hero { padding: 4rem 0; }
+      .section { padding: 3rem 0; }
+      .lessons-grid { grid-template-columns: 1fr; }
+      .password-form { margin: 1rem; padding: 2rem; }
+      .stat-number { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Password Protection Overlay -->
+  <div id="passwordOverlay" class="password-overlay">
+    <div class="password-form">
+      <div class="password-title title-bold-4">🔒 Protected Content</div>
+      <p class="body" style="margin-bottom: 2rem; color: #4b5563;">Enter the access code to view AI Accelerator lessons</p>
+      <input type="password" id="passwordInput" class="password-input" placeholder="Enter access code" autocomplete="off">
+      <button onclick="checkPassword()" class="password-button">Access Lessons</button>
+      <div id="passwordError" class="password-error body-sm">Incorrect access code. Please try again.</div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent" class="hidden">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="mv-container">
+        <h1 class="title-bold-1">AI Accelerator Program</h1>
+        <p class="body-lg">Transform your productivity with AI. Master communication clones, automation, and advanced AI systems in 7 days.</p>
+      </div>
+    </section>
+
+    <!-- Program Stats -->
+    <section class="program-stats">
+      <div class="mv-container">
+        <h2 class="title-bold-4 section-title">Program Overview</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Intensive Days</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5</div>
+            <div class="stat-label">AI Systems</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">21</div>
+            <div class="stat-label">Hour Work Week</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Possibilities</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lessons Grid -->
+    <section class="section">
+      <div class="mv-container">
+        <h2 class="title-bold-3 section-title">Course Lessons</h2>
+        <div class="lessons-grid">
+          
+          <!-- Day 1 -->
+          <a href="1-communication.html" class="lesson-card">
+            <div class="lesson-day">DAY 1</div>
+            <h3 class="title-bold-5 lesson-title">Communication Clone</h3>
+            <p class="lesson-description">Build an AI version of your brain that communicates exactly like you using ChatGPT and Claude Projects</p>
+            <ul class="lesson-topics">
+              <li>Voice profiling and personality capture</li>
+              <li>ChatGPT & Claude Projects mastery</li>
+              <li>Wayne Boss 21-hour work week philosophy</li>
+              <li>Meet Eliza: Advanced AI assistant demo</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-available">✅ Available Now</span>
+            </div>
+          </a>
+
+          <!-- Day 2 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 2</div>
+            <h3 class="title-bold-5 lesson-title">Writing & Content Clone</h3>
+            <p class="lesson-description">Create AI that generates emails, social posts, and long-form content in your authentic voice</p>
+            <ul class="lesson-topics">
+              <li>Email automation and templates</li>
+              <li>Social media content generation</li>
+              <li>Blog posts and article writing</li>
+              <li>Content calendar automation</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Day 3 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 3</div>
+            <h3 class="title-bold-5 lesson-title">Sales & Marketing Clone</h3>
+            <p class="lesson-description">Build AI systems that create video sales letters, ad copy, and conversion-focused content</p>
+            <ul class="lesson-topics">
+              <li>VSL (Video Sales Letter) generation</li>
+              <li>Ad copy and marketing automation</li>
+              <li>Sales funnel content creation</li>
+              <li>Conversion optimization</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Day 4 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 4</div>
+            <h3 class="title-bold-5 lesson-title">Meeting & Workflow Clone</h3>
+            <p class="lesson-description">Automate meeting notes, follow-ups, and project management with AI assistants</p>
+            <ul class="lesson-topics">
+              <li>Meeting transcription and summarization</li>
+              <li>Automated follow-up sequences</li>
+              <li>Project management integration</li>
+              <li>Team communication automation</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Day 5 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 5</div>
+            <h3 class="title-bold-5 lesson-title">Learning & Research Clone</h3>
+            <p class="lesson-description">Create AI systems that research, learn, and synthesize information like your personal brain</p>
+            <ul class="lesson-topics">
+              <li>Research automation and data gathering</li>
+              <li>Knowledge synthesis and insights</li>
+              <li>Learning acceleration techniques</li>
+              <li>Information organization systems</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Day 6 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 6</div>
+            <h3 class="title-bold-5 lesson-title">Advanced Automation</h3>
+            <p class="lesson-description">Connect your AI clones to workflows, integrate with tools, and build autonomous systems</p>
+            <ul class="lesson-topics">
+              <li>Zapier and workflow automation</li>
+              <li>API integrations and connections</li>
+              <li>Multi-platform AI deployment</li>
+              <li>Advanced prompt engineering</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+
+          <!-- Day 7 -->
+          <div class="lesson-card">
+            <div class="lesson-day">DAY 7</div>
+            <h3 class="title-bold-5 lesson-title">AI Business Systems</h3>
+            <p class="lesson-description">Scale your AI clones into complete business operating systems and future-proof strategies</p>
+            <ul class="lesson-topics">
+              <li>Business process automation</li>
+              <li>AI-powered decision making</li>
+              <li>Future-proofing strategies</li>
+              <li>Scaling and optimization</li>
+            </ul>
+            <div class="lesson-status">
+              <span class="status-coming-soon">📅 Coming Soon</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Resources -->
+        <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: #f9fafb; border-radius: 1rem;">
+          <h3 class="title-bold-5" style="margin-bottom: 1rem;">Need Help?</h3>
+          <p class="body" style="margin-bottom: 1.5rem; color: #4b5563;">Each lesson includes support sessions and Q&A with Vykintas</p>
+          <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <span style="padding: 0.5rem 1rem; background: #10b981; color: white; border-radius: 999px; font-weight: 600;">Daily Support Sessions</span>
+            <span style="padding: 0.5rem 1rem; background: #7a12d4; color: white; border-radius: 999px; font-weight: 600;">Community Access</span>
+            <span style="padding: 0.5rem 1rem; background: #f59e0b; color: white; border-radius: 999px; font-weight: 600;">Live Q&A</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="mv-container">
+        <p>© Mindvalley • AI Accelerator Program</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Password Protection System
+    const PASSWORD = 'livelife';
+    const AUTH_KEY = 'ai_accelerator_auth';
+    const AUTH_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+
+    function checkAuthentication() {
+      const authData = localStorage.getItem(AUTH_KEY);
+      if (authData) {
+        try {
+          const { timestamp, authenticated } = JSON.parse(authData);
+          const now = new Date().getTime();
+          
+          // Check if authentication is still valid (within 7 days)
+          if (authenticated && (now - timestamp) < AUTH_DURATION) {
+            showMainContent();
+            return true;
+          } else {
+            // Remove expired authentication
+            localStorage.removeItem(AUTH_KEY);
+          }
+        } catch (e) {
+          // Remove invalid data
+          localStorage.removeItem(AUTH_KEY);
+        }
+      }
+      return false;
+    }
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      
+      if (input.value.toLowerCase() === PASSWORD.toLowerCase()) {
+        // Store authentication with timestamp
+        const authData = {
+          timestamp: new Date().getTime(),
+          authenticated: true
+        };
+        localStorage.setItem(AUTH_KEY, JSON.stringify(authData));
+        
+        showMainContent();
+        error.style.display = 'none';
+        input.value = '';
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    function showMainContent() {
+      document.getElementById('passwordOverlay').classList.add('hidden');
+      document.getElementById('mainContent').classList.remove('hidden');
+    }
+
+    // Handle Enter key in password input
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
+    // Check authentication on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!checkAuthentication()) {
+        // Focus on password input if not authenticated
+        setTimeout(() => {
+          document.getElementById('passwordInput').focus();
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>

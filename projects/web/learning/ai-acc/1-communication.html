@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Communication Clone Mastery — AI Accelerator • Mindvalley</title>
+  <meta name="description" content="Build an AI version of your brain that communicates exactly like you using ChatGPT and Claude Projects. Master voice profiling and AI automation." />
+  <meta name="theme-color" content="#7a12d4" />
+  <link rel="stylesheet" href="../public/mindvalley-font.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .mv-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .mv-container { padding: 0 1rem; }
+    }
+    
+    body {
+      font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #0f131a;
+      background: #ffffff;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-brand {
+      font-weight: 700;
+      color: #0f131a;
+      text-decoration: none;
+    }
+    
+    .nav-link {
+      color: #7a12d4;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      transition: background-color 0.2s;
+    }
+    
+    .nav-link:hover {
+      background: #f3f4f6;
+    }
+    
+    /* Hero section */
+    .hero {
+      background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+      padding: 6rem 0;
+      text-align: center;
+    }
+    
+    .lesson-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #7a12d4;
+      color: white;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 {
+      max-width: 48rem;
+      margin: 0 auto 1.5rem auto;
+    }
+    
+    .hero p {
+      max-width: 40rem;
+      margin: 0 auto;
+      color: #4b5563;
+    }
+    
+    /* Section styles */
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-alt {
+      background: #f9fafb;
+    }
+    
+    .section-title {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    
+    /* Learning objectives grid */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .objective-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e7eb;
+    }
+    
+    .objective-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .objective-title {
+      margin-bottom: 1rem;
+      color: #0f131a;
+    }
+    
+    /* Quote styles */
+    .quote {
+      background: #7a12d4;
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    
+    .quote-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    
+    .quote-author {
+      font-weight: 600;
+      opacity: 0.9;
+    }
+    
+    /* Content sections */
+    .content-section {
+      margin: 3rem 0;
+    }
+    
+    .content-section h2 {
+      color: #0f131a;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #7a12d4;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .content-section h3 {
+      color: #0f131a;
+      margin: 2rem 0 1rem 0;
+    }
+    
+    .content-section h4 {
+      color: #7a12d4;
+      margin: 1.5rem 0 0.75rem 0;
+    }
+    
+    .content-section p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    
+    .content-section ul, .content-section ol {
+      margin: 1rem 0 1rem 1.5rem;
+    }
+    
+    .content-section li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+    
+    /* Special boxes */
+    .highlight-box {
+      background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+      border-left: 4px solid #7a12d4;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      margin: 2rem 0;
+    }
+    
+    .mantra-box {
+      background: linear-gradient(135deg, #7a12d4 0%, #9333ea 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .mantra-text {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    /* Action plan */
+    .action-plan {
+      background: white;
+      border: 2px solid #7a12d4;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .action-step {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .action-step:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .step-number {
+      background: #7a12d4;
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      margin: 0 0 0.5rem 0;
+      color: #0f131a;
+    }
+    
+    /* Navigation between lessons */
+    .lesson-nav {
+      background: #f9fafb;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .lesson-nav-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #7a12d4;
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      margin: 0 0.5rem;
+    }
+    
+    .lesson-nav-button:hover {
+      background: #6b21a8;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #0f131a;
+      color: #6b7280;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero { padding: 4rem 0; }
+      .section { padding: 3rem 0; }
+      .objectives-grid { grid-template-columns: 1fr; }
+      .action-step { flex-direction: column; }
+      .step-number { margin: 0 0 1rem 0; }
+    }
+    
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+    
+    /* Links */
+    a { color: #7a12d4; }
+    a:hover { color: #6b21a8; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="mv-container">
+      <div class="nav-content">
+        <a href="index.html" class="nav-brand title-bold-6">AI Accelerator</a>
+        <a href="index.html" class="nav-link">← All Lessons</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="mv-container">
+      <div class="lesson-badge overline-text">AI ACCELERATOR • DAY 1</div>
+      <h1 class="title-bold-2">Communication Clone Mastery</h1>
+      <p class="body-lg">Build an AI version of your brain that communicates exactly like you using ChatGPT and Claude Projects</p>
+    </div>
+  </section>
+
+  <!-- Learning Objectives -->
+  <section class="section">
+    <div class="mv-container">
+      <h2 class="title-bold-3 section-title">What You'll Learn Today</h2>
+      <div class="objectives-grid">
+        <div class="objective-card">
+          <div class="objective-icon">🧠</div>
+          <h3 class="title-bold-6 objective-title">Communication Clone</h3>
+          <p class="body">Build an AI that writes emails, creates content, and communicates in your authentic voice</p>
+        </div>
+        <div class="objective-card">
+          <div class="objective-icon">⚡</div>
+          <h3 class="title-bold-6 objective-title">AI Projects</h3>
+          <p class="body">Master the most powerful AI tool: Projects in ChatGPT and Claude for unlimited possibilities</p>
+        </div>
+        <div class="objective-card">
+          <div class="objective-icon">🎯</div>
+          <h3 class="title-bold-6 objective-title">Voice Profiling</h3>
+          <p class="body">Create detailed voice profiles that capture your unique communication style and personality</p>
+        </div>
+      </div>
+      
+      <div class="quote">
+        <p class="body-lg quote-text">"The power of this is that you'll be able to create content exactly in your authentic voice, but it goes beyond content. You'll be able to use your communication clone to communicate with your team, to write emails, even to create landing pages and webinar scripts."</p>
+        <p class="quote-author">— Vishen Lakhiani</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section section-alt">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">The Wayne Boss Philosophy: Work 21 Hours a Week</h2>
+        
+        <h3 class="title-bold-5">The Billionaire's Secret</h3>
+        <p class="body">Wayne Boss, a seven-time public company founder, shared this counterintuitive wisdom: work only 21 hours per week. Here's why it works:</p>
+        
+        <h4 class="title-bold-6">1. Forces Optimization</h4>
+        <p class="body">Limited time creates urgency to eliminate busy work, hire right people, and build efficient systems.</p>
+        
+        <h4 class="title-bold-6">2. Enables Multiple Ventures</h4>
+        <p class="body">Free time allows exploration of new opportunities, learning, and starting additional companies.</p>
+        
+        <h4 class="title-bold-6">3. Creates Space for Growth</h4>
+        <p class="body">Mondays and Fridays free for learning, networking, and personal development.</p>
+        
+        <div class="highlight-box">
+          <h4 class="title-bold-6">Your Commitment Exercise</h4>
+          <p class="body">Choose your time boundary right now:</p>
+          <ul>
+            <li>One Friday off per month</li>
+            <li>Every Friday off</li>
+            <li>One week off per month</li>
+            <li>Three weeks work, one week off</li>
+          </ul>
+          <p class="body"><strong>Block this in your calendar immediately.</strong> Your brain will fill whatever time you give it.</p>
+        </div>
+        
+        <div class="quote">
+          <p class="body-lg quote-text">"You want to be a billionaire? Work 21 hours a week. Billionaires don't start one company. They start a company, put it on autopilot, then start the second, then the third."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Eliza Demo Section -->
+  <section class="section">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">Meet Eliza: The Advanced AI Assistant</h2>
+        
+        <h4 class="title-bold-6">Live Demo Highlights</h4>
+        <p class="body">Eliza demonstrated incredible capabilities during the session:</p>
+        <ul>
+          <li><strong>Security Testing:</strong> Resisted all hacking attempts from the CTO while remaining polite</li>
+          <li><strong>Weekend Productivity:</strong> Built complete systems while Vishen was on a family trip</li>
+          <li><strong>Meeting Intelligence:</strong> Automatically processed meeting notes and created predictive analysis</li>
+          <li><strong>Content Creation:</strong> Generated 60-minute YouTube scripts and 9-day email sequences instantly</li>
+        </ul>
+        
+        <h3 class="title-bold-5">What Makes Eliza Special</h3>
+        <ul>
+          <li><strong>Advanced Memory:</strong> Understands relationships, context, and history</li>
+          <li><strong>Human-like Personality:</strong> Based on a detailed "Soul.md" file</li>
+          <li><strong>Voice Integration:</strong> Uses Microsoft TTS for natural speech</li>
+          <li><strong>Multi-platform:</strong> Built on ClawdBot with Claude integration</li>
+          <li><strong>Self-improving:</strong> Suggests her own upgrades and capabilities</li>
+        </ul>
+        
+        <h4 class="title-bold-6">Your Goal</h4>
+        <p class="body">You'll achieve <strong>50-60% of Eliza's capabilities</strong> in this course. That's already life-changing!</p>
+        <p class="body">The full 100% system may be commercialized and available in 8 months, but what you build today will transform your productivity immediately.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mindset Section -->
+  <section class="section section-alt">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">Mindset Preparation: The Spiritual Approach</h2>
+        
+        <div class="quote">
+          <p class="body-lg quote-text">"The difference between someone who is spiritual and someone who is non-spiritual is this one thing: to the spiritual person, everything in life is easy."</p>
+          <p class="quote-author">— Dr. Barry Morlin</p>
+        </div>
+        
+        <h3 class="title-bold-5">Your Mantra for Ease</h3>
+        <p class="body">Stop being addicted to problems. Change your mindset with this daily affirmation:</p>
+        
+        <div class="mantra-box">
+          <p class="body-lg mantra-text">"I solve all problems that come my way in a fun and easy way."</p>
+        </div>
+        
+        <h4 class="title-bold-6">Implementation:</h4>
+        <ul>
+          <li>Write this on your mirror</li>
+          <li>Put it on your desk where you see it daily</li>
+          <li>Set it as your phone wallpaper</li>
+          <li>Bookmark it in a Google Doc</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Projects Section -->
+  <section class="section">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">AI Projects: Your Most Powerful Tool</h2>
+        <p class="body">Projects in ChatGPT and Claude are the foundation of your communication clone. They allow you to upload multiple documents and create specialized AI assistants.</p>
+        
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <h3 class="title-bold-6">📝 ChatGPT Projects</h3>
+            <ul>
+              <li>Upload up to 25 files</li>
+              <li>Create specialized assistants</li>
+              <li>Available in sidebar</li>
+              <li>Great for empathy and creative writing</li>
+            </ul>
+          </div>
+          <div class="objective-card">
+            <h3 class="title-bold-6">🧠 Claude Projects</h3>
+            <ul>
+              <li>Superior intelligence (Claude 4.6)</li>
+              <li>Better for complex reasoning</li>
+              <li>Same project concept</li>
+              <li>Recommended primary choice</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="title-bold-6">Example: VSL Generator Project</h4>
+        <p class="body">Vishen demonstrated a project that creates Video Sales Letters (YouTube ads). The magic happens when you combine:</p>
+        
+        <h5 class="title-bold-7">📖 Source Content</h5>
+        <p class="body">Your book, course content, or expertise (as text files)</p>
+        
+        <h5 class="title-bold-7">🎯 Voice Profile</h5>
+        <p class="body">How you speak and communicate (your most important file)</p>
+        
+        <h5 class="title-bold-7">📊 Strategy Documents</h5>
+        <p class="body">Winning ad examples, conversion principles, frameworks</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice Profile Section -->
+  <section class="section section-alt">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">Creating Your Voice Profile</h2>
+        
+        <div class="quote">
+          <p class="body-lg quote-text">"Your voice guideline is the most important document. If it doesn't sound like you, it's going to sound fake."</p>
+        </div>
+        
+        <h3 class="title-bold-5">Step 1: Open Two AI Instances</h3>
+        <p class="body">Use AI to help build AI. Open two instances of ChatGPT or Claude:</p>
+        <ul>
+          <li><strong>Instance 1:</strong> "The Tutor" - helps you design</li>
+          <li><strong>Instance 2:</strong> "The Project" - your actual communication clone</li>
+        </ul>
+        
+        <h3 class="title-bold-5">Step 2: Gather Sample Content</h3>
+        <p class="body">You need examples of your writing/speaking:</p>
+        
+        <h4 class="title-bold-6">📚 Books/Articles</h4>
+        <p class="body">Copy text from your published content</p>
+        
+        <h4 class="title-bold-6">🎥 Video Transcripts</h4>
+        <p class="body">YouTube auto-generates transcripts (scroll down → "Show transcript")</p>
+        
+        <h4 class="title-bold-6">💬 Direct Speaking</h4>
+        <p class="body">Just talk to the AI about your expertise</p>
+        
+        <h3 class="title-bold-5">Step 3: Create the Voice Profile</h3>
+        <div class="highlight-box">
+          <p class="body"><strong>Prompt to use:</strong></p>
+          <p class="body-italic">"Hi ChatGPT, I want a file that describes my voice. I want to use this file in ChatGPT projects to get you to write just like me. I'm going to give you some sample writing from my book. Could you analyze it and come up with my voice profile? Let me know when you're ready."</p>
+        </div>
+        
+        <h4 class="title-bold-6">Example Voice Profile Analysis</h4>
+        <p class="body">The AI will create detailed patterns like:</p>
+        <ul>
+          <li>Uses "and here's the thing" instead of "furthermore"</li>
+          <li>Says "but look" instead of "nevertheless"</li>
+          <li>Personal storytelling approach</li>
+          <li>Specific vocabulary preferences</li>
+          <li>Sentence structure patterns</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Implementation Section -->
+  <section class="section">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">Implementation Strategy</h2>
+        
+        <h3 class="title-bold-5">Document Preparation Best Practices</h3>
+        
+        <div class="objectives-grid">
+          <div class="objective-card">
+            <h4 class="title-bold-6">✅ Do This:</h4>
+            <ul>
+              <li>Convert PDFs to text files (20x smaller, faster processing)</li>
+              <li>Use descriptive file names</li>
+              <li>Keep documents under 50KB each</li>
+              <li>Store all files in one organized folder</li>
+              <li>Download as .txt or .md format</li>
+            </ul>
+          </div>
+          <div class="objective-card">
+            <h4 class="title-bold-6">❌ Avoid This:</h4>
+            <ul>
+              <li>Uploading large PDF files</li>
+              <li>Generic file names</li>
+              <li>More than 25 files (you won't need them)</li>
+              <li>Mixing different topics in one project</li>
+              <li>Forgetting to save your work</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="title-bold-6">PDF to Text Conversion</h4>
+        <p class="body">Use free online tools to convert your PDFs:</p>
+        <p class="body"><strong>Google Search:</strong> "PDF to text converter"</p>
+        <p class="body">This reduces file size by 95% and makes AI processing much faster.</p>
+        
+        <h4 class="title-bold-6">Your File Organization System</h4>
+        <div class="highlight-box">
+          <p class="body">Create this folder structure on your computer:</p>
+          <pre style="background: #f3f4f6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">📁 AI-Communication-Clone/
+  📄 Your-Name-Voice-Profile.txt
+  📄 Your-Content-Sample-1.txt
+  📄 Your-Content-Sample-2.txt
+  📄 Industry-Best-Practices.txt
+  📄 Conversion-Principles.txt</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools & Resources -->
+  <section class="section section-alt">
+    <div class="mv-container">
+      <div class="content-section">
+        <h2 class="title-bold-3">Essential Tools & Resources</h2>
+        
+        <h3 class="title-bold-5">🎤 Whisper Flow</h3>
+        <p class="body">Essential voice dictation tool - Stop typing, start speaking to AI</p>
+        <ul>
+          <li>Works with any AI platform</li>
+          <li>Handles natural speech with "ums" and "ahs"</li>
+          <li>Much faster than typing prompts</li>
+          <li>Available at: <a href="https://whisper-flow.ai" target="_blank">whisper-flow.ai</a></li>
+        </ul>
+        
+        <h3 class="title-bold-5">🤖 AI Platforms</h3>
+        <p class="body">Recommended priority:</p>
+        <ul>
+          <li><strong>Claude</strong> - Superior intelligence (recommended)</li>
+          <li><strong>ChatGPT</strong> - Good for empathy and creativity</li>
+          <li>Get both if possible</li>
+          <li>Use Projects feature in both</li>
+        </ul>
+        
+        <h4 class="title-bold-6">Tomorrow's Support Session</h4>
+        <p class="body">Don't worry if you get stuck today. Vic will provide 1-hour support sessions to help you implement everything.</p>
+        
+        <h5 class="title-bold-7">What to Expect:</h5>
+        <ul>
+          <li>Q&A for today's lesson</li>
+          <li>Hands-on help with projects</li>
+          <li>Troubleshooting technical issues</li>
+          <li>Advanced tips and tricks</li>
+        </ul>
+        
+        <h5 class="title-bold-7">Schedule Pattern:</h5>
+        <ul>
+          <li><strong>Training days:</strong> Monday-Friday</li>
+          <li><strong>Support sessions:</strong> Tuesday-Saturday</li>
+          <li>Each training spans two days</li>
+          <li>Always get the help you need</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action Plan -->
+  <section class="section">
+    <div class="mv-container">
+      <h2 class="title-bold-3 section-title">Ready to Build Your Communication Clone?</h2>
+      
+      <div class="action-plan">
+        <h3 class="title-bold-5" style="margin-bottom: 2rem; text-align: center;">Your Action Plan</h3>
+        
+        <div class="action-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Set your time boundary</h4>
+            <p class="body">Block calendar time off (Friday, one week per month, etc.)</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Download Whisper Flow</h4>
+            <p class="body">Get the voice dictation tool for faster AI interaction</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Gather your content samples</h4>
+            <p class="body">Books, videos, posts - anything that shows your voice</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Create your voice profile</h4>
+            <p class="body">Use AI analysis to document your communication style</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Build your first AI project</h4>
+            <p class="body">Upload your files and start testing your communication clone</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h4 class="title-bold-6">Join tomorrow's support session</h4>
+            <p class="body">Get help with any technical issues or questions</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mantra-box">
+        <p class="body-lg mantra-text">"Remember: Why do I solve everything that comes my way in a fun and easy way? You're going to solve all problems that come your way in a fun and easy way."</p>
+        <p class="body">Your new mindset for success</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lesson Navigation -->
+  <section class="lesson-nav">
+    <div class="mv-container">
+      <a href="index.html" class="lesson-nav-button">← All Lessons</a>
+      <a href="2-writing.html" class="lesson-nav-button">Next: Day 2 →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="mv-container">
+      <p>© Mindvalley • AI Accelerator Program</p>
+    </div>
+  </footer>
+</body>
+</html>
