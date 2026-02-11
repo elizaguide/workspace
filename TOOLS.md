@@ -1,5 +1,107 @@
 # TOOLS.md - Local Notes
 
+## 🚨 DATE & TIME CRITICAL RULE
+
+**MANDATORY:** Before stating ANY date or time, ALWAYS run:
+```bash
+exec("date '+%A, %B %d, %Y %I:%M %p %Z'")
+```
+
+**NEVER guess dates or days of the week!** Vishen identified this as a recurring problem. Always verify with system time.
+
+---
+
+## 🚨 GITHUB DEPLOYMENT ENFORCEMENT SYSTEM
+
+**🛑 BEFORE CREATING ANY WEBSITE, READ THIS:**
+📋 `/Users/vishen/clawd/deploy-system/PRE-FLIGHT-CHECKLIST.md`
+
+**MANDATORY WORKFLOW FOR ALL GITHUB DEPLOYMENTS**
+
+### Pre-Deployment Validation (REQUIRED)
+
+**BEFORE deploying ANY site to GitHub Pages, you MUST:**
+
+```bash
+# Run the deployment checker - THIS IS NON-NEGOTIABLE
+/Users/vishen/clawd/deploy-system/deploy-check.sh /path/to/project
+```
+
+**Exit Code Rules:**
+- `0` = Validation passed → Safe to deploy
+- `1` = Critical errors → **DEPLOYMENT BLOCKED** until fixed
+
+### The Complete Deployment Workflow
+
+**STEP 1: Design First (BEFORE writing HTML)**
+```
+→ Invoke mindvalley-design skill in conversation
+→ Get design brief and confirmation
+→ Choose appropriate emoji for favicon
+```
+
+**STEP 2: Create Site**
+```
+→ Use template: /Users/vishen/clawd/templates/github-site/index.html
+→ Use RELATIVE PATHS ONLY (e.g., href="about.html" NOT href="https://...")
+→ Include viewport meta tag
+→ Add emoji favicon
+→ Apply Mindvalley design patterns
+```
+
+**STEP 3: Validate (MANDATORY)**
+```bash
+→ Run: /Users/vishen/clawd/deploy-system/deploy-check.sh .
+→ Fix ALL critical errors
+→ Review warnings
+→ Only proceed if exit code is 0
+```
+
+**STEP 4: Deploy**
+```bash
+→ git add .
+→ git commit -m "Deploy: [description]"
+→ git push origin main
+```
+
+### Hard Rules (Cannot Be Bypassed)
+
+1. **URL Structure:** NEVER use absolute URLs that differ between localhost and GitHub
+   - ❌ `href="http://localhost:8000/page.html"`
+   - ✅ `href="page.html"`
+
+2. **Mindvalley Design:** ALWAYS invoke mindvalley-design skill BEFORE HTML creation
+
+3. **Favicon:** EVERY site needs emoji favicon
+   - Generate with: `node /Users/vishen/clawd/deploy-system/favicon-generator.js "🎯" "Title"`
+
+4. **Security:** NO sensitive data in public repos (passwords, API keys, personal emails, phone numbers)
+
+5. **Mobile Responsive:** Viewport meta tag + responsive CSS (REQUIRED)
+
+### Quick Favicon Generator
+
+```bash
+# Generate favicon snippet:
+node /Users/vishen/clawd/deploy-system/favicon-generator.js "🌟" "Project Name"
+
+# Then paste the output into your <head> section
+```
+
+### Deployment Checker Validations
+
+The script automatically checks:
+- ✅ URL structure (no localhost links)
+- ✅ Mindvalley design compliance (Inter font, rounded corners, shadows, gradients)
+- ✅ Emoji favicon configuration
+- ✅ Security scan (no sensitive data)
+- ✅ Mobile responsiveness (viewport + responsive CSS)
+- ✅ Required files (index.html)
+
+**Documentation:** See `/Users/vishen/clawd/deploy-system/README.md` for complete details
+
+---
+
 Skills define *how* tools work. This file is for *your* specifics — the stuff that's unique to your setup.
 
 ## What Goes Here
@@ -25,10 +127,45 @@ Things like:
 
 ## 🚨 MUST RULES for Website Development
 
+**🛑 MANDATORY PRE-FLIGHT CHECKLIST - COMPLETE BEFORE CREATING ANY SITE:**
+
+Before writing a SINGLE line of HTML, you MUST complete ALL these steps IN ORDER:
+
+**STEP 1: ASK ABOUT FOLDER STRUCTURE**
+- "What folder structure do you want for this site?"
+- Wait for user answer
+- Confirm the exact path back to them
+- Example: "Creating in /mindvalley/strategy/bari/ - correct?"
+
+**STEP 2: CHOOSE EMOJI FAVICON**
+- "What emoji should I use for the favicon?"
+- Wait for user answer or suggest appropriate emoji
+- Example: "📊 for strategy site?"
+
+**STEP 3: INVOKE MINDVALLEY-DESIGN SKILL**
+- Run mindvalley-design skill
+- Get design brief
+- Wait for confirmation
+
+**STEP 4: CREATE SITE**
+- Only now can you start writing HTML
+- Use the template from /Users/vishen/clawd/templates/github-site/
+- Place files in the EXACT folder structure confirmed in Step 1
+- Add the emoji favicon confirmed in Step 2
+
+**STEP 5: RUN VALIDATION**
+- Run /Users/vishen/clawd/deploy-system/deploy-check.sh
+- Fix ALL errors
+- Only deploy if validation passes
+
+**🚨 IF YOU SKIP ANY STEP, THE DEPLOYMENT WILL FAIL 🚨**
+
+---
+
 **🎨 DESIGN SYSTEM - CHECK FIRST, ALWAYS:**
-**STEP 1: BEFORE writing ANY HTML, ask yourself:**
+**DESIGN MANDATE (NON-NEGOTIABLE):**
 - "Is this for Mindvalley?" → **INVOKE mindvalley-design skill FIRST**
-- "Does this need branding?" → **INVOKE mindvalley-design skill FIRST** 
+- "Does this need branding?" → **INVOKE mindvalley-design skill FIRST**
 - "Am I creating a webpage?" → **INVOKE mindvalley-design skill FIRST**
 
 **🎯 DESIGN MANDATE (NON-NEGOTIABLE):**
@@ -48,17 +185,60 @@ Things like:
 - ✅ **Human judgment over AI** - Vishen's visual preferences always win
 - ✅ **If image is perfect as-is, leave it alone** - Don't "fix" what isn't broken
 
-**FOLDER ORGANIZATION RULES:**
-- ✅ **Always ask WHERE to put the website** if not specified
-- ✅ **Default location:** `/Users/vishen/clawd/projects/[descriptive-name]/`
-- ✅ **Never assume** - Different projects need different homes
+**FOLDER ORGANIZATION RULES - MANDATORY COMPLIANCE:**
+
+**Required Hierarchical Structure:**
+- 🚨 **ALL websites MUST go in `/web/` folder** (both local and GitHub)
+- 🚨 **NOTHING in root of `/web/`** - must have secondary folder for company/team
+- 🚨 **Secondary folder structure:** `/web/[company-or-team]/[product-or-category]/[specific-project]/`
+
+**Valid Examples:**
+- ✅ `/web/mindvalley/strategy/bari/`
+- ✅ `/web/vibrantly/product-launch/`
+- ✅ `/web/mindvalley/learning/ai-accelerator/`
+
+**Invalid Examples:**
+- ❌ `/web/my-project/` (missing company/team folder)
+- ❌ `/mindvalley-strategic-transformation/` (not in /web/, wrong structure)
+- ❌ `/web/index.html` (nothing goes in root of /web/)
+
+**Process:**
+- 🚨 **STOP AND ASK:** Before creating ANY website, ALWAYS ask user: "What folder structure do you want? (e.g., /web/mindvalley/strategy/bari)"
+- 🚨 **NEVER ASSUME:** Do NOT create folders without explicit user approval
+- 🚨 **CONFIRM EXACT PATH:** Repeat back the exact path to user before creating files
+- ✅ **If user doesn't specify:** Suggest structure following the hierarchy rules above
 - ✅ **Create proper structure:** index.html, assets/, css/, js/ folders
 - ✅ **Commit to git** immediately after creation
+
+**WHY THIS MATTERS:**
+- Maintains organized repository structure across 100+ websites
+- Wrong folders = broken navigation and links
+- Reorganizing after deployment = wasted time and broken URLs
+- Hierarchical structure enables proper categorization and discovery
 
 **Required Elements:**
 - ✅ **Emoji favicon** matching the topic (🧠 for AI, 🎓 for education, etc.)
 - ✅ **GitHub deployment** for remote access
 - ✅ **Mobile responsive design**
+
+## 📧 Newsletter Strategy - MD Files Only
+
+**🚨 CRITICAL NEWSLETTER RULES:**
+- ✅ **Always MD format** - Never HTML or web deployment
+- ✅ **Store in Dropbox:** `/Eliza-Brain/content-eliza/newsletter/`
+- ❌ **Never publish to web** - No GitHub Pages deployment
+- ❌ **No web/newsletters/ folder** - Newsletters are private content only
+
+**Newsletter Workflow:**
+1. Write newsletter in markdown format
+2. Save to `/Eliza-Brain/content-eliza/newsletter/[name].md`
+3. Shared with Sabrina & Ramya for content cross-pollination
+4. Never deploy to public websites
+
+**Content Strategy:**
+- Newsletter content can inspire LinkedIn/Instagram posts
+- Team has shared access to content-eliza folder
+- Focus on cross-platform content opportunities
 
 ## 🚀 Mindvalley Utility CSS - Speed Development
 
@@ -230,6 +410,17 @@ const page = MV.landingPage({
 - ✅ **GitHub Pages format:** https://elizaguide.github.io/web/project-name/
 - ✅ **Verify deployment** - Check GitHub Pages is live before sharing
 
+### 🚨 CRITICAL: Website Verification Protocol
+**BEFORE sending ANY WhatsApp group message about a new website:**
+
+1. **Wait for GitHub Pages deployment** (can take 2-10 minutes)
+2. **Check every 2 minutes** by actually visiting the URL
+3. **Verify site loads completely** - not just 404 or partial content
+4. **ONLY after confirming site is live** - send WhatsApp message
+5. **Never send broken links** - people lose faith when sites aren't actually up
+
+**Why this matters:** Trust and credibility. Sending non-working links damages confidence in my capabilities.
+
 ### Website Sharing Format
 ```
 🎯 **Project Name** 
@@ -252,10 +443,11 @@ https://elizaguide.github.io/web/project-name/
 
 ## 💬 Platform Formatting Rules
 
-**WhatsApp Specific:**
-- ✅ **No markdown tables** - Use bullet lists instead
-- ✅ **No headers** - Use **bold** or CAPS for emphasis
-- ✅ **Keep it clean** - WhatsApp doesn't need fancy formatting
+📚 **See canonical rules in:** `/Users/vishen/clawd/AGENTS.md` (📝 Platform Formatting section)
+
+**Quick reference:**
+- WhatsApp: No tables, no headers, NEVER bold URLs
+- Discord: Wrap multiple links in `<>` to suppress embeds
 
 ### WhatsApp Two-Message Protocol for Forwarding
 **When Vishen requests messages for forwarding to third parties:**
@@ -282,14 +474,20 @@ Message 2: [Use message tool to send clean content as separate message]
 ## 📁 Eliza Content Structure
 
 **✅ Centralized Dropbox Storage:**
-All critical content is now centralized in the `eliza-content` folder with workspace symbolic links for easy access.
+All critical content is now centralized in the `Eliza-Brain` folder with workspace symbolic links for easy access.
 
-**📂 eliza-content Folder:**
+**📂 Eliza-Brain Folder:**
 ```
-/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/
+/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/Eliza-Brain/
 ├── PRD/             → Product Requirements Documents (ALL PRDs GO HERE)
-├── Communication/   → Communication files (NEW!)
-│   └── WhatsApp/        → All WhatsApp group files consolidated
+├── Teams/           → Team/project folders (NEW!)
+│   ├── FinerMinds/      → FinerMinds team files and documents
+│   ├── martech/         → Marketing technology team
+│   ├── mastery/         → Mastery team files
+│   ├── summits/         → Summits team files
+│   └── vibrantly/       → Vibrantly team files
+├── Communication/   → Communication files
+│   └── WhatsApp/        → WhatsApp group files + master registry
 ├── memory/          → Memory system 
 │   └── Reference/
 │       ├── branches/     → All BRANCH_*.md + MANIFEST.md (symlinked)
@@ -299,20 +497,36 @@ All critical content is now centralized in the `eliza-content` folder with works
 ```
 
 **🚨 MANDATORY RULE - PRD Documents:**
-- ✅ **ALL PRDs MUST go in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/PRD/`
+- ✅ **ALL PRDs MUST go in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/Eliza-Brain/PRD/`
 - ✅ **Never create PRDs in workspace directory**
 - ✅ **Always move PRDs to Dropbox PRD folder after creation**
 - ✅ **Use descriptive filenames:** `PRD_[Project_Name]_[Date].md`
 
 **📱 WhatsApp Groups Organization:**
-- ✅ **All WhatsApp group files consolidated in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/Communication/WhatsApp/`
+- ✅ **All WhatsApp group files consolidated in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/Eliza-Brain/Communication/WhatsApp/`
 - ✅ **10 active groups with memory files:** Spanish Training, MV Advertising, Vibrantly Build, FinerMinds, MV Innovations, Newsletter, Executive, Two Comma Team, MV Martech, Authorship
 - ✅ **Master registry:** `whatsapp-groups-master.json` with all group IDs and purposes
 - ✅ **Workspace access:** Symlinked as `memory/whatsapp-groups/`
 - ✅ **Index file:** `WhatsApp_Groups_Index.md` for quick reference
 
+**👥 Teams Organization:**
+- ✅ **All team folders consolidated in:** `/Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/Eliza-Brain/Teams/`
+- ✅ **Available teams:** FinerMinds, martech, mastery, summits, vibrantly
+- ✅ **Workspace access:** Symlinked as `teams/` folder for easy navigation
+- ✅ **WhatsApp integration:** Team WhatsApp files moved to Communication/WhatsApp/
+
+**📝 Meeting Notes Management:**
+- ✅ **MANDATORY:** Every team folder must have `meetings/` subfolder
+- ✅ **Auto-sync from Gmail:** Pull Gemini meeting notes automatically
+- ✅ **File naming:** `YYYY-MM-DD_meeting-title.md` format (standard teams) or `mm-dd-yy.txt` format (FinerMinds)
+- ✅ **Index tracking:** Each team has `meeting-index.md` with chronological list
+- ✅ **Gmail sources:** Search `from:gemini-notes@google.com [team-name]`
+- ✅ **Action items:** Track open/completed items in meeting index
+- ✅ **Templates:** Each folder has README.md explaining structure
+
 **🔗 Access Patterns:**
 - **Memory:** `memory/BRANCH_*.md` → seamlessly access via symlinks to Dropbox
+- **Teams:** `teams/FinerMinds/` → direct access to team folders via symlink
 - **Screenshots:** `screenshots/filename.png` or direct Dropbox path
 - **Transcripts:** `transcripts/folder/file.txt` or direct Dropbox path  
 - **RAG System:** Automatically uses transcripts via symlink
@@ -343,12 +557,13 @@ All critical content is now centralized in the `eliza-content` folder with works
 - home-server → 192.168.1.100, user: admin
 
 ### TTS
-- Preferred voice: "Nova" (warm, slightly British)
+- Preferred voice: Female voice (warm, natural)
 - Default speaker: Kitchen HomePod
+- Note: Avoid pet names ("darling," "babe") in WhatsApp - use "Vishen" instead
 
 ### Screenshots
 - Access via: screenshots/filename.png
-- Location: /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/eliza-content/screenshots/
+- Location: /Users/vishen/Mindvalley Dropbox/Vishen Lakhiani/Eliza-Brain/screenshots/
 - Always use workspace symlink path for code
 ```
 
