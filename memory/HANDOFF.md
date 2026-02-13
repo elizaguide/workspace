@@ -1,19 +1,36 @@
-# Session Handoffs
-*Items are consumed (moved or deleted) after processing*
+# HANDOFF.md - Cross-Session Coordination
 
-## 📥 For Main Session
+## 🚨 CRITICAL SECURITY ISSUES - IMMEDIATE ACTION REQUIRED
 
-### From: Voice Message Reminder (2026-02-08 18:07)
-- 📧 **URGENT TOMORROW**: Remind Vishen to send two receipts to Yen (Mindvalley finance team)
-  1. MacBook Pro receipt - Search Gmail inbox when access restored
-  2. TV receipt for Mindvalley house at 62 Welbeck Street, London
-- **Action needed**: Surface this reminder during morning heartbeat on Feb 9th
+**Generated:** 2026-02-13 13:00:05
+**Risk Level:** CRITICAL
+**Security Score:** 40/100
 
-### From: Automated Daily Insights (2026-02-08 08:00)
-- Twitter daily insight cron job failed due to posting restrictions (Error 226/403)
-- **Action needed**: Two pending daily insights ready for manual posting when Twitter access restored
-- Content ready: Human confirmation behavior observation + team meeting dynamics insight
+**Critical security vulnerabilities identified in 48h assessment:**
 
-## 📤 For Cron/Other Sessions
+1. **Open WhatsApp Group Policy (CRITICAL)**
+   - groupPolicy="open" with elevated tools enabled
+   - High prompt injection risk - ANY group member can trigger elevated commands
+   - **Action:** Set channels.whatsapp.groupPolicy="allowlist" immediately
 
-*No pending outbound handoffs*
+2. **No Model Sandboxing (CRITICAL)**  
+   - Small models vulnerable to manipulation without sandboxing
+   - **Action:** Enable agents.defaults.sandbox.mode="all"
+   - **Consider:** tools.deny=["group:web","browser"] for small models
+
+3. **Credential Exposure (HIGH)**
+   - Found AUTH_TOKEN and credential references in memory files
+   - **Action:** Review and clean credential references from memory files
+
+**Status:** Security report sent to Norman Noble via Executive WhatsApp group at 13:00:05
+
+**Next Steps:**
+- [ ] Wait for Norman's response on configuration changes
+- [ ] Implement recommended security fixes
+- [ ] Schedule follow-up security assessment in 24h to verify fixes
+- [ ] Document security improvements in git
+
+---
+
+## Archive (Items to be cleaned up weekly)
+*No archived items yet*
